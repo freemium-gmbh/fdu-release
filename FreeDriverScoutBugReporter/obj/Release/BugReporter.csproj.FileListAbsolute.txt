@@ -1,0 +1,8 @@
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\bin\Release\BugReporter.exe.config
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\bin\Release\BugReporter.exe
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\ResolveAssemblyReference.cache
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\BugReporter.frmMain.resources
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\BugReporter.Properties.Resources.resources
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\ResGen.read.1.tlog
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\ResGen.write.1.tlog
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\FreeDriverScoutBugReporter\obj\Release\BugReporter.exe

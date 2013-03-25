@@ -1,0 +1,7 @@
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\bin\Release\1Click.exe.config
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\bin\Release\1Click.exe
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\obj\Release\ResolveAssemblyReference.cache
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\obj\Release\ClickMaint.frmMain.resources
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\obj\Release\ResGen.read.1.tlog
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\obj\Release\ResGen.write.1.tlog
+C:\Users\nullkuhl\Documents\GitHub\fdu-release\1ClickMessageSender\obj\Release\1Click.exe

@@ -1,0 +1,23 @@
+﻿<Window x:Class="MessageBoxUtils.WPFMessageBoxWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local="clr-namespace:MessageBoxUtils"
+		Style="{StaticResource MainWindowStyle}"
+		Width="Auto"
+		Height="Auto"
+		SizeToContent="WidthAndHeight"
+		Title="{Binding Title}"
+		FlowDirection="{Binding TitleFlowDirection}"
+		ShowInTaskbar="False"
+		WindowStartupLocation="CenterOwner"
+		KeyDown="Window_KeyDown"
+		MinWidth="250">
+	<Grid>
+		<Border MouseLeftButtonDown="DragWindow"
+				Style="{StaticResource WindowBorder}">
+			<Border Style="{StaticResource WindowInnerBorder}" Background="{StaticResource ElementBackground}">
+				<local:WPFMessageBoxControl />
+			</Border>
+		</Border>
+	</Grid>
+</Window>

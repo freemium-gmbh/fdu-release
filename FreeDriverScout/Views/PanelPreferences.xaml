@@ -1,0 +1,139 @@
+﻿<UserControl x:Class="FreeDriverScout.Views.PanelPreferences"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+             xmlns:routine="clr-namespace:FreeDriverScout.Routine"
+			 mc:Ignorable="d"
+			 d:DesignHeight="293"
+			 d:DesignWidth="645"
+			 Height="303"
+			 Width="645">
+    <UserControl.Resources>
+        <routine:PropertyEqualsToEnablingConverter x:Key="PropertyEqualsToEnablingConverter" />
+    </UserControl.Resources>    
+	<Grid Background="{StaticResource MainAreaBackGround}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="200" />
+			<ColumnDefinition Width="240" />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="35" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="27" />
+			<RowDefinition Height="32" />
+			<RowDefinition Height="22" />
+			<RowDefinition Height="42" />
+			<RowDefinition Height="42" />
+			<RowDefinition Height="72" />
+		</Grid.RowDefinitions>
+		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:Language}"
+				   Style="{StaticResource ElementCaption}" />
+        <ComboBox Margin="0,3,0,0"
+				  Grid.Row="1"
+				  Width="180"
+				  SelectionChanged="LanguageChanged"
+				  Name="LanguagesList">
+            <ComboBoxItem Content="English"></ComboBoxItem>
+			<ComboBoxItem Content="German"></ComboBoxItem>
+		</ComboBox>
+		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:WindowsStartup}"
+				   Style="{StaticResource ElementCaption}"
+				   Grid.Column="1" />
+		<Border Style="{StaticResource CustomCheckBoxWrapSmall}"
+				Width="225"
+				Grid.Column="1"
+				Grid.Row="1">
+			<CheckBox Style="{StaticResource CustomCheckBox}"
+					  Margin="6,6,0,0"
+					  Name="StartUpAction"
+					  Checked="LaunchAtStartup"
+					  Unchecked="DoNotLaunchAtStartup"
+					  Content="{lex:LocText FreeDriverScout:Resources:LaunchAtStartup}"></CheckBox>
+		</Border>
+		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:CloseButtonBehaviour}"
+				   Style="{StaticResource ElementCaption}"
+				   Grid.Column="2" />
+		<Border Style="{StaticResource CustomCheckBoxWrapSmall}"
+				Grid.Column="2"
+				Grid.Row="1">
+			<CheckBox Style="{StaticResource CustomCheckBox}"
+					  Margin="6,6,0,0"
+					  Checked="MinToTrayOnClose"
+					  Unchecked="ShutdownOnClose"
+					  Name="MinToTray"
+					  Content="{lex:LocText FreeDriverScout:Resources:MinToTray}"></CheckBox>
+		</Border>
+
+		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:SaveDownloadedTo}"
+				   Style="{StaticResource ElementCaption}"
+				   Margin="0,12,0,0"
+				   Grid.Row="2"
+				   Grid.ColumnSpan="3" />
+		<StackPanel Grid.ColumnSpan="3"
+					Grid.Row="3"
+					HorizontalAlignment="Left"
+					Margin="0,2,0,0"
+					VerticalAlignment="Top"
+					Orientation="Horizontal">
+			<TextBox Margin="0,1,0,0"
+					 Width="612"
+					 Name="driverDownloadsFolder"
+					 TextChanged="driverDownloadsFolder_TextChanged"></TextBox>
+			<Button Style="{StaticResource BlueButton}"
+					Name="selectDriverDownloadsFolder"
+					Click="selectDriverDownloadsFolder_Click">...</Button>
+		</StackPanel>
+
+		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:SaveBackupsTo}"
+				   Style="{StaticResource ElementCaption}"
+				   Margin="0,7,0,0"
+				   Grid.Row="4"
+				   Grid.ColumnSpan="3" />
+
+		<StackPanel Grid.ColumnSpan="3"
+					Grid.Row="5"
+					HorizontalAlignment="Left"
+					Margin="0,2,0,0"
+					VerticalAlignment="Top"
+					Orientation="Horizontal">
+			<TextBox Margin="0,1,0,0"
+					 Width="612"
+					 Name="backupsFolder"
+					 TextChanged="backupsFolder_TextChanged"></TextBox>
+			<Button Style="{StaticResource BlueButton}"
+					Name="selectBackupsFolder"
+					Click="selectBackupsFolder_Click">...</Button>
+		</StackPanel>
+
+		<Border Grid.Row="7"
+				Grid.ColumnSpan="3"
+				Margin="0 3 0 0"
+				Style="{StaticResource BottomPanel}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="48" />
+					<ColumnDefinition Width="432" />
+					<ColumnDefinition Width="162" />
+				</Grid.ColumnDefinitions>
+				<Image Style="{StaticResource FunctionalButtonImage}"
+					   Margin="10,6,0,0"
+					   Source="../Images/icon-lamp.png" />
+				<Grid Grid.Column="1"
+					  VerticalAlignment="Top">
+					<TextBlock Style="{StaticResource BottomPanelTitle}"
+							   Text="{lex:LocText FreeDriverScout:Resources:PreferencesFooter}"></TextBlock>
+					<TextBlock Style="{StaticResource BottomPanelText}"
+							   Text="{lex:LocText FreeDriverScout:Resources:PreferencesFooterText}"></TextBlock>
+				</Grid>
+				<Button Style="{StaticResource BlueRoundedButton}"
+						Grid.Column="2"
+						Click="ShowScanPanel"
+						Content="{lex:LocText FreeDriverScout:Resources:Close}" Margin="1,4,0,0" Width="152"></Button>
+			</Grid>
+		</Border>
+
+	</Grid>
+</UserControl>

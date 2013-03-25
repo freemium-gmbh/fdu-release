@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://driverservice.freemiumlab.com/ReportService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="SubmitNormalReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="action" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mac" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ipv6" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="os" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitNormalReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitBugReport">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="version" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="mac" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ipv6" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="os" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="hostName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugStackTrace" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugMessage" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugUserInput" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugTargetSite" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="bugSource" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitBugReportResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestVersion">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLatestVersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetLatestVersionResult" nillable="true" type="q1:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDriverUpdates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="driverScanResults" nillable="true" type="q2:ArrayOfKeyValueOfstringArrayOfstringty7Ep6D1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDriverUpdatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDriverUpdatesResult" nillable="true" type="q3:ArrayOfKeyValueOfstringArrayOfstringty7Ep6D1" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

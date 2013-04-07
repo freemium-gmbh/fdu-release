@@ -6,14 +6,16 @@ using System.Windows;
 
 namespace FreeDriverScout.Routine
 {
-    public sealed class BackupStatusEqualsToVisibilityConverter : IValueConverter
+    public sealed class ScanStatusToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
                               object parameter, CultureInfo culture)
         {
-            BackupStatus s1 = (BackupStatus)value;
-            BackupStatus s2 = (BackupStatus)parameter;
-            return s1 == s2 ? Visibility.Visible : Visibility.Collapsed;
+            ScanStatus s1 = (ScanStatus)value;
+            if (s1 != ScanStatus.ScanStarted && s1 != ScanStatus.UpdateStarted)
+                return Visibility.Collapsed;
+            else
+                return Visibility.Visible;
         }
 
         public object ConvertBack(object value, Type targetType,

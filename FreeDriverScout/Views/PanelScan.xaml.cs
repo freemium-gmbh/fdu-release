@@ -6,7 +6,7 @@ using FreeDriverScout.Infrastructure;
 using FreeDriverScout.Routine;
 using FreeDriverScout.ViewModels;
 using Microsoft.Win32.TaskScheduler;
-using sysUtils;
+using FreemiumUtil;
 
 namespace FreeDriverScout.Views
 {
@@ -76,34 +76,34 @@ namespace FreeDriverScout.Views
 
 		private void AutoScan_Click(object sender, RoutedEventArgs e)
 		{
-			Task task = TaskManager.GetTaskByName(MainWindowViewModel.FreemiumDriverScanTaskName);
+			Task task = TaskManager.GetTaskByName(MainWindowViewModel.FreeDriverScoutTaskName);
 			if (AutoScan.IsChecked == true)
 			{
 				if (task != null)
 				{
-					TaskManager.UpdateTaskStatus(MainWindowViewModel.FreemiumDriverScanTaskName, true);
+					TaskManager.UpdateTaskStatus(MainWindowViewModel.FreeDriverScoutTaskName, true);
 				}
 				else
 				{
-					TaskManager.CreateDefaultTask(MainWindowViewModel.FreemiumDriverScanTaskName, true);
+					TaskManager.CreateDefaultTask(MainWindowViewModel.FreeDriverScoutTaskName, true);
 				}
 			}
 			else
 			{
 				if (task != null)
 				{
-					TaskManager.UpdateTaskStatus(MainWindowViewModel.FreemiumDriverScanTaskName, false);
+					TaskManager.UpdateTaskStatus(MainWindowViewModel.FreeDriverScoutTaskName, false);
 				}
 				else
 				{
-					TaskManager.CreateDefaultTask(MainWindowViewModel.FreemiumDriverScanTaskName, false);
+					TaskManager.CreateDefaultTask(MainWindowViewModel.FreeDriverScoutTaskName, false);
 				}
 			}
 		}
 
 		private void AutoUpdate_Click(object sender, RoutedEventArgs e)
 		{
-			Task task = TaskManager.GetTaskByName(MainWindowViewModel.FreemiumDriverScanTaskName);
+			Task task = TaskManager.GetTaskByName(MainWindowViewModel.FreeDriverScoutTaskName);
 			if (task != null)
 			{
 				task.Definition.Actions.Clear();
@@ -174,7 +174,7 @@ namespace FreeDriverScout.Views
 				Microsoft.Win32.TaskScheduler.TriggerCollection trgCollection;
 				var oldTriggerDate = new DateTime();
 
-				Task task = service.FindTask(MainWindowViewModel.FreemiumDriverScanTaskName);
+				Task task = service.FindTask(MainWindowViewModel.FreeDriverScoutTaskName);
 
 				if (task != null)
 				{
@@ -273,11 +273,11 @@ namespace FreeDriverScout.Views
 
 				// Register the task in the root folder
 				if (isNewTask)
-					service.RootFolder.RegisterTaskDefinition(MainWindowViewModel.FreemiumDriverScanTaskName, td);
+					service.RootFolder.RegisterTaskDefinition(MainWindowViewModel.FreeDriverScoutTaskName, td);
 				else
 					task.RegisterChanges();
 
-				TaskManager.UpdateTaskStatus(MainWindowViewModel.FreemiumDriverScanTaskName, AutoScan.IsChecked == true);
+				TaskManager.UpdateTaskStatus(MainWindowViewModel.FreeDriverScoutTaskName, AutoScan.IsChecked == true);
 			}
 			catch { }
 		}
@@ -291,7 +291,7 @@ namespace FreeDriverScout.Views
 				Microsoft.Win32.TaskScheduler.TriggerCollection trgCollection;
 				var oldTriggerDate = new DateTime();
 
-				Task task = service.FindTask(MainWindowViewModel.FreemiumDriverScanTaskName);
+				Task task = service.FindTask(MainWindowViewModel.FreeDriverScoutTaskName);
 
 				if (task != null)
 				{

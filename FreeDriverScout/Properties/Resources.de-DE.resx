@@ -572,4 +572,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
   <data name="UpdateFailed" xml:space="preserve">
     <value>Treiber-Update fehlgeschlagen für Fahrer:</value>
   </data>
+  <data name="SelectDriversToBackup" xml:space="preserve">
+    <value>Bitte wählen Sie mindestens ein Fahrer zu sichern</value>
+  </data>
 </root>

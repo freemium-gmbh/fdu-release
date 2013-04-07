@@ -29,7 +29,7 @@
         <routine:PropertyEqualsToVisibilityConverter x:Key="PropertyEqualsToVisibilityConverter" />
         <routine:BackupStatusEqualsToVisibilityConverter x:Key="BackupStatusEqualsToVisibilityConverter" />
         <routine:AnyPropertyEqualsToVisibilityConverter x:Key="AnyPropertyEqualsToVisibilityConverter" />
-        <routine:PropertyEqualsToEnablingConverter x:Key="PropertyEqualsToEnablingConverter" />
+        <routine:ScanStatusEqualsToEnablingConverter x:Key="ScanStatusEqualsToEnablingConverter" />
     </Window.Resources>
     <Border MouseLeftButtonDown="DragWindow"
 			Style="{StaticResource WindowBorder}">
@@ -76,7 +76,7 @@
 											  Opacity="1"
 											  RenderingBias="Performance" />
 						</TextBlock.Effect>
-						Free Driver <Run FontWeight="Light">Scout</Run></TextBlock>
+						<Run FontWeight="Light">Free</Run> Driver Scout</TextBlock>
                         <DockPanel VerticalAlignment="Top"
 								   Margin="8,10,10,0"
 								   HorizontalAlignment="Right"
@@ -274,7 +274,7 @@
 											   Visibility="Hidden"
 											   HorizontalAlignment="Left"
 											   VerticalAlignment="Top"
-                                               IsEnabled="{Binding Path=Status, Converter={StaticResource PropertyEqualsToEnablingConverter}, ConverterParameter={x:Static models:ScanStatus.NotStarted}}"/>
+                                               IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}"/>
 
                     <!--
 					*****************************************************************************
@@ -291,7 +291,7 @@
                         <views:PanelBackupAndRestore HorizontalAlignment="Left"
 													 VerticalAlignment="Top"
 													 Visibility="{Binding Path=BackupStatus, Converter={StaticResource BackupStatusEqualsToVisibilityConverter}, ConverterParameter={x:Static models:BackupStatus.NotStarted}}" 
-                                                     IsEnabled="{Binding Path=Status, Converter={StaticResource PropertyEqualsToEnablingConverter}, ConverterParameter={x:Static models:ScanStatus.NotStarted}}" />
+                                                     IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}" />
 
                         <views:PanelBackupTargetsSelection HorizontalAlignment="Left"
 														   VerticalAlignment="Top"
@@ -324,7 +324,7 @@
 											Visibility="Hidden"
 											HorizontalAlignment="Left"
 											VerticalAlignment="Top" 
-                                            IsEnabled="{Binding Path=Status, Converter={StaticResource PropertyEqualsToEnablingConverter}, ConverterParameter={x:Static models:ScanStatus.NotStarted}}" />
+                                            />
 
                 </Grid>
 

@@ -12,8 +12,9 @@
 			 Width="655">
 	<UserControl.Resources>
 		<routine:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-	</UserControl.Resources>
-	<Grid Background="{StaticResource MainAreaBackGround}">
+        <routine:ScanStatusToVisibilityConverter x:Key="ScanStatusToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="220" />
 			<ColumnDefinition />
@@ -106,9 +107,9 @@
 				<TextBlock Text="{lex:LocText FreeDriverScout:Resources:InitialLoading}"
 						   Style="{StaticResource ListViewItemLoadingTextBlock}"
 						   Visibility="{Binding Path=XMLItemsLoaded, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}" Margin="0,0,34,0"></TextBlock>
-			</Grid>
+            </Grid>
 		</Grid>
-		<Border Grid.Row="4"
+        <Border Grid.Row="4"
 				Grid.ColumnSpan="2"
 				Style="{StaticResource BottomPanel}"
 				Margin="1,0,0,0">
@@ -127,7 +128,7 @@
 							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackups}"></TextBlock>
 					<TextBlock Style="{StaticResource BottomPanelText}"
 							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackupsText}"></TextBlock>
-				</Grid>
+                </Grid>                
 				<Grid Grid.Column="2">
 					<Button Name="BackupButton"
 							Style="{StaticResource BlueRoundedButton}"
@@ -144,5 +145,9 @@
 				</Grid>
 			</Grid>
 		</Border>
-	</Grid>
+        <Border BorderBrush="{x:Null}" Width="655" Height="293" Grid.ColumnSpan="2" Grid.RowSpan="4">
+            <TextBlock Background="White" Foreground="LightGray" FontFamily="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" FontSize="25" VerticalAlignment="Center" Margin="2,0,11,0" Name="textBlock1" Text="This function is disabled while scanning/downloading/updating." TextAlignment="Center" TextWrapping="Wrap" 
+                       Visibility="{Binding Path=Status, Converter={StaticResource ScanStatusToVisibilityConverter}}"/>
+        </Border>
+    </Grid>
 </UserControl>

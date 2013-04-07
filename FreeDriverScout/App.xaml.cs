@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Media.Animation;
-using sysUtils;
+using FreemiumUtil;
 
 namespace FreeDriverScout
 {
@@ -65,8 +65,6 @@ namespace FreeDriverScout
 				MainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
 			};
 			notifyIcon.MouseUp += notifyIcon_MouseClick;
-
-			CfgFile.CfgFilePath = "freemium.cfg";
 		}
 
 		public void notifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
@@ -107,13 +105,11 @@ namespace FreeDriverScout
 		private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
 		{
 			e.Handled = true;
-			Reporting.Report(e.Exception);
 			Process.GetCurrentProcess().Kill();
 		}
 
 		void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
 		{
-			Reporting.Report((Exception)(e.ExceptionObject));
 			Process.GetCurrentProcess().Kill();
 		}
 	}

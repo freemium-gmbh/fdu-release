@@ -108,24 +108,18 @@
 				Margin="1,0,0,0">
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="48" />
-					<ColumnDefinition Width="400" />
-					<ColumnDefinition Width="194" />
+					<ColumnDefinition Width="214" />
+					<ColumnDefinition Width="214" />
+					<ColumnDefinition Width="214" />
 				</Grid.ColumnDefinitions>
-				<Image Style="{StaticResource FunctionalButtonImage}"
-					   Margin="10,6,0,0"
-					   Source="../Images/icon-lamp.png" />
-				<Grid Grid.Column="1"
-					  VerticalAlignment="Top">
-					<TextBlock Style="{StaticResource BottomPanelTitle}"
-							   Text="{lex:LocText FreeDriverScout:Resources:SelectDriversForBackupFooter}"></TextBlock>
-					<TextBlock Style="{StaticResource BottomPanelText}"
-							   Text="{lex:LocText FreeDriverScout:Resources:SelectDriversForBackupFooterText}"></TextBlock>
-				</Grid>
-				<Button Style="{StaticResource BlueRoundedButton}"
+                <Button Style="{StaticResource BlueRoundedButton}"
+						Grid.Column="1"
+						Command="{Binding BackupActionFinishedCommand}"
+						Content="{lex:LocText FreeDriverScout:Resources:Cancel}" Width = "210"></Button>
+                <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="2"
 						Command="{Binding RestoreDriversCommand}"
-						Content="{lex:LocText FreeDriverScout:Resources:RestoreDrivers}"></Button>
+						Content="{lex:LocText FreeDriverScout:Resources:RestoreDrivers}" Width = "210"></Button>
 			</Grid>
 		</Border>
 

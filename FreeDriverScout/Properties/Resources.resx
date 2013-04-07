@@ -572,4 +572,7 @@ Select the folder for driver downloads</value>
   <data name="TweetMargin" xml:space="preserve">
     <value>-50</value>
   </data>
+  <data name="SelectDriversToBackup" xml:space="preserve">
+    <value>Please, select at least one driver to backup</value>
+  </data>
 </root>

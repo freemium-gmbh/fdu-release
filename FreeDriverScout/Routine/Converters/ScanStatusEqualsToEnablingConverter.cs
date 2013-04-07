@@ -1,19 +1,20 @@
 ﻿using System;
-using System.Globalization;
 using System.Windows.Data;
 using FreeDriverScout.Models;
-using System.Windows;
+using System.Globalization;
 
 namespace FreeDriverScout.Routine
 {
-    public sealed class BackupStatusEqualsToVisibilityConverter : IValueConverter
+    public sealed class ScanStatusEqualsToEnablingConverter : IValueConverter
     {
         public object Convert(object value, Type targetType,
-                              object parameter, CultureInfo culture)
+                      object parameter, CultureInfo culture)
         {
-            BackupStatus s1 = (BackupStatus)value;
-            BackupStatus s2 = (BackupStatus)parameter;
-            return s1 == s2 ? Visibility.Visible : Visibility.Collapsed;
+            string result = "False";
+            ScanStatus s1 = (ScanStatus)value;
+            if (s1 != ScanStatus.ScanStarted && s1 != ScanStatus.UpdateStarted)
+                result = "True";
+            return result;
         }
 
         public object ConvertBack(object value, Type targetType,

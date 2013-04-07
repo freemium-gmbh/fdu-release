@@ -5,13 +5,14 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
              xmlns:routine="clr-namespace:FreeDriverScout.Routine"
+             xmlns:models="clr-namespace:FreeDriverScout.Models"
 			 mc:Ignorable="d"
 			 d:DesignHeight="293"
 			 d:DesignWidth="645"
 			 Height="303"
 			 Width="645">
     <UserControl.Resources>
-        <routine:PropertyEqualsToEnablingConverter x:Key="PropertyEqualsToEnablingConverter" />
+        <routine:ScanStatusEqualsToEnablingConverter x:Key="ScanStatusEqualsToEnablingConverter" />        
     </UserControl.Resources>    
 	<Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.ColumnDefinitions>
@@ -21,7 +22,7 @@
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="35" />
-			<RowDefinition Height="32" />
+            <RowDefinition Height="32"/>
 			<RowDefinition Height="27" />
 			<RowDefinition Height="32" />
 			<RowDefinition Height="22" />
@@ -35,7 +36,7 @@
 				  Grid.Row="1"
 				  Width="180"
 				  SelectionChanged="LanguageChanged"
-				  Name="LanguagesList">
+				  Name="LanguagesList"  IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">
             <ComboBoxItem Content="English"></ComboBoxItem>
 			<ComboBoxItem Content="German"></ComboBoxItem>
 		</ComboBox>
@@ -45,26 +46,30 @@
 		<Border Style="{StaticResource CustomCheckBoxWrapSmall}"
 				Width="225"
 				Grid.Column="1"
-				Grid.Row="1">
+				Grid.Row="1"
+                IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">
 			<CheckBox Style="{StaticResource CustomCheckBox}"
 					  Margin="6,6,0,0"
 					  Name="StartUpAction"
 					  Checked="LaunchAtStartup"
 					  Unchecked="DoNotLaunchAtStartup"
-					  Content="{lex:LocText FreeDriverScout:Resources:LaunchAtStartup}"></CheckBox>
+					  Content="{lex:LocText FreeDriverScout:Resources:LaunchAtStartup}"
+                      IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}"></CheckBox>
 		</Border>
 		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:CloseButtonBehaviour}"
 				   Style="{StaticResource ElementCaption}"
 				   Grid.Column="2" />
 		<Border Style="{StaticResource CustomCheckBoxWrapSmall}"
 				Grid.Column="2"
-				Grid.Row="1">
+				Grid.Row="1"
+                IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">
 			<CheckBox Style="{StaticResource CustomCheckBox}"
 					  Margin="6,6,0,0"
 					  Checked="MinToTrayOnClose"
 					  Unchecked="ShutdownOnClose"
 					  Name="MinToTray"
-					  Content="{lex:LocText FreeDriverScout:Resources:MinToTray}"></CheckBox>
+					  Content="{lex:LocText FreeDriverScout:Resources:MinToTray}"
+                      IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}"></CheckBox>
 		</Border>
 
 		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:SaveDownloadedTo}"
@@ -81,10 +86,12 @@
 			<TextBox Margin="0,1,0,0"
 					 Width="612"
 					 Name="driverDownloadsFolder"
-					 TextChanged="driverDownloadsFolder_TextChanged"></TextBox>
+					 TextChanged="driverDownloadsFolder_TextChanged"
+                     IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}"></TextBox>
 			<Button Style="{StaticResource BlueButton}"
 					Name="selectDriverDownloadsFolder"
-					Click="selectDriverDownloadsFolder_Click">...</Button>
+					Click="selectDriverDownloadsFolder_Click"
+                    IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">...</Button>
 		</StackPanel>
 
 		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:SaveBackupsTo}"
@@ -98,14 +105,16 @@
 					HorizontalAlignment="Left"
 					Margin="0,2,0,0"
 					VerticalAlignment="Top"
-					Orientation="Horizontal">
+					Orientation="Horizontal"
+                    IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">
 			<TextBox Margin="0,1,0,0"
 					 Width="612"
 					 Name="backupsFolder"
 					 TextChanged="backupsFolder_TextChanged"></TextBox>
 			<Button Style="{StaticResource BlueButton}"
 					Name="selectBackupsFolder"
-					Click="selectBackupsFolder_Click">...</Button>
+					Click="selectBackupsFolder_Click"
+                    IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">...</Button>
 		</StackPanel>
 
 		<Border Grid.Row="7"

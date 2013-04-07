@@ -149,7 +149,7 @@ namespace FreeDriverScout.Utils
                         BackupDriverFilesFromInf(".x86", infFilePath, deviceBackupDir);
                 }
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
 			}
 		}

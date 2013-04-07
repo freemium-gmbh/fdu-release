@@ -1,16 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Microsoft.Win32.TaskScheduler;
 
 namespace FreeDriverScout.Routine
 {
     public class TaskManager
     {
-
         #region Public Methods
-
+     
+        /// <summary>
+        /// Gets task by its name
+        /// </summary>
+        /// <param name="taskName">task name</param>
+        /// <returns></returns>
         public static Task GetTaskByName(string taskName)
         {
             Task task = null;
@@ -25,6 +26,11 @@ namespace FreeDriverScout.Routine
             return task;
         }
 
+        /// <summary>
+        /// Check if the task in schedule
+        /// </summary>
+        /// <param name="taskName">task name</param>
+        /// <returns>true - if the task is scheduled, false - otherwise</returns>
         public static bool IsTaskScheduled(string taskName)
         {
             Task task = GetTaskByName(taskName);
@@ -32,9 +38,13 @@ namespace FreeDriverScout.Routine
                 return true;
             else
                 return false;
-        
         }
 
+        /// <summary>
+        /// Gets task description
+        /// </summary>
+        /// <param name="taskName">task name</param>
+        /// <returns></returns>
         public static string GetTaskDescription(string taskName)
         {
             string taskDescription = "";
@@ -65,10 +75,14 @@ namespace FreeDriverScout.Routine
                     service.RootFolder.DeleteTask(taskName);
             }
             catch { }
-        
-        
         }
 
+
+        /// <summary>
+        /// Updates task status
+        /// </summary>
+        /// <param name="taskName">task name</param>
+        /// <param name="isEnabled">status of task - enabled/disabled</param>
         public static void UpdateTaskStatus(string taskName, bool isEnabled)
         {
             try
@@ -85,6 +99,11 @@ namespace FreeDriverScout.Routine
             catch{}
         }
 
+        /// <summary>
+        /// Creates default task in the Task Scheduler service
+        /// </summary>
+        /// <param name="taskName">task name</param>
+        /// <param name="isEnabled">true - if enabled, false - otherwise</param>
         public static void CreateDefaultTask(string taskName, bool isEnabled)
         {
             try
@@ -95,7 +114,7 @@ namespace FreeDriverScout.Routine
                 TaskDefinition td = service.NewTask();
                 
                 td.Settings.Enabled = isEnabled;
-                td.RegistrationInfo.Description = "Freemium Driver Scan";
+                td.RegistrationInfo.Description = "Free Driver Scout";
 
                 // Create an action that will launch Notepad whenever the trigger fires
                 td.Actions.Add(new ExecAction(Environment.CurrentDirectory + "\\1Click.exe", null, null));
@@ -113,8 +132,6 @@ namespace FreeDriverScout.Routine
             catch { }
          
         }
-
-
         #endregion
     }
 }

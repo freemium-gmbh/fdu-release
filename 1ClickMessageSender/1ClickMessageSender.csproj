@@ -98,6 +98,6 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent />
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)FreeDriverScout\$(OutDir)" /Y</PostBuildEvent>
+    <PostBuildEvent>copy  /Y "$(TargetPath)" "$(SolutionDir)FreeDriverScout\$(OutDir)";</PostBuildEvent>
   </PropertyGroup>
 </Project>

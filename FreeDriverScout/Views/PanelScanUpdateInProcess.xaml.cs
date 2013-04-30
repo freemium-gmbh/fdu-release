@@ -12,6 +12,12 @@ namespace FreeDriverScout.Views
 		{
 			InitializeComponent();
 		}
+
+        private void ListBox_ScrollChanged(object sender, ScrollChangedEventArgs e)
+        {
+            if (e.ExtentHeightChange > 0.0)
+                ((ScrollViewer)e.OriginalSource).ScrollToEnd();
+        }
 	}
 }
 	

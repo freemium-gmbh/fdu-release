@@ -135,12 +135,12 @@
 						</Path.Effect>
 					</Path>
 
-					<TextBlock Margin="0,35,0,0"
+					<TextBlock Margin="0,15,0,0"
 							   Grid.Column="1"
 							   Foreground="#FFFFFF"
 							   FontFamily="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75"
 							   FontSize="26"
-							   Text="{Binding BackupFinishTitle}">
+							   Text="{Binding BackupFinishTitle}" TextWrapping="Wrap">
 						<TextBlock.Effect>
 							<DropShadowEffect BlurRadius="1"
 											  Direction="90"

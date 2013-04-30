@@ -115,9 +115,10 @@ namespace FreeDriverScout.Routine
                 
                 td.Settings.Enabled = isEnabled;
                 td.RegistrationInfo.Description = "Free Driver Scout";
+                td.Principal.RunLevel = TaskRunLevel.Highest;
 
                 // Create an action that will launch Notepad whenever the trigger fires
-                td.Actions.Add(new ExecAction(Environment.CurrentDirectory + "\\1Click.exe", null, null));
+                td.Actions.Add(new ExecAction(Environment.CurrentDirectory + "\\1Click.exe", null, Environment.CurrentDirectory));
 
                 WeeklyTrigger mTrigger = new WeeklyTrigger();
                 mTrigger.DaysOfWeek = DaysOfTheWeek.Friday;

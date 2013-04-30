@@ -90,7 +90,7 @@
 										   FontWeight="Bold" />
                                 <Button.ToolTip>
                                     <ToolTip Style="{x:Null}"
-											 Content="{lex:LocText FreeDriverScout:Resources:Help}" />
+											 Content="{lex:LocText FreeDriverScout:Resources:About}" />
                                 </Button.ToolTip>
                             </Button>
                             <ComboBox Style="{StaticResource ComboboxStyle}"

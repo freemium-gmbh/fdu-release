@@ -158,7 +158,7 @@ namespace FreemiumUtil
                     {
                         writer.WriteLine("[Freemiun Config File]");
                         writer.WriteLine("Version=1.0");
-                        writer.WriteLine("Lang=en");
+                        writer.WriteLine("Lang=en-US");
                         writer.WriteLine("FirstRun=1");
                         writer.WriteLine("Theme=Blue");
                         writer.WriteLine("MinimizeToTray=1");

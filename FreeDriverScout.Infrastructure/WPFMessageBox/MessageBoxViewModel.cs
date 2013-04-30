@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Drawing;
+using System.Globalization;
+using WPFLocalizeExtension.Engine;
 
 namespace MessageBoxUtils
 {
@@ -22,6 +20,7 @@ namespace MessageBoxUtils
 		private bool _isNoDefault;
 		private bool _isCancelDefault;
 
+        private string _lang;
 		private string _title;
 		private string _message;
 		private MessageBoxButton _buttonOption;
@@ -47,22 +46,22 @@ namespace MessageBoxUtils
 
 		public MessageBoxViewModel(
 			WPFMessageBoxWindow view,
-			string title,
+			CultureInfo culture,
+            string title,
 			string message,
 			MessageBoxButton buttonOption,
 			MessageBoxImage image,
 			MessageBoxResult defaultResult,
 			MessageBoxOptions options)
 		{
-			//TextAlignment
+			//TextAlignment         
 			Title = title;
 			Message = message;
 			ButtonOption = buttonOption;
-			Options = options;
-
+			Options = options;            
 			SetDirections(options);
 			SetButtonVisibility(buttonOption);
-			SetImageSource(image);
+			SetImageSource(image);            
 			SetButtonDefault(defaultResult);
 			_view = view;
 		}

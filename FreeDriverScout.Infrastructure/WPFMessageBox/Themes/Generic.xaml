@@ -1,6 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:local="clr-namespace:MessageBoxUtils">
+					xmlns:local="clr-namespace:MessageBoxUtils"                                        
+                    xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension">
 	<Style TargetType="{x:Type local:WPFMessageBoxControl}">
 		<Setter Property="Template">
 			<Setter.Value>
@@ -49,35 +50,35 @@
 									VerticalAlignment="Top"
 									HorizontalAlignment="Center"
 									SnapsToDevicePixels="True">
-							<Button Content="Yes"
+                            <Button Content="{lex:LocText Key=Yes, Dict=Resources, Assembly=FreeDriverScout}"
 									Width="120"
 									Style="{StaticResource BlueRoundedButton}"
 									Visibility="{Binding YesNoVisibility}"
 									Command="{Binding YesCommand}"
 									IsDefault="{Binding IsYesDefault}"
-									Margin="3" />
-							<Button Content="No"
-									Width="120"
+									Margin="3"/>
+                            <Button Content="{lex:LocText Key=No, Dict=Resources, Assembly=FreeDriverScout}"
+                                    Width="120"
 									Style="{StaticResource BlueRoundedButton}"
 									Visibility="{Binding YesNoVisibility}"
 									Command="{Binding NoCommand}"
 									IsDefault="{Binding IsNoDefault}"
-									Margin="3" />
-							<Button Content="OK"
-									Width="120"
+									Margin="3"/>
+                            <Button Content="{lex:LocText Key=Ok, Dict=Resources, Assembly=FreeDriverScout}"
+                                    Width="120"
 									Style="{StaticResource BlueRoundedButton}"
 									Visibility="{Binding OkVisibility}"
 									Command="{Binding OkCommand}"
 									IsDefault="{Binding IsOkDefault}"
-									Margin="3" />
-							<Button Content="Cancel"
-									Width="120"
+									Margin="3"/>
+                            <Button Content="{lex:LocText Key=Cancel, Dict=Resources, Assembly=FreeDriverScout}"
+                                    Width="120"
 									Style="{StaticResource BlueRoundedButton}"
 									Visibility="{Binding CancelVisibility}"
 									Command="{Binding CancelCommand}"
 									IsDefault="{Binding IsCancelDefault}"
-									Margin="3" />
-						</StackPanel>
+									Margin="3"/>
+                     </StackPanel>
 
 					</Grid>
 

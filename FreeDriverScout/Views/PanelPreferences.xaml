@@ -12,7 +12,8 @@
 			 Height="303"
 			 Width="645">
     <UserControl.Resources>
-        <routine:ScanStatusEqualsToEnablingConverter x:Key="ScanStatusEqualsToEnablingConverter" />        
+        <routine:ScanStatusEqualsToEnablingConverter x:Key="ScanStatusEqualsToEnablingConverter" />                
+        <routine:ScanStatusToVisibilityConverter x:Key="ScanStatusToVisibilityConverter"/>
     </UserControl.Resources>    
 	<Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.ColumnDefinitions>
@@ -143,6 +144,6 @@
 						Content="{lex:LocText FreeDriverScout:Resources:Close}" Margin="1,4,0,0" Width="152"></Button>
 			</Grid>
 		</Border>
-
-	</Grid>
+        <TextBlock Background="White" FontFamily="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" FontSize="25" Foreground="LightGray" Name="textBlock1" Text="This function is disabled while scanning/downloading/updating." TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center" Visibility="{Binding Path=Status, Converter={StaticResource ScanStatusToVisibilityConverter}}" Grid.RowSpan="3" Height="69" Grid.Row="3" Grid.ColumnSpan="3" Margin="1,10,-1,17" />
+    </Grid>
 </UserControl>

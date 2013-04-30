@@ -169,7 +169,7 @@
     <value>Schließen</value>
   </data>
   <data name="CloseButtonBehaviour" xml:space="preserve">
-    <value>Verhalten des Schließen Button:</value>
+    <value>Verhalten beim Drücken von Schließen:</value>
   </data>
   <data name="ContactingServer" xml:space="preserve">
     <value>Mit Server verbinden um nach Updates zu suchen </value>
@@ -205,7 +205,7 @@
     <value>Treiberinformationen</value>
   </data>
   <data name="DriversBackupedSuccesfully" xml:space="preserve">
-    <value>Backup von {{0}}Treiber abgeschlossen ist.</value>
+    <value>Backup von {{0}} Treiber abgeschlossen ist.</value>
   </data>
   <data name="DriverScan" xml:space="preserve">
     <value>Treiber Scan</value>
@@ -289,7 +289,7 @@
     <value>Minimieren</value>
   </data>
   <data name="MinToTray" xml:space="preserve">
-    <value>In Taskleiste mininmieren</value>
+    <value>In Taskleiste minimieren</value>
   </data>
   <data name="Monday" xml:space="preserve">
     <value>Montag</value>
@@ -486,7 +486,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Installation von Treiber für:</value>
   </data>
   <data name="OutdatedDriversUpdated" xml:space="preserve">
-    <value>Veraltete Treiber aktualisiert!</value>
+    <value>veralteter Treiber wurde aktualisiert!</value>
   </data>
   <data name="InitialLoading" xml:space="preserve">
     <value>Loading...</value>
@@ -561,7 +561,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Link kann nicht automatisch geöffnet werden</value>
   </data>
   <data name="DownloadStatus" xml:space="preserve">
-    <value>Heruntergeladene {{0}} von {{1}}</value>
+    <value>Heruntergeladene {0} von {1}</value>
   </data>
   <data name="GoogleMargin" xml:space="preserve">
     <value>-67</value>
@@ -574,5 +574,17 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
   </data>
   <data name="SelectDriversToBackup" xml:space="preserve">
     <value>Bitte wählen Sie mindestens ein Fahrer zu sichern</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>heute</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Nein</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Ja</value>
   </data>
 </root>

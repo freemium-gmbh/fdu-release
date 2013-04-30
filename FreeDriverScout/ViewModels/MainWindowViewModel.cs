@@ -24,6 +24,7 @@ using System.Text;
 using FreemiumUtilites;
 using System.Windows.Media.Animation;
 using FreemiumUtil;
+using WPFLocalizeExtension.Engine;
 
 namespace FreeDriverScout.ViewModels
 {
@@ -151,7 +152,7 @@ namespace FreeDriverScout.ViewModels
 
             SetBackupTypes();
             SetSocialButtonsMargin();
-
+            SetLabels();
             initBackgroundWorker = new BackgroundWorker();
             initBackgroundWorker.DoWork += InitBackgroundWorkerDoWork;
             initBackgroundWorker.RunWorkerCompleted += (sender, args) =>
@@ -162,6 +163,34 @@ namespace FreeDriverScout.ViewModels
                 InitialScanFinished = true;
             };
             initBackgroundWorker.RunWorkerAsync();
+        }
+
+        public void SetLabels()
+        {
+            var scanResultTextBlock = UIUtils.FindChild<TextBlock>(Application.Current.MainWindow, "ScanResult");
+            if (scanResultTextBlock != null)
+            {
+                scanResultTextBlock.Text = String.Format("{0} " + WPFLocalizeExtensionHelpers.GetUIString("OutdatedDriversFound"), AllDevices.Count(d => d.NeedsUpdate));
+            }
+
+            //Days from last scan
+            int daysFromLastScan = 0;
+            try
+            {
+                string lastscandate = CfgFile.Get("LastScanDate");
+                daysFromLastScan = (DateTime.Now - DateTime.ParseExact(lastscandate, "dd/MM/yyyy", null)).Duration().Days;
+            }
+            catch
+            {
+            }
+
+            int daysFromLastScanProgress = daysFromLastScan * 360 / MainWindowViewModel.DaysFromLastScanMax;
+            if (daysFromLastScanProgress == 0)
+            {
+                var daysFromLastScanTextBlock = UIUtils.FindChild<TextBlock>(Application.Current.MainWindow, "DaysFromLastScan");
+                if (daysFromLastScanTextBlock != null)
+                    daysFromLastScanTextBlock.Text = WPFLocalizeExtensionHelpers.GetUIString("Today");
+            }
         }
 
         /// <summary>
@@ -316,7 +345,7 @@ namespace FreeDriverScout.ViewModels
             }
             else
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectBackupTypeText"), WPFLocalizeExtensionHelpers.GetUIString("SelectBackupType"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectBackupTypeText"), WPFLocalizeExtensionHelpers.GetUIString("SelectBackupType"), MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -340,7 +369,7 @@ namespace FreeDriverScout.ViewModels
             }
             if (devicesToBackup.Count == 0)
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversToBackup"), WPFLocalizeExtensionHelpers.GetUIString("SelectDrivers"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversToBackup"), WPFLocalizeExtensionHelpers.GetUIString("SelectDrivers"), MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             else
                 ThreadPool.QueueUserWorkItem(x => RunBackup(devicesToBackup, BackupType.ManualSelected));
@@ -480,7 +509,7 @@ namespace FreeDriverScout.ViewModels
             DeviceInfo device = AllDevices.FirstOrDefault(d => d.Id == (string)id);
             if (device != null)
             {
-                MessageBoxResult result = WPFMessageBox.Show(Application.Current.MainWindow, String.Format(WPFLocalizeExtensionHelpers.GetUIString("Exclude") + " {0} " + WPFLocalizeExtensionHelpers.GetUIString("FromScans"), device.DeviceName), WPFLocalizeExtensionHelpers.GetUIString("ExcludeDevice"), MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format(WPFLocalizeExtensionHelpers.GetUIString("Exclude") + " {0} " + WPFLocalizeExtensionHelpers.GetUIString("FromScans"), device.DeviceName), WPFLocalizeExtensionHelpers.GetUIString("ExcludeDevice"), MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     var item = DevicesForScanning.FirstOrDefault(d => d.Id == device.Id);
@@ -493,7 +522,7 @@ namespace FreeDriverScout.ViewModels
                     ExcludedDevices.Add(device);
 
                     SaveExcludedDevicesToXML();
-                    WPFMessageBox.Show(Application.Current.MainWindow, String.Format("{0} excluded from scans", device.DeviceName), "Device excluded", MessageBoxButton.OK, MessageBoxImage.Information);
+                    WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format("{0} excluded from scans", device.DeviceName), "Device excluded", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     ScanFinishTitle = String.Format("{0} " + WPFLocalizeExtensionHelpers.GetUIString("OutdatedDriversFound"), DevicesForScanning.Count(d => d.NeedsUpdate));
 
@@ -560,7 +589,7 @@ namespace FreeDriverScout.ViewModels
             }
             else
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectDevicesToRemoveFromExclude"), WPFLocalizeExtensionHelpers.GetUIString("SelectDevices"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectDevicesToRemoveFromExclude"), WPFLocalizeExtensionHelpers.GetUIString("SelectDevices"), MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -1074,7 +1103,7 @@ namespace FreeDriverScout.ViewModels
             // For testing only
             //Thread.Sleep(20000);
 
-            // Fill AllDevices models
+            // Fill AllDevices models            
             RunInitialScan();
         }
 
@@ -1309,7 +1338,7 @@ namespace FreeDriverScout.ViewModels
                         driverData[currentItemPos].category,
                         driverData[currentItemPos].driverName,
                         infName,
-                        driverData[currentItemPos].version,
+                        driverData[currentItemPos].version == "null" ? string.Empty : driverData[currentItemPos].version,
                         currentItemPos.ToString(),
                         driverData[currentItemPos].hardwareId,
                         driverData[currentItemPos].CompatibleIdIndex.ToString()
@@ -1554,12 +1583,12 @@ namespace FreeDriverScout.ViewModels
                 }
                 else
                 {
-                    WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("CheckDownloadFolder"), WPFLocalizeExtensionHelpers.GetUIString("CheckPreferences"), MessageBoxButton.OK, MessageBoxImage.Error);
+                    WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("CheckDownloadFolder"), WPFLocalizeExtensionHelpers.GetUIString("CheckPreferences"), MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversToUpdate"), WPFLocalizeExtensionHelpers.GetUIString("SelectDrivers"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversToUpdate"), WPFLocalizeExtensionHelpers.GetUIString("SelectDrivers"), MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -1790,11 +1819,14 @@ namespace FreeDriverScout.ViewModels
                 int driversCount = 0;
                 foreach (DevicesGroup group in driversToBackup)
                 {
+                    group.GroupChecked = true;
                     foreach (DeviceInfo item in group.Devices)
                     {
-                        item.SelectedForRestore = true;
-                        driverUtils.BackupDriver(item.DeviceName, item.InfName, backupDir);
-                        driversCount++;
+                        if (driverUtils.BackupDriver(item.DeviceName, item.InfName, backupDir))
+                        {
+                            item.SelectedForRestore = true;
+                            driversCount++;
+                        }
                     }
                 }
                 if (CurrentDispatcher.Thread != null)
@@ -1820,7 +1852,7 @@ namespace FreeDriverScout.ViewModels
             {
                 if (CurrentDispatcher.Thread != null)
                 {
-                    CurrentDispatcher.BeginInvoke((Action)(() => WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("CheckBackupsFolder"), WPFLocalizeExtensionHelpers.GetUIString("CheckPreferences"), MessageBoxButton.OK, MessageBoxImage.Error)));
+                    CurrentDispatcher.BeginInvoke((Action)(() => WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("CheckBackupsFolder"), WPFLocalizeExtensionHelpers.GetUIString("CheckPreferences"), MessageBoxButton.OK, MessageBoxImage.Error)));
                 }
             }
         }
@@ -1848,11 +1880,14 @@ namespace FreeDriverScout.ViewModels
                     {
                         foreach (DirectoryInfo dirInfo in subDirs)
                         {
-                            // see if dirInfo.Name == item.DeviceName
-                            if (dirInfo.Exists && dirInfo.Name.Trim() == item.DeviceName.Trim())
+                            string tmpDirInfo = dirInfo.Name.Replace("/", string.Empty).Replace(" ", string.Empty);
+                            string tempDeviceName = item.DeviceName.Replace("/", string.Empty).Replace(" ", string.Empty);
+                            // see if dirInfo.Name == item.DeviceName               
+                            if (tmpDirInfo == tempDeviceName)
                             {
-                                driverUtils.RestoreDriver(dirInfo.Name, backupDir);
-                                restoredDriversCount++;
+                                if (driverUtils.RestoreDriver(dirInfo.Name, backupDir))
+                                    restoredDriversCount++;
+                                continue;
                             }
                         }
                     }
@@ -1870,7 +1905,7 @@ namespace FreeDriverScout.ViewModels
                     }
                     else
                     {
-                        WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreText"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreCaption"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                        WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreText"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreCaption"), MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }));
             }

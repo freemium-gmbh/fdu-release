@@ -190,7 +190,7 @@
     <value>Driver Scan Results</value>
   </data>
   <data name="DriversRestoredSuccesfully" xml:space="preserve">
-    <value>drivers restored succesfully</value>
+    <value>drivers restored successfully</value>
   </data>
   <data name="DriverUpdate" xml:space="preserve">
     <value>Driver Update</value>
@@ -427,7 +427,7 @@
     <value>Select devices</value>
   </data>
   <data name="SelectDevicesToRemoveFromExclude" xml:space="preserve">
-    <value>Please, select devices to remove them from Exclude list</value>
+    <value>Please, select devices you no longer wish to exclude from the scan</value>
   </data>
   <data name="CheckBackupsFolder" xml:space="preserve">
     <value>Please, check Backups folder in your Preferences</value>
@@ -564,7 +564,7 @@ Select the folder for driver downloads</value>
     <value>Link cannot be opened automatically</value>
   </data>
   <data name="DownloadStatus" xml:space="preserve">
-    <value>Downloaded {{0}} of {{1}}</value>
+    <value>Downloaded {0} of {1}</value>
   </data>
   <data name="GoogleMargin" xml:space="preserve">
     <value>-77</value>
@@ -574,5 +574,17 @@ Select the folder for driver downloads</value>
   </data>
   <data name="SelectDriversToBackup" xml:space="preserve">
     <value>Please, select at least one driver to backup</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>today</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
 </root>

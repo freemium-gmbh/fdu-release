@@ -87,6 +87,7 @@
     <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.7.4273.24968, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\Microsoft.Win32.TaskScheduler.dll</HintPath>
@@ -104,29 +105,28 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFLocalizeExtension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WPFLocalizeExtension, Version=2.1.3.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Libraries\WPFLocalizeExtension.dll</HintPath>
-      <Private>False</Private>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions">
+      <HintPath>..\packages\XAMLMarkupExtensions.1.1.6.1\lib\net35\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
+    <Compile Include="App.cs" />
     <Compile Include="Engine\MarshalHelper.cs" />
     <Compile Include="Models\BackupType.cs" />
     <Compile Include="Models\BackupItem.cs" />
     <Compile Include="Models\BackupStatus.cs" />
     <Compile Include="Models\DownloadingDriverModel.cs" />
     <Compile Include="Models\ScanStatus.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\Images.Designer.cs">
       <DependentUpon>Images.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -151,6 +151,7 @@
     <Compile Include="Routine\Converters\PropertyEqualsToEnablingConverter.cs" />
     <Compile Include="Routine\Converters\PropertyEqualsToVisibilityConverter.cs" />
     <Compile Include="Routine\Converters\ScanStatusEqualsToVisibilityConverter.cs" />
+    <Compile Include="Routine\ExtensionMethods.cs" />
     <Compile Include="Routine\messagePipe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +212,7 @@
     </Compile>
     <Compile Include="Views\RoundedProgressBar\Shapes\PiePiece.cs" />
     <Compile Include="Views\RoundedProgressBar\Util\Utils.cs" />
+    <Compile Include="WindowsFormsApp.cs" />
     <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -218,10 +220,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -336,6 +334,9 @@
     <Resource Include="Images\driver.ico" />
     <Resource Include="Images\bg-logo-flame.png" />
     <Resource Include="Images\bg-logo.png" />
+    <Content Include="Libraries\XAMLMarkupExtensions.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="stduhelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -402,7 +403,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libraries\WPFLocalizeExtension.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Routine\messagePipe.resx">
       <DependentUpon>messagePipe.cs</DependentUpon>

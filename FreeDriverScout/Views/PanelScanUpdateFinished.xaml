@@ -15,12 +15,12 @@
         <routine:MarginConverter x:Key="MarginConverter" />
     </UserControl.Resources>
     <Grid Background="{StaticResource MainAreaBackGround}">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="235" />
-			<RowDefinition Height="58" />
-		</Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="235" />
+            <RowDefinition Height="58" />
+        </Grid.RowDefinitions>
 
-		<Border Width="640"
+        <Border Width="640"
 				Height="201"
 				Margin="0,19,0,0"
 				CornerRadius="5"
@@ -28,16 +28,16 @@
 				HorizontalAlignment="Left"
 				BorderThickness="1"
 				BorderBrush="{StaticResource ScanForIssueBorder}">
-			<Border.Background>
-				<LinearGradientBrush EndPoint="0.5,1"
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1"
 									 StartPoint="0.5,0">
-					<GradientStop Color="#a3cd39"
+                    <GradientStop Color="#a3cd39"
 								  Offset="0" />
-					<GradientStop Color="#49a746"
+                    <GradientStop Color="#49a746"
 								  Offset="1" />
-				</LinearGradientBrush>
-			</Border.Background>
-			<Border Width="640"
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border Width="640"
 					Height="200"
 					CornerRadius="5"
 					VerticalAlignment="Top"
@@ -45,25 +45,25 @@
 					BorderThickness="0,1,0,0"
 					BorderBrush="#CADF84">
 
-				<Grid Width="585"
-					  Height="108"
+                <Grid Width="585"
+					  Height="140"
 					  Margin="54,44,0,0"
 					  VerticalAlignment="Top"
 					  HorizontalAlignment="Left">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="40" />
-						<RowDefinition Height="31" />
-						<RowDefinition Height="37" />
-					</Grid.RowDefinitions>
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="180" />
-						<ColumnDefinition Width="120" />
-						<ColumnDefinition Width="120" />
-						<ColumnDefinition Width="165" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80" />
+                        <RowDefinition Height="31" />
+                        <RowDefinition Height="37" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="180" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="165" />
                         <ColumnDefinition Width="45*" />
                     </Grid.ColumnDefinitions>
 
-					<Ellipse StrokeThickness="6"
+                    <Ellipse StrokeThickness="6"
 							 Stroke="#FFFFFF"
 							 Width="106"
 							 Height="106"
@@ -71,16 +71,16 @@
 							 VerticalAlignment="Top"
 							 HorizontalAlignment="Left"
 							 Grid.RowSpan="3">
-						<Ellipse.Effect>
-							<DropShadowEffect Direction="-90"
+                        <Ellipse.Effect>
+                            <DropShadowEffect Direction="-90"
 											  ShadowDepth="3"
 											  Color="#459B34"
 											  Opacity=".2"
 											  BlurRadius="3" />
-						</Ellipse.Effect>
-					</Ellipse>
+                        </Ellipse.Effect>
+                    </Ellipse>
 
-					<Ellipse Margin="5,5,0,0"
+                    <Ellipse Margin="5,5,0,0"
 							 StrokeThickness="1"
 							 Stroke="#82B769"
 							 Width="96"
@@ -89,36 +89,36 @@
 							 VerticalAlignment="Top"
 							 HorizontalAlignment="Left"
 							 Grid.RowSpan="3">
-					</Ellipse>
+                    </Ellipse>
 
-					<Ellipse Margin="5,6,0,0"
+                    <Ellipse Margin="5,6,0,0"
 							 StrokeThickness="1"
 							 Width="95"
 							 Height="95"
 							 VerticalAlignment="Top"
 							 HorizontalAlignment="Left"
 							 Grid.RowSpan="3">
-						<Ellipse.Stroke>
-							<LinearGradientBrush EndPoint="0.5,1"
+                        <Ellipse.Stroke>
+                            <LinearGradientBrush EndPoint="0.5,1"
 												 StartPoint="0.5,0">
-								<GradientStop Color="#FFCADF84"
+                                <GradientStop Color="#FFCADF84"
 											  Offset="0" />
-								<GradientStop Color="Transparent"
+                                <GradientStop Color="Transparent"
 											  Offset="0.3" />
-							</LinearGradientBrush>
-						</Ellipse.Stroke>
-						<Ellipse.Fill>
-							<LinearGradientBrush EndPoint="0.5,1"
+                            </LinearGradientBrush>
+                        </Ellipse.Stroke>
+                        <Ellipse.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1"
 												 StartPoint="0.5,0">
-								<GradientStop Color="#a3cd39"
+                                <GradientStop Color="#a3cd39"
 											  Offset="0" />
-								<GradientStop Color="#49a746"
+                                <GradientStop Color="#49a746"
 											  Offset="1" />
-							</LinearGradientBrush>
-						</Ellipse.Fill>
-					</Ellipse>
+                            </LinearGradientBrush>
+                        </Ellipse.Fill>
+                    </Ellipse>
 
-					<Path Data="M0,0 L12,0 12,17 42,17 42,29 0,29 0,17 z"
+                    <Path Data="M0,0 L12,0 12,17 42,17 42,29 0,29 0,17 z"
 						  Fill="White"
 						  HorizontalAlignment="Left"
 						  Height="29"
@@ -130,30 +130,30 @@
 						  Width="42"
 						  RenderTransformOrigin="0.5,0.5"
 						  Grid.RowSpan="2">
-						<Path.RenderTransform>
-							<TransformGroup>
-								<ScaleTransform />
-								<SkewTransform />
-								<RotateTransform Angle="-45" />
-								<TranslateTransform />
-							</TransformGroup>
-						</Path.RenderTransform>
-						<Path.Effect>
-							<DropShadowEffect Direction="90"
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform />
+                                <SkewTransform />
+                                <RotateTransform Angle="-45" />
+                                <TranslateTransform />
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                        <Path.Effect>
+                            <DropShadowEffect Direction="90"
 											  ShadowDepth="1"
 											  Color="#459B34"
 											  Opacity=".2"
 											  BlurRadius="1" />
-						</Path.Effect>
-					</Path>
+                        </Path.Effect>
+                    </Path>
 
-					<TextBlock Margin="-50,7,0,0"
+                    <TextBlock Margin="-50,7,0,0"
 							   Grid.Column="1"
 							   Grid.ColumnSpan="3"
 							   Foreground="#FFFFFF"
 							   FontFamily="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75"
 							   FontSize="26"
-							   Text="{Binding ScanFinishTitle}">
+							   Text="{Binding ScanFinishTitle}" TextWrapping="Wrap">
 						<TextBlock.Effect>
 							<DropShadowEffect BlurRadius="1"
 											  Direction="90"
@@ -161,8 +161,8 @@
 											  Opacity=".8"
 											  ShadowDepth="1" />
 						</TextBlock.Effect>
-					</TextBlock>
-					<TextBlock Grid.Column="1"
+                    </TextBlock>
+                    <TextBlock Grid.Column="1"
 							   Grid.Row="1"
 							   Grid.ColumnSpan="3"
 							   Margin="-50,4,0,0"
@@ -177,7 +177,7 @@
 											  Opacity=".8"
 											  ShadowDepth="1" />
 						</TextBlock.Effect>
-					</TextBlock>
+                    </TextBlock>
 
                     <Button Grid.Column="1" Grid.Row="2" Padding="0,0,0,0" Click="Click_Facebook" Margin="-25,0,0,0" 
                             Style="{StaticResource FacebookButton}" HorizontalAlignment="Left"  MinWidth="20" Height="20">
@@ -209,61 +209,60 @@
 								Padding="14,0,0,0" Click="Click_GooglePlus" HorizontalAlignment="Left"
                                 Name="GoogleButton"
                                 Margin="{Binding Converter={StaticResource MarginConverter}, ConverterParameter=GoogleMargin}">
-						</Button>
-					</Grid>
-				</Grid>
-			</Border>
-		</Border>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Border>
+        </Border>
 
-		<Border Grid.Row="1"
+        <Border Grid.Row="1"
 				Style="{StaticResource BottomPanel}"
 				Margin="1,0,0,0">
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="55" />
-					<ColumnDefinition Width="425" />
-					<ColumnDefinition Width="162" />
-				</Grid.ColumnDefinitions>
-				<Image Style="{StaticResource FunctionalButtonImage}"
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="55" />
+                    <ColumnDefinition Width="425" />
+                    <ColumnDefinition Width="162" />
+                </Grid.ColumnDefinitions>
+                <Image Style="{StaticResource FunctionalButtonImage}"
 					   Margin="5,13,0,0"
 					   Source="/FreeDriverScout;component/Images/icon-scan.png" />
 
-				<StackPanel Grid.Column="1"
+                <StackPanel Grid.Column="1"
 							VerticalAlignment="Top"
 							HorizontalAlignment="Left">
-					<Border Style="{StaticResource ProgressBarOuther}">
-						<Border Style="{StaticResource ProgressBarWrap}">
-							<Border Style="{StaticResource ProgressBarContainer}">
+                    <Border Style="{StaticResource ProgressBarOuther}">
+                        <Border Style="{StaticResource ProgressBarWrap}">
+                            <Border Style="{StaticResource ProgressBarContainer}">
 
-								<!-- Green static ProgressBar -->
-								<Border Width="394"
+                                <!-- Green static ProgressBar -->
+                                <Border Width="394"
 										Style="{StaticResource ProgressBarGreen}">
-									<Border Style="{StaticResource ProgressBarInner}">
-										<Border BorderThickness="0,1,0,0"
+                                    <Border Style="{StaticResource ProgressBarInner}">
+                                        <Border BorderThickness="0,1,0,0"
 												BorderBrush="#CADF84">
-										</Border>
-									</Border>
-								</Border>
+                                        </Border>
+                                    </Border>
+                                </Border>
 
-							</Border>
-						</Border>
-					</Border>
-					<StackPanel Orientation="Horizontal"
+                            </Border>
+                        </Border>
+                    </Border>
+                    <StackPanel Orientation="Horizontal"
 								Width="390"
 								HorizontalAlignment="Left"
 								ClipToBounds="True">
-						<TextBlock Style="{StaticResource ScanStatusTitle}"
+                        <TextBlock Style="{StaticResource ScanStatusTitle}"
 								   Text="{Binding ScanStatusTitle}"></TextBlock>
-						<TextBlock Style="{StaticResource ScanStatus}"
+                        <TextBlock Style="{StaticResource ScanStatus}"
 								   Text="{Binding ScanStatusText}"></TextBlock>
-					</StackPanel>
-				</StackPanel>
-
-				<Button Style="{StaticResource BlueRoundedButton}"
+                    </StackPanel>
+                </StackPanel>
+                <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="2"
 						Width="149"
 						Command="{Binding ShowScanCommand}" Content="{lex:LocText FreeDriverScout:Resources:Finish}"></Button>
-			</Grid>
-		</Border>
-	</Grid>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

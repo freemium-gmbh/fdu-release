@@ -121,6 +121,7 @@
 						   Foreground="#4E4E4E"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Top"
+                           Name="DaysAgoText"
 						   Text="{lex:LocText FreeDriverScout:Resources:DaysAgo}"></TextBlock>
 
 			</Grid>

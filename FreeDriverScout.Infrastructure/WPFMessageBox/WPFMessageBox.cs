@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
+using System.Globalization;
 
 namespace MessageBoxUtils
 {
@@ -21,7 +18,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText)
         {
-            return ShowCore(null, messageBoxText);
+            return ShowCore(null, new CultureInfo("en-Us"), messageBoxText);
         }
 
         //
@@ -41,7 +38,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText, string caption)
         {
-            return ShowCore(null, messageBoxText, caption);
+            return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption);
         }
 
         //
@@ -59,9 +56,9 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText)
         {
-            return ShowCore(owner, messageBoxText);
+            return ShowCore(owner, culture, messageBoxText);
         }
 
         //
@@ -85,7 +82,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
         {
-            return ShowCore(null, messageBoxText, caption, button);
+            return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button);
         }
 
         //
@@ -106,9 +103,9 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption)
         {
-            return ShowCore(owner, messageBoxText, caption);
+            return ShowCore(owner, culture, messageBoxText, caption);
         }
 
         //
@@ -135,7 +132,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
         {
-            return ShowCore(null, messageBoxText, caption, button, icon);
+            return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon);
         }
 
         //
@@ -161,9 +158,9 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button)
         {
-            return ShowCore(owner, messageBoxText, caption, button);
+            return ShowCore(owner, culture, messageBoxText, caption, button);
         }
 
         //
@@ -194,7 +191,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
         {
-            return ShowCore(null, messageBoxText, caption, button, icon, defaultResult);
+            return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon, defaultResult);
         }
 
         //
@@ -223,9 +220,9 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
         {
-            return ShowCore(owner, messageBoxText, caption, button, icon);
+            return ShowCore(owner, culture, messageBoxText, caption, button, icon);
         }
 
         //
@@ -260,7 +257,7 @@ namespace MessageBoxUtils
         //     button is clicked by the user.
         public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
         {
-            return ShowCore(null, messageBoxText, caption, button, icon, defaultResult, options);
+            return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon, defaultResult, options);
         }
 
         //
@@ -293,9 +290,9 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
         {
-            return ShowCore(owner, messageBoxText, caption, button, icon, defaultResult);
+            return ShowCore(owner, culture, messageBoxText, caption, button, icon, defaultResult);
         }
 
         //
@@ -331,13 +328,14 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
         {
-            return ShowCore(owner, messageBoxText, caption, button, icon, defaultResult, options);
+            return ShowCore(owner, culture, messageBoxText, caption, button, icon, defaultResult, options);
         }
 
         private static MessageBoxResult ShowCore(
             Window owner,
+            CultureInfo culture,
             string messageBoxText,
             string caption = "",
             MessageBoxButton button = MessageBoxButton.OK,
@@ -350,7 +348,7 @@ namespace MessageBoxUtils
                 {
                     messageBoxWindow.Owner = owner;
                 },
-                messageBoxText, caption, button, icon, defaultResult, options);
+                culture, messageBoxText, caption, button, icon, defaultResult, options);
         }
     }
 }

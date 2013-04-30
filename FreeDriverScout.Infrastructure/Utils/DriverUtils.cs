@@ -8,6 +8,7 @@ using System.Threading;
 using FreeDriverScout.Models;
 using System.Management;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace FreeDriverScout.Utils
 {
@@ -51,7 +52,7 @@ namespace FreeDriverScout.Utils
             var devicesQuery = new ManagementObjectSearcher("root\\CIMV2", @"SELECT * FROM Win32_PnPSignedDriver WHERE DeviceName IS NOT NULL");
 
             return devicesQuery.Get();
-        }       
+        }
 
 
         /// <summary>
@@ -78,35 +79,36 @@ namespace FreeDriverScout.Utils
         /// </summary>
         /// <param name="deviceName">The device name whose driver is to be backed up</param>
         /// <param name="infFileName">The name of the driver inf file</param>
-        /// <param name="backupDir">The output backup directory</param>
-        public void BackupDriver(string deviceName, string infFileName, string backupDir)
-		{
-			try
-			{
-				backupDir = backupDir.EndsWith("\\") ? backupDir : backupDir + "\\";
-				if (!Directory.Exists(backupDir))
-					Directory.CreateDirectory(backupDir);
+        /// <param name="backupDir">The output backup directory</param>               
+        public bool BackupDriver(string deviceName, string infFileName, string backupDir)
+        {
+            bool result = false;
+            try
+            {
+                backupDir = backupDir.EndsWith("\\") ? backupDir : backupDir + "\\";
+                if (!Directory.Exists(backupDir))
+                    Directory.CreateDirectory(backupDir);
 
-				deviceName = deviceName.Trim().Replace('/', ' ').Replace('\\', ' ');
-				var deviceBackupDir = backupDir + deviceName + "\\";
-				if (!Directory.Exists(deviceBackupDir))
-					Directory.CreateDirectory(deviceBackupDir);
+                deviceName = deviceName.Trim().Replace('/', ' ').Replace('\\', ' ');
+                var deviceBackupDir = backupDir + deviceName + "\\";
+                if (!Directory.Exists(deviceBackupDir))
+                    Directory.CreateDirectory(deviceBackupDir);
 
-				// Empty target device backup dir
-				var oldFiles = new DirectoryInfo(deviceBackupDir).GetFiles();
-				foreach (var oldFile in oldFiles)
-				{
-					oldFile.Delete();
-				}
+                // Empty target device backup dir
+                var oldFiles = new DirectoryInfo(deviceBackupDir).GetFiles();
+                foreach (var oldFile in oldFiles)
+                {
+                    oldFile.Delete();
+                }
 
-				var oldDirs = new DirectoryInfo(deviceBackupDir).GetDirectories();
-				foreach (var oldDir in oldDirs)
-				{
-					oldDir.Delete(true);
-				}
+                var oldDirs = new DirectoryInfo(deviceBackupDir).GetDirectories();
+                foreach (var oldDir in oldDirs)
+                {
+                    oldDir.Delete(true);
+                }
 
-				var windir = Environment.GetEnvironmentVariable("windir") + "\\";
-                
+                var windir = Environment.GetEnvironmentVariable("windir") + "\\";
+
                 // Check if driver exists in driver store
                 var driverStoreRepo = windir + "System32\\DriverStore\\FileRepository";
                 var possibleDriverDirsInStore = Directory.GetDirectories(driverStoreRepo, infFileName + "*");
@@ -128,64 +130,71 @@ namespace FreeDriverScout.Utils
 
                     // Backup CAT file
                     string originalCATName = IniFileUtils.GetValue(infFilePath, "Version", "CatalogFile");
-                    var catName = infFileName.Replace(".inf", ".cat");
-                    var catroot = Environment.GetFolderPath(Environment.SpecialFolder.System) + "\\catroot";
-                    var catrootDirs = new DirectoryInfo(catroot).GetDirectories();
-
-                    foreach (var dir in catrootDirs)
+                    if (originalCATName != string.Empty)
                     {
-                        var catPath = dir.FullName + "\\" + catName;
-                        if (File.Exists(catPath))
+                        var catName = infFileName.Replace(".inf", ".cat");
+                        var catroot = Environment.GetFolderPath(Environment.SpecialFolder.System) + "\\catroot";
+                        var catrootDirs = new DirectoryInfo(catroot).GetDirectories();
+
+                        foreach (var dir in catrootDirs)
                         {
-                            File.Copy(catPath, deviceBackupDir + originalCATName);
-                            break;
+                            var catPath = dir.FullName + "\\" + catName;
+                            if (File.Exists(catPath))
+                            {
+                                File.Copy(catPath, deviceBackupDir + originalCATName);
+                                break;
+                            }
                         }
                     }
-
                     // Backup driver files from by parsing the inf file
                     if (Is64BitWindows())
                         BackupDriverFilesFromInf(".amd64", infFilePath, deviceBackupDir);
                     else
                         BackupDriverFilesFromInf(".x86", infFilePath, deviceBackupDir);
                 }
-			}
-			catch (Exception ex)
-			{
-			}
-		}
+                result = true;
+            }
+            catch (Exception ex)
+            {
+            }
+            return result;
+        }
 
         /// <summary>
         /// Restores a backed up driver to the system dir.
         /// </summary>
         /// <param name="deviceName">The name of device whose driver was backed up</param>
         /// <param name="backupDir">The backup directory</param>
-        /// <returns><code>True</code> if reboot is required, <code>False</code> otherwise</returns>
+        /// <returns><code>True</code> if restoring was successfull, <code>False</code> otherwise</returns>
         public bool RestoreDriver(string deviceName, string backupDir)
         {
+            bool result = false;
             // Format paths
             deviceName = deviceName.Trim().Replace('/', ' ').Replace('\\', ' ');
             backupDir = !backupDir.EndsWith("\\") ? backupDir + "\\" : backupDir;
 
             // Find inf file
             var deviceBackupDirPath = backupDir + deviceName;
-            var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
 
             try
             {
+                var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
                 var infFile = deviceBackupDir.GetFiles("*.inf")[0];
 
                 bool driverNeedsReboot;
-                DriverPackageInstall(infFile.FullName, DRIVER_PACKAGE_FORCE, IntPtr.Zero, out driverNeedsReboot);
+                int err = DriverPackageInstall(infFile.FullName, DRIVER_PACKAGE_FORCE, IntPtr.Zero, out driverNeedsReboot);
+//                if (err != 0)
+  //                  throw new Win32Exception(err);
                 needsReboot = needsReboot || driverNeedsReboot;
 
-                return needsReboot;
+                result = true;
             }
-            catch (IndexOutOfRangeException)
-            {
-                return false;
+            catch
+            {                
             }
+            return result;
         }
-        
+
         private void CopyFolder(string sourceFolder, string destFolder)
         {
             if (!Directory.Exists(destFolder))

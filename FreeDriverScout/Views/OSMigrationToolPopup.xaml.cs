@@ -8,6 +8,7 @@ using System.Windows.Media.Animation;
 using FreeDriverScout.Infrastructure;
 using MessageBoxUtils;
 using Ookii.Dialogs.Wpf;
+using WPFLocalizeExtension.Engine;
 
 namespace FreemiumUtilites
 {
@@ -245,7 +246,7 @@ namespace FreemiumUtilites
             }
             else
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, WPFLocalizeExtensionHelpers.GetUIString("SelectMigrationDriversZip"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversZip"), MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectMigrationDriversZip"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversZip"), MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 

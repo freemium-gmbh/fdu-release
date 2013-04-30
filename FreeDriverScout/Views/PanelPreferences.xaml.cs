@@ -24,7 +24,7 @@ namespace FreeDriverScout.Views
         const string registryAppName = "FreeDriverScout";
         readonly string appPath = Assembly.GetExecutingAssembly().Location;
         readonly string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
-        readonly Dictionary<string, int> langIndex = new Dictionary<string, int> { { "en", 0 }, { "de", 1 } };
+        readonly Dictionary<string, int> langIndex = new Dictionary<string, int> { { "en-US", 0 }, { "de-DE", 1 } };
 
         public PanelPreferences()
         {
@@ -118,13 +118,13 @@ namespace FreeDriverScout.Views
         {
             if (LanguagesList.SelectedIndex == 0)
             {
-                LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("en");
-                CfgFile.Set("Lang", "en");
+                LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("en-US");
+                CfgFile.Set("Lang", "en-US");
             }
             if (LanguagesList.SelectedIndex == 1)
             {
-                LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("de");
-                CfgFile.Set("Lang", "de");
+                LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("de-DE");
+                CfgFile.Set("Lang", "de-DE");
             }
 
             var mainViewModel = (MainWindowViewModel)Application.Current.MainWindow.DataContext;
@@ -132,6 +132,7 @@ namespace FreeDriverScout.Views
             {
                 mainViewModel.SetBackupTypes();
                 mainViewModel.SetSocialButtonsMargin();
+                mainViewModel.SetLabels();
             }
         }
 

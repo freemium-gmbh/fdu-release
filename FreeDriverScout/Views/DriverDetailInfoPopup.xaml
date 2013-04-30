@@ -78,10 +78,10 @@
                             <RowDefinition Height="25" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="135" />
+                            <ColumnDefinition Width="150" />
                             <ColumnDefinition Width="235" />
                         </Grid.ColumnDefinitions>                       
-                        <StackPanel Grid.ColumnSpan="2" Margin="0,0,235,0" Width="135">
+                        <StackPanel Width="150">
                             <TextBlock Height="50" HorizontalAlignment="Left" Margin="6,2,0,0" Name="tbName" Text="{lex:LocText FreeDriverScout:Resources:DetailName}" VerticalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Grid.Column="1" Grid.Row="0">

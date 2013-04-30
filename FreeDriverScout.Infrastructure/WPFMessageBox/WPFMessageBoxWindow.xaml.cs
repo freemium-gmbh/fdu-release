@@ -11,135 +11,150 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Media;
+using System.Threading;
+using System.Globalization;
+using System.Windows.Markup;
+using WPFLocalizeExtension.Engine;
+using WPFLocalizeExtension.Extensions;
 
 namespace MessageBoxUtils
 {
-	/// <summary>
-	/// Interaction logic for WPFMessageBoxWindow.xaml
-	/// </summary>
-	public partial class WPFMessageBoxWindow : Window
-	{
-		public WPFMessageBoxWindow()
-		{
-			InitializeComponent();
-		}
+    /// <summary>
+    /// Interaction logic for WPFMessageBoxWindow.xaml
+    /// </summary>
+    public partial class WPFMessageBoxWindow : Window
+    {
+        public WPFMessageBoxWindow()
+        {            
+            InitializeComponent();
+        }
 
-		private MessageBoxViewModel _viewModel;
+        private MessageBoxViewModel _viewModel;
 
-		public static MessageBoxResult Show(
-			Action<Window> setOwner,
-			string messageBoxText, 
-			string caption, 
-			MessageBoxButton button, 
-			MessageBoxImage icon, 
-			MessageBoxResult defaultResult, 
-			MessageBoxOptions options)
-		{
-			if ((options & MessageBoxOptions.DefaultDesktopOnly) == MessageBoxOptions.DefaultDesktopOnly)
-			{
-				throw new NotImplementedException();
-			}
+        public static MessageBoxResult Show(
+            Action<Window> setOwner,
+            CultureInfo culture,
+            string messageBoxText,
+            string caption,
+            MessageBoxButton button,
+            MessageBoxImage icon,
+            MessageBoxResult defaultResult,
+            MessageBoxOptions options)
+        {
+            if ((options & MessageBoxOptions.DefaultDesktopOnly) == MessageBoxOptions.DefaultDesktopOnly)
+            {
+                throw new NotImplementedException();
+            }
 
-			if ((options & MessageBoxOptions.ServiceNotification) == MessageBoxOptions.ServiceNotification)
-			{
-				throw new NotImplementedException();
-			}
+            if ((options & MessageBoxOptions.ServiceNotification) == MessageBoxOptions.ServiceNotification)
+            {
+                throw new NotImplementedException();
+            }
+            //LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("de");            
+            _messageBoxWindow = new WPFMessageBoxWindow();
 
-			_messageBoxWindow = new WPFMessageBoxWindow();
+            setOwner(_messageBoxWindow);
+                        
+            PlayMessageBeep(icon);                        
+            //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(
+            //            XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
+            _messageBoxWindow._viewModel = new MessageBoxViewModel(_messageBoxWindow, culture, caption, messageBoxText, button, icon, defaultResult, options);
+            _messageBoxWindow.DataContext = _messageBoxWindow._viewModel;
+            _messageBoxWindow.ShowDialog();
+            return _messageBoxWindow._viewModel.Result;
+        }
 
-			setOwner(_messageBoxWindow);
+        private static void PlayMessageBeep(MessageBoxImage icon)
+        {
+            switch (icon)
+            {
+                //case MessageBoxImage.Hand:
+                //case MessageBoxImage.Stop:
+                case MessageBoxImage.Error:
+                    SystemSounds.Hand.Play();
+                    break;
 
-			PlayMessageBeep(icon);
+                //case MessageBoxImage.Exclamation:
+                case MessageBoxImage.Warning:
+                    SystemSounds.Exclamation.Play();
+                    break;
 
-			_messageBoxWindow._viewModel = new MessageBoxViewModel(_messageBoxWindow, caption, messageBoxText, button, icon, defaultResult, options);
-			_messageBoxWindow.DataContext = _messageBoxWindow._viewModel;
-			_messageBoxWindow.ShowDialog();
-			return _messageBoxWindow._viewModel.Result;
-		}
+                case MessageBoxImage.Question:
+                    SystemSounds.Question.Play();
+                    break;
 
-		private static void PlayMessageBeep(MessageBoxImage icon)
-		{
-			switch (icon)
-			{
-				//case MessageBoxImage.Hand:
-				//case MessageBoxImage.Stop:
-				case MessageBoxImage.Error:
-					SystemSounds.Hand.Play();
-					break;
+                //case MessageBoxImage.Asterisk:
+                case MessageBoxImage.Information:
+                    SystemSounds.Asterisk.Play();
+                    break;
 
-				//case MessageBoxImage.Exclamation:
-				case MessageBoxImage.Warning:
-					SystemSounds.Exclamation.Play();
-					break;
+                default:
+                    SystemSounds.Beep.Play();
+                    break;
+            }
+        }
 
-				case MessageBoxImage.Question:
-					SystemSounds.Question.Play();
-					break;
+        [ThreadStatic]
+        private static WPFMessageBoxWindow _messageBoxWindow;
 
-				//case MessageBoxImage.Asterisk:
-				case MessageBoxImage.Information:
-					SystemSounds.Asterisk.Play();
-					break;
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            // removes the application icon from the window top left corner
+            // this is different than just hiding it
+            WindowHelper.RemoveIcon(this);
 
-				default:
-					SystemSounds.Beep.Play();
-					break;
-			}
-		}
+            switch (_viewModel.Options)
+            {
+                case MessageBoxOptions.None:
+                    break;
 
-		[ThreadStatic]
-		private static WPFMessageBoxWindow _messageBoxWindow;
+                case MessageBoxOptions.RightAlign:
+                    WindowHelper.SetRightAligned(this);
+                    break;
 
-		protected override void OnSourceInitialized(EventArgs e)
-		{
-			// removes the application icon from the window top left corner
-			// this is different than just hiding it
-			WindowHelper.RemoveIcon(this);
+                case MessageBoxOptions.RtlReading:
+                    break;
 
-			switch (_viewModel.Options)
-			{ 
-				case MessageBoxOptions.None:
-					break;
+                case MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading:
+                    break;
+            }
 
-				case MessageBoxOptions.RightAlign:
-					WindowHelper.SetRightAligned(this);
-					break;
+            // disable close button if needed and remove resize menu items from the window system menu
+            var systemMenuHelper = new SystemMenuHelper(this);
 
-				case MessageBoxOptions.RtlReading:
-					break;
+            if (_viewModel.ButtonOption == MessageBoxButton.YesNo)
+            {
+                systemMenuHelper.DisableCloseButton = true;
+            }
 
-				case MessageBoxOptions.RightAlign | MessageBoxOptions.RtlReading:
-					break;
-			}
+            systemMenuHelper.RemoveResizeMenu = true;
+        }
 
-			// disable close button if needed and remove resize menu items from the window system menu
-			var systemMenuHelper = new SystemMenuHelper(this);
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                _viewModel.EscapeCommand.Execute(null);
+            }
+        }
 
-			if (_viewModel.ButtonOption == MessageBoxButton.YesNo)
-			{
-				systemMenuHelper.DisableCloseButton = true;
-			}
+        protected override void OnClosed(EventArgs e)
+        {
+            base.OnClosed(e);
+            _viewModel.CloseCommand.Execute(null);
+        }
 
-			systemMenuHelper.RemoveResizeMenu = true;
-		}
+        private void DragWindow(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
 
-		private void Window_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.Key == Key.Escape)
-			{
-				_viewModel.EscapeCommand.Execute(null);
-			}
-		}
-
-		protected override void OnClosed(EventArgs e)
-		{
-			base.OnClosed(e);
-			_viewModel.CloseCommand.Execute(null);
-		}
-
-		private void DragWindow(object sender, MouseButtonEventArgs e)
-		{
-			DragMove();
-		}
-	}
+        public static string GetUIString(string key)
+        {
+            string uiString;
+            LocExtension locExtension = new LocExtension(String.Format("FreeDriverScout.Infrastructure:Resources:{0}", key));
+            locExtension.ResolveLocalizedValue(out uiString);
+            return uiString;
+        }
+    }
 }

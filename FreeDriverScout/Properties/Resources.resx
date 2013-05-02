@@ -181,7 +181,7 @@
     <value>Driver Info</value>
   </data>
   <data name="DriversBackupedSuccesfully" xml:space="preserve">
-    <value>Backup of {{0}} drivers is completed.</value>
+    <value>Backup of {0} drivers is completed.</value>
   </data>
   <data name="DriverScan" xml:space="preserve">
     <value>Driver Scan</value>
@@ -586,5 +586,8 @@ Select the folder for driver downloads</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="DriverExcluded" xml:space="preserve">
+    <value>{0} excluded from scans</value>
   </data>
 </root>

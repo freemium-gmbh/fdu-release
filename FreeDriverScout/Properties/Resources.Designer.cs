@@ -376,6 +376,15 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} excluded from scans.
+        /// </summary>
+        internal static string DriverExcluded {
+            get {
+                return ResourceManager.GetString("DriverExcluded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver Info.
         /// </summary>
         internal static string DriverInfo {
@@ -385,7 +394,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup of {{0}} drivers is completed..
+        ///   Looks up a localized string similar to Backup of {0} drivers is completed..
         /// </summary>
         internal static string DriversBackupedSuccesfully {
             get {

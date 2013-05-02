@@ -169,7 +169,7 @@
     <value>Schließen</value>
   </data>
   <data name="CloseButtonBehaviour" xml:space="preserve">
-    <value>Verhalten beim Drücken von Schließen:</value>
+    <value>Verhalten des Schließen-Buttons:</value>
   </data>
   <data name="ContactingServer" xml:space="preserve">
     <value>Mit Server verbinden um nach Updates zu suchen </value>
@@ -205,13 +205,13 @@
     <value>Treiberinformationen</value>
   </data>
   <data name="DriversBackupedSuccesfully" xml:space="preserve">
-    <value>Backup von {{0}} Treiber abgeschlossen ist.</value>
+    <value>Backup von {0} Treibern abgeschlossen.</value>
   </data>
   <data name="DriverScan" xml:space="preserve">
     <value>Treiber Scan</value>
   </data>
   <data name="DriverScanResults" xml:space="preserve">
-    <value>Ergebnisse der Treibersuche</value>
+    <value>Ergebnisse der  Treibersuche</value>
   </data>
   <data name="DriversDownloaded" xml:space="preserve">
     <value>Treiber heruntergeladen</value>
@@ -313,7 +313,7 @@
     <value>Optionen</value>
   </data>
   <data name="OutdatedDriversFound" xml:space="preserve">
-    <value>Veraltete Treiber gefunden</value>
+    <value>veraltete Treiber gefunden</value>
   </data>
   <data name="PostOn" xml:space="preserve">
     <value>Sende dies an:</value>
@@ -486,7 +486,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Installation von Treiber für:</value>
   </data>
   <data name="OutdatedDriversUpdated" xml:space="preserve">
-    <value>veralteter Treiber wurde aktualisiert!</value>
+    <value>veraltete Treiber wurden aktualisiert!</value>
   </data>
   <data name="InitialLoading" xml:space="preserve">
     <value>Loading...</value>
@@ -528,7 +528,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Starting to update driver</value>
   </data>
   <data name="DriverDetailInfoPopupTitle" xml:space="preserve">
-    <value>Driver Information Details</value>
+    <value>Driver Information Einzelheiten</value>
   </data>
   <data name="DetailName" xml:space="preserve">
     <value>Name:</value>
@@ -586,5 +586,8 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ja</value>
+  </data>
+  <data name="DriverExcluded" xml:space="preserve">
+    <value>{0} von Scans ausgeschlossen</value>
   </data>
 </root>

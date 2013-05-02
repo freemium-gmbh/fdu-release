@@ -522,7 +522,7 @@ namespace FreeDriverScout.ViewModels
                     ExcludedDevices.Add(device);
 
                     SaveExcludedDevicesToXML();
-                    WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format("{0} excluded from scans", device.DeviceName), "Device excluded", MessageBoxButton.OK, MessageBoxImage.Information);
+                    WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format(WPFLocalizeExtensionHelpers.GetUIString("DriverExcluded"), device.DeviceName), "Device excluded", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     ScanFinishTitle = String.Format("{0} " + WPFLocalizeExtensionHelpers.GetUIString("OutdatedDriversFound"), DevicesForScanning.Count(d => d.NeedsUpdate));
 

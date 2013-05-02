@@ -315,7 +315,7 @@ namespace FreeDriverScout.Views
                     trgCollection = task.Definition.Triggers;
                     foreach (Microsoft.Win32.TaskScheduler.Trigger trg in task.Definition.Triggers)
                     {
-                        string time = trg.StartBoundary.ToString("hh:mm");
+                        string time = trg.StartBoundary.ToString("HH:mm");
                         byte index = 0;
                         byte i = 0;
                         foreach (var item in AutoScanTime.Items)

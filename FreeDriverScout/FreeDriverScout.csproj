@@ -395,7 +395,6 @@
     <Resource Include="Images\icon-OSMigrationTool.Restore.png" />
     <Resource Include="Images\icon-question.png" />
     <Resource Include="Images\icon-app.png" />
-    <Content Include="Libraries\Ionic.Zip.dll" />
     <Content Include="Libraries\Ookii.Dialogs.Wpf.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

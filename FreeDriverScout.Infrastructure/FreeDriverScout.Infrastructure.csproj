@@ -154,7 +154,6 @@
     <Resource Include="Images\google.png" />
     <Resource Include="Images\tw.png" />
     <Resource Include="Images\tw_bg.png" />
-    <Content Include="Libraries\Ionic.Zip.dll" />
     <Content Include="Libraries\System.Tuples.dll" />
     <Content Include="Libraries\WPFLocalizeExtension.dll" />
     <Page Include="CommonStyles\ControlStyles.xaml">

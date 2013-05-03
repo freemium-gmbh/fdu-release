@@ -115,7 +115,7 @@
       <HintPath>Libraries\WPFLocalizeExtension.dll</HintPath>
     </Reference>
     <Reference Include="XAMLMarkupExtensions">
-      <HintPath>..\packages\XAMLMarkupExtensions.1.1.6.1\lib\net35\XAMLMarkupExtensions.dll</HintPath>
+      <HintPath>Libraries\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -334,9 +334,6 @@
     <Resource Include="Images\driver.ico" />
     <Resource Include="Images\bg-logo-flame.png" />
     <Resource Include="Images\bg-logo.png" />
-    <Content Include="Libraries\XAMLMarkupExtensions.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="stduhelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -399,9 +396,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Libraries\System.Tuples.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libraries\WPFLocalizeExtension.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <EmbeddedResource Include="Routine\messagePipe.resx">

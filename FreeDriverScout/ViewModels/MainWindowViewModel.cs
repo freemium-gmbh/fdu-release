@@ -25,6 +25,7 @@ using FreemiumUtilites;
 using System.Windows.Media.Animation;
 using FreemiumUtil;
 using WPFLocalizeExtension.Engine;
+using System.Globalization;
 
 namespace FreeDriverScout.ViewModels
 {
@@ -174,17 +175,20 @@ namespace FreeDriverScout.ViewModels
             }
 
             //Days from last scan
-            int daysFromLastScan = 0;
+
+            int duration = 0;
             try
             {
                 string lastscandate = CfgFile.Get("LastScanDate");
-                daysFromLastScan = (DateTime.Now - DateTime.ParseExact(lastscandate, "dd/MM/yyyy", null)).Duration().Days;
+                DateTime LastScanDate = DateTime.ParseExact(lastscandate, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                if (LastScanDate < DateTime.Now.Date)
+                    duration = (DateTime.Now - DateTime.ParseExact(lastscandate, "dd/MM/yyyy", CultureInfo.InvariantCulture)).Duration().Days;
             }
             catch
             {
             }
 
-            int daysFromLastScanProgress = daysFromLastScan * 360 / MainWindowViewModel.DaysFromLastScanMax;
+            int daysFromLastScanProgress = duration * 360 / MainWindowViewModel.DaysFromLastScanMax;
             if (daysFromLastScanProgress == 0)
             {
                 var daysFromLastScanTextBlock = UIUtils.FindChild<TextBlock>(Application.Current.MainWindow, "DaysFromLastScan");
@@ -1338,7 +1342,7 @@ namespace FreeDriverScout.ViewModels
                         driverData[currentItemPos].category,
                         driverData[currentItemPos].driverName,
                         infName,
-                        driverData[currentItemPos].version == "null" ? string.Empty : driverData[currentItemPos].version,
+                        string.IsNullOrEmpty(driverData[currentItemPos].version) || driverData[currentItemPos].version == "null" ? string.Empty : driverData[currentItemPos].version,
                         currentItemPos.ToString(),
                         driverData[currentItemPos].hardwareId,
                         driverData[currentItemPos].CompatibleIdIndex.ToString()

@@ -19,32 +19,35 @@ namespace FreeDriverScout.Views
         public PanelScan()
         {
             InitializeComponent();
+            int duration = 0;
             try
             {
                 string lastscandate = CfgFile.Get("LastScanDate");
-                SetDaysFromLastScanProgressBarValue((DateTime.Now - DateTime.ParseExact(lastscandate, "dd/MM/yyyy", null)).Duration().Days);
-                LoadTaskParams();
+                DateTime LastScanDate = DateTime.ParseExact(lastscandate, "dd/MM/yyyy", CultureInfo.InvariantCulture);                
+                if (LastScanDate < DateTime.Now.Date)
+                    duration = (DateTime.Now - DateTime.ParseExact(lastscandate, "dd/MM/yyyy", CultureInfo.InvariantCulture)).Duration().Days;                  
             }
             catch
-            {
-                SetDaysFromLastScanProgressBarValue(0);
-                LoadTaskParams();
+            {                
             }
+            SetDaysFromLastScanProgressBarValue(duration);
+            LoadTaskParams();
         }
 
         void SetDaysFromLastScanProgressBarValue(int daysFromLastScan)
         {
             int daysFromLastScanProgress = daysFromLastScan * 360 / MainWindowViewModel.DaysFromLastScanMax;
-            if (daysFromLastScanProgress == 0)
+            if (daysFromLastScan == 0)
             {
                 DaysFromLastScan.FontSize = 30;
                 DaysFromLastScan.Margin = new Thickness(2, 56, 0, 0);
                 LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo(CfgFile.Get("Lang"));
                 DaysFromLastScan.Text = WPFLocalizeExtensionHelpers.GetUIString("Today");
                 DaysAgoText.Visibility = System.Windows.Visibility.Hidden;
+                Gradient.Visibility = Visibility.Collapsed;
                 return;
             }
-          
+
 
             DaysFromLastScan.Text = daysFromLastScan.ToString(CultureInfo.InvariantCulture);
             if ((daysFromLastScanProgress < 359 && daysFromLastScanProgress > 0) || (daysFromLastScan <= MainWindowViewModel.DaysFromLastScanMax && daysFromLastScan > 0))
@@ -83,7 +86,7 @@ namespace FreeDriverScout.Views
         private void StartScan(object sender, RoutedEventArgs e)
         {
             SetDaysFromLastScanProgressBarValue(0);
-            CfgFile.Set("LastScanDate", DateTime.Now.ToString("dd/MM/yyyy"));
+            CfgFile.Set("LastScanDate", DateTime.Now.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture));
         }
 
         private void AutoScan_Click(object sender, RoutedEventArgs e)

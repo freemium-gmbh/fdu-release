@@ -534,10 +534,10 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Name:</value>
   </data>
   <data name="DetailCurrentDriverDate" xml:space="preserve">
-    <value>Datum der aktuellen Version:</value>
+    <value>Datum aktuelle Version:</value>
   </data>
   <data name="DetailNewDriverDate" xml:space="preserve">
-    <value>Datum der neuen Version:</value>
+    <value>Datum neue Version:</value>
   </data>
   <data name="FacebookLike" xml:space="preserve">
     <value>Gefällt mir</value>

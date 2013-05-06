@@ -106,13 +106,27 @@ namespace FreeDriverScout
             {
                 //CfgFile.Set("MainWindowLeft", AppMainWindow.Left.ToString());
                 //CfgFile.Set("MainWindowTop", AppMainWindow.Top.ToString());
-                Application.Current.Shutdown();
+                try
+                {
+                    Application.Current.Shutdown();
+                    Environment.Exit(0);
+                }
+                catch (Exception)
+                {
+                }
             }
         }
 
         void AppExit(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            try
+            {
+                Application.Current.Shutdown();
+                Environment.Exit(0);
+            }
+            catch (Exception)
+            {
+            }
         }
 
         void MinimizeApp(object sender, RoutedEventArgs e)

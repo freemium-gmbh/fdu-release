@@ -201,10 +201,15 @@ namespace FreeDriverScout.Utils
                 var windir = Environment.GetEnvironmentVariable("windir") + "\\";
 
                 // Check if driver exists in driver store
-                var driverStoreRepo = windir + "System32\\DriverStore\\FileRepository";
-                var possibleDriverDirsInStore = Directory.GetDirectories(driverStoreRepo, infFileName + "*");
+                string[] possibleDriverDirsInStore = null;
+                if (Environment.OSVersion.Version.Major >= 6)
+                {
+                    var driverStoreRepo = windir + "System32\\DriverStore\\FileRepository";
+                    possibleDriverDirsInStore = Directory.GetDirectories(driverStoreRepo, infFileName + "*");
+                }
 
-                if (possibleDriverDirsInStore.Length == 1)
+                if (possibleDriverDirsInStore != null &&
+                    possibleDriverDirsInStore.Length == 1)
                 {
                     CopyFolder(possibleDriverDirsInStore[0], deviceBackupDir);
                 }

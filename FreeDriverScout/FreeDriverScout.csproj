@@ -45,7 +45,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <OutputPath>bin\Release\</OutputPath>
@@ -334,6 +334,7 @@
     <Resource Include="Images\driver.ico" />
     <Resource Include="Images\bg-logo-flame.png" />
     <Resource Include="Images\bg-logo.png" />
+    <Resource Include="Images\loading.gif" />
     <Content Include="stduhelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

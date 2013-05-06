@@ -5,11 +5,17 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 			 xmlns:sys="clr-namespace:System;assembly=mscorlib"
 			 xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
+             xmlns:routine="clr-namespace:FreeDriverScout.Routine"
+             xmlns:models="clr-namespace:FreeDriverScout.Models"
 			 mc:Ignorable="d"
 			 d:DesignHeight="293"
 			 d:DesignWidth="645"
 			 Height="293"
 			 Width="645">
+    
+    <UserControl.Resources>
+        <routine:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
 	<Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="235" />
@@ -112,13 +118,28 @@
 					<ColumnDefinition Width="214" />
 					<ColumnDefinition Width="214" />
 				</Grid.ColumnDefinitions>
+
+                <Border Width="189" Height="20" Style="{StaticResource ProgressBarGreen}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"
+                        Visibility="{Binding Path=RestoringBackup, Converter={StaticResource BoolToVisibilityConverter}}" >
+                    <Border x:Name="GreenProgressBar" Style="{StaticResource ProgressBarInnerAnimated}" Height="20"
+											Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}}">
+                        
+                        <Border BorderThickness="0,1,0,0" BorderBrush="#CADF84"></Border>
+                        <Border.RenderTransform>
+                            <TranslateTransform X="0" Y="0" />
+                        </Border.RenderTransform>
+                    </Border>
+                </Border>
+                
                 <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="1"
 						Command="{Binding BackupActionFinishedCommand}"
+                        IsEnabled="True"
 						Content="{lex:LocText FreeDriverScout:Resources:Cancel}" Width = "210"></Button>
                 <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="2"
 						Command="{Binding RestoreDriversCommand}"
+                        IsEnabled="True"
 						Content="{lex:LocText FreeDriverScout:Resources:RestoreDrivers}" Width = "210"></Button>
 			</Grid>
 		</Border>

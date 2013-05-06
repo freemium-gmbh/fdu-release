@@ -774,6 +774,20 @@ namespace FreeDriverScout.ViewModels
             }
         }
 
+        private Boolean _RestoringBackup;
+        public Boolean RestoringBackup
+        {
+            get
+            {
+                return _RestoringBackup;
+            }
+            set
+            {
+                _RestoringBackup = value;
+                OnPropertyChanged("RestoringBackup");
+            }
+        }
+
         BackupStatus backupStatus = BackupStatus.NotStarted;
         public BackupStatus BackupStatus
         {
@@ -1905,10 +1919,13 @@ namespace FreeDriverScout.ViewModels
             OrderedDriverRestoreGroups.SortDescriptions.Add(new SortDescription("Order", ListSortDirection.Ascending));
             OrderedDriverRestoreGroups.Refresh();
             BackupStatus = BackupStatus.RestoreTargetsSelection;
+            RestoringBackup = false;
         }
 
         void RunRestore()
         {
+            RestoringBackup = true;
+
             string backupDir = currentBackupItem.Path;
             DirectoryInfo[] subDirs = new DirectoryInfo(backupDir).GetDirectories();
             int restoredDriversCount = 0;
@@ -1934,10 +1951,12 @@ namespace FreeDriverScout.ViewModels
                 }
             }
 
+            //Thread.Sleep(2000);
             if (CurrentDispatcher.Thread != null)
             {
                 CurrentDispatcher.BeginInvoke((Action)(() =>
                 {
+                    RestoringBackup = false;
                     if (restoredDriversCount != 0)
                     {
                         BackupFinishTitle = String.Format("{0} " + WPFLocalizeExtensionHelpers.GetUIString("DriversRestoredSuccesfully"), restoredDriversCount);

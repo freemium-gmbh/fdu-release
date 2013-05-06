@@ -11,8 +11,22 @@ namespace FreeDriverScout.Routine
 							  object parameter, CultureInfo culture)
 		{
 			bool s1 = (bool)value;
-			bool s2 = bool.Parse(parameter.ToString());
-			return s1 == s2 ? Visibility.Visible : Visibility.Collapsed;
+            if (parameter != null)
+            {
+                if (parameter is String && parameter.ToString() == "not")
+                {
+                    return s1 ? Visibility.Collapsed : Visibility.Visible;
+                }
+                else
+                {
+                    bool s2 = bool.Parse(parameter.ToString());
+                    return s1 == s2 ? Visibility.Visible : Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                return s1 ? Visibility.Visible : Visibility.Collapsed;
+            }
 		}
 
 		public object ConvertBack(object value, Type targetType,

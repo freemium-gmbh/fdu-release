@@ -335,9 +335,6 @@
     <Resource Include="Images\bg-logo-flame.png" />
     <Resource Include="Images\bg-logo.png" />
     <Resource Include="Images\loading.gif" />
-    <Content Include="stduhelper.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="stduhelper32.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -484,6 +481,15 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (
+  if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
+    copy "$(SolutionDir)FreeDriverScout\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+  ) else (
+    copy "$(SolutionDir)FreeDriverScout\stduhelper32.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+  )
+)</PostBuildEvent>
+  </PropertyGroup>
   <!-- <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
   To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

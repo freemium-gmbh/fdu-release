@@ -337,8 +337,12 @@
     <Content Include="stduhelper.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="stduhelper32.dll" />
-    <Content Include="stduhelper64.dll" />
+    <Content Include="stduhelper32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="stduhelper64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="unrar.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -394,7 +394,7 @@
     <value>Art des Backups auswählen</value>
   </data>
   <data name="SelectBackupTypeText" xml:space="preserve">
-    <value>Bitte wählen Sie die Art des Backups um fortzufahren</value>
+    <value>Bitte wählen Sie die Art des Backups um fortzufahren.</value>
   </data>
   <data name="SelectDevices" xml:space="preserve">
     <value>Laufwerk auswählen</value>
@@ -421,17 +421,17 @@
     <value>Treiber für die Wiederherstellung auswählen</value>
   </data>
   <data name="SelectDriversForRestoreText" xml:space="preserve">
-    <value>Bitte wählen Sie für die Wiederherstellung mindestens einen Treiber aus</value>
+    <value>Bitte wählen Sie mindestens einen Treiber zur Wiederherstellung aus.</value>
   </data>
   <data name="SelectDriversToUpdate" xml:space="preserve">
-    <value>Bitte wählen Sie mindestens einen Treiber aus, um ihn zu aktualisieren</value>
+    <value>Bitte wählen Sie mindestens einen Treiber zum Aktualisieren aus.</value>
   </data>
   <data name="SelectDriversZip" xml:space="preserve">
     <value>DriverData.zip auswählen</value>
   </data>
   <data name="SelectFolderForBackups" xml:space="preserve">
     <value>
-Wählen Sie einen Ordner zum Speichern von Backups Treibern</value>
+Wählen Sie einen Ordner zum Speichern von Backup-Treibern</value>
   </data>
   <data name="SelectFolderForDownloads" xml:space="preserve">
     <value>
@@ -573,7 +573,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Treiber-Update fehlgeschlagen für Fahrer:</value>
   </data>
   <data name="SelectDriversToBackup" xml:space="preserve">
-    <value>Bitte wählen Sie mindestens ein Fahrer zu sichern</value>
+    <value>Bitte wählen Sie mindestens einen Treiber zum Sichern aus.</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>heute</value>
@@ -589,5 +589,11 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
   </data>
   <data name="DriverExcluded" xml:space="preserve">
     <value>{0} von Scans ausgeschlossen</value>
+  </data>
+  <data name="RestoreFailedCaption" xml:space="preserve">
+    <value>Wiederherstellung fehlgeschlagen</value>
+  </data>
+  <data name="RestoreFailedText" xml:space="preserve">
+    <value>Leider ist die Wiederherstellung der gewählten Treiber fehlgeschlagen.</value>
   </data>
 </root>

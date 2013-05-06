@@ -1928,6 +1928,7 @@ namespace FreeDriverScout.ViewModels
 
             string backupDir = currentBackupItem.Path;
             DirectoryInfo[] subDirs = new DirectoryInfo(backupDir).GetDirectories();
+            int selectedDriversCount = 0;
             int restoredDriversCount = 0;
             foreach (DevicesGroup group in currentBackupItem.GroupedDrivers)
             {
@@ -1947,6 +1948,7 @@ namespace FreeDriverScout.ViewModels
                                 continue;
                             }
                         }
+                        selectedDriversCount++;
                     }
                 }
             }
@@ -1962,9 +1964,13 @@ namespace FreeDriverScout.ViewModels
                         BackupFinishTitle = String.Format("{0} " + WPFLocalizeExtensionHelpers.GetUIString("DriversRestoredSuccesfully"), restoredDriversCount);
                         BackupStatus = BackupStatus.RestoreFinished;
                     }
-                    else
+                    else if (selectedDriversCount == 0)
                     {
                         WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreText"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversForRestoreCaption"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
+                    else
+                    {
+                        WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("RestoreFailedText"), WPFLocalizeExtensionHelpers.GetUIString("RestoreFailedCaption"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }));
             }

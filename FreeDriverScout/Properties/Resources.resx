@@ -394,7 +394,7 @@
     <value>Select drivers</value>
   </data>
   <data name="SelectDriversToUpdate" xml:space="preserve">
-    <value>Please, select at least one driver to update</value>
+    <value>Please, select at least one driver to update.</value>
   </data>
   <data name="DriverDownloadingAndInstallation" xml:space="preserve">
     <value>Driver Downloading &amp; Installation</value>
@@ -427,7 +427,7 @@
     <value>Select devices</value>
   </data>
   <data name="SelectDevicesToRemoveFromExclude" xml:space="preserve">
-    <value>Please, select devices you no longer wish to exclude from the scan</value>
+    <value>Please, select devices you no longer wish to exclude from the scan.</value>
   </data>
   <data name="CheckBackupsFolder" xml:space="preserve">
     <value>Please, check Backups folder in your Preferences</value>
@@ -436,7 +436,7 @@
     <value>Select Backup type</value>
   </data>
   <data name="SelectBackupTypeText" xml:space="preserve">
-    <value>Please, select backup type to proceed</value>
+    <value>Please, select backup type to proceed.</value>
   </data>
   <data name="SelectDriversForRestore" xml:space="preserve">
     <value>SELECT DRIVERS FOR RESTORE</value>
@@ -448,7 +448,7 @@
     <value>Select drivers for restore</value>
   </data>
   <data name="SelectDriversForRestoreText" xml:space="preserve">
-    <value>Please, select at least one driver for restore</value>
+    <value>Please, select at least one driver for restore.</value>
   </data>
   <data name="SelectFolderForBackups" xml:space="preserve">
     <value>
@@ -573,7 +573,7 @@ Select the folder for driver downloads</value>
     <value>-50</value>
   </data>
   <data name="SelectDriversToBackup" xml:space="preserve">
-    <value>Please, select at least one driver to backup</value>
+    <value>Please, select at least one driver to backup.</value>
   </data>
   <data name="Today" xml:space="preserve">
     <value>today</value>
@@ -589,5 +589,11 @@ Select the folder for driver downloads</value>
   </data>
   <data name="DriverExcluded" xml:space="preserve">
     <value>{0} excluded from scans</value>
+  </data>
+  <data name="RestoreFailedCaption" xml:space="preserve">
+    <value>Restore failed</value>
+  </data>
+  <data name="RestoreFailedText" xml:space="preserve">
+    <value>Unfortunately the restore of the selected drivers failed.</value>
   </data>
 </root>

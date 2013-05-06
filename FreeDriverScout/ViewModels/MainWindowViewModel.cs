@@ -19,7 +19,7 @@ using FreeDriverScout.Utils;
 using MessageBoxUtils;
 using Microsoft.Win32;
 using System.Runtime.InteropServices;
-using FreeDriverScout.Engine;
+using DUSDK_for.NET;
 using System.Text;
 using FreemiumUtilites;
 using System.Windows.Media.Animation;

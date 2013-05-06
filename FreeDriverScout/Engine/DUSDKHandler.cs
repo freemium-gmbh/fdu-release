@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace FreeDriverScout.Engine
+namespace DUSDK_for.NET
 {
     public class DUSDKHandler
     {
@@ -60,11 +62,11 @@ namespace FreeDriverScout.Engine
             );
 
 
-
-
+        
+        
 
         [DllImport(@"stduhelper.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
-        internal static extern bool cancelOperation(int operation);
+	    internal static extern bool cancelOperation(int operation);
 
         [DllImport(@"stduhelper.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         internal static extern int updateDeviceDriversEx(
@@ -72,13 +74,13 @@ namespace FreeDriverScout.Engine
             [In] StringBuilder szProductKey,
             [In] StringBuilder szAppDataLoc,
             [In] StringBuilder szTempLoc,
-            [In] StringBuilder szRegistryLoc,
-            [In] downloadProgressCallback pDownloadCallbackFunc,
-            [In, Out] IntPtr Scandata,
-            [In, Out] IntPtr DevicesToUpdates,
-            [In] int driversSize,
-            [In] StringBuilder szRestorePointName
-            );
+			[In] StringBuilder szRegistryLoc,
+			[In] downloadProgressCallback pDownloadCallbackFunc,
+			[In, Out] IntPtr Scandata,
+			[In, Out] IntPtr DevicesToUpdates,
+			[In] int driversSize,					
+			[In] StringBuilder szRestorePointName
+			);
 
 
 
@@ -120,7 +122,7 @@ namespace FreeDriverScout.Engine
             );
 
 
-
+        
         [DllImport(@"stduhelper.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern int TestParamPassed([In] IntPtr pUserDrivers, [In] IntPtr pDriversToUpdate);
 
@@ -153,8 +155,8 @@ namespace FreeDriverScout.Engine
         //
         public enum SCAN_FLAGS
         {
-            SCAN_DEVICES_PRESENT, /* if supplied to scan function, only connected devices are checked for updates available */
-            SCAN_DEVICES_ALL /* if supplied to scan function, all connected and unplugged devices are checked for updates available */
+	        SCAN_DEVICES_PRESENT, /* if supplied to scan function, only connected devices are checked for updates available */
+	        SCAN_DEVICES_ALL /* if supplied to scan function, all connected and unplugged devices are checked for updates available */
         }
 
         /// <summary>
@@ -224,7 +226,7 @@ namespace FreeDriverScout.Engine
         /// <summary>
         /// Defines the progress type while various process of DUSDK
         /// </summary>
-        public enum PROGRESS_TYPE
+        public  enum PROGRESS_TYPE
         {
 
             PROGRESS_SCANNING = 0x100,
@@ -319,7 +321,7 @@ namespace FreeDriverScout.Engine
         };
 
 
-
+        
 
 
 
@@ -328,7 +330,7 @@ namespace FreeDriverScout.Engine
 
 
     }
-
+    
 
     /// <summary>
     /// Reference: http://msdn.microsoft.com/en-us/library/ac7ay120%28v=VS.90%29.aspx
@@ -338,109 +340,109 @@ namespace FreeDriverScout.Engine
     {
 
 
-
+        
 
 
         /// <summary>
         /// Installed driver name shown in device manager
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string driverName;
 
         /// <summary>
         /// Inf Path of currently installed system driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string location;
 
         /// <summary>
         /// current driver version
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string version;
 
         /// <summary>
         /// category of driver like Display Adapter, Sound...
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string category;
 
         /// <summary>
         /// any further description if have
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string description;
 
         /// <summary>
         /// provider name
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string publisher;
 
         /// <summary>
         /// manufacturer name
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string manufacturer;
 
         /// <summary>
         /// hardware id of driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string hardwareId; // 
 
         /// <summary>
         /// driver node guid path
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string guidPath;
 
         /// <summary>
         /// date of installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string date;
 
         /// <summary>
         /// service name of installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string serviceName;
 
         /// <summary>
         /// Is installed driver is signed or not
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string m_bIsSigned; //
 
         /// <summary>
         /// Inf path of update driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string installInf;
 
         /// <summary>
         /// Used while driver update process
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string md5;
 
         /// <summary>
         /// Not used
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string HardwareCode;
 
         /// <summary>
         /// Matching Hardware Id of current installed system driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string matchingId;
 
         /// <summary>
         /// Not used
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string libURL;
 
         /// <summary>
@@ -508,7 +510,7 @@ namespace FreeDriverScout.Engine
         /// <summary>
         /// Matching Hardware Id
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string MatchingDeviceID;
 
         /// <summary>
@@ -553,7 +555,7 @@ namespace FreeDriverScout.Engine
         /// <summary>
         /// FeatureScore of current installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)]
+        [MarshalAs(UnmanagedType.LPTStr)] 
         public string FeatureScore;
 
         /// <summary>
@@ -595,6 +597,13 @@ namespace FreeDriverScout.Engine
         [MarshalAs(UnmanagedType.LPTStr)]
         public string SetupLaunchParam;
 
+        [MarshalAs(UnmanagedType.LPTStr)]
+        public string enumLoc;        
+
         public IntPtr UpdateDriver;
-    }
+       
+
+    }  
+
+    
 }

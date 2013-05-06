@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace FreeDriverScout.Engine
+namespace DUSDK_for.NET
 {
     static class MarshalHelper
-    {
+    {       
+ 
+
         /// <summary>
         /// Copies structure array to IntPtr
         /// </summary>

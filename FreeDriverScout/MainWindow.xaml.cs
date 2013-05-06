@@ -13,6 +13,9 @@ using FreeDriverScout.Views;
 using FreemiumUtilites;
 using FreemiumUtil;
 using FreeDriverScout.Models;
+using WPFLocalizeExtension.Engine;
+using System.Globalization;
+using System.Threading;
 
 namespace FreeDriverScout
 {
@@ -29,6 +32,10 @@ namespace FreeDriverScout
         public MainWindow()
         {
             InitializeComponent();
+
+            string culture = CfgFile.Get("Lang");
+            LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo(culture);
+            Thread.CurrentThread.CurrentUICulture = LocalizeDictionary.Instance.Culture;
 
             string path = String.Format(@"Themes/{0}/Theme.xaml", CfgFile.Get("Theme"));
             using (var fs = new FileStream(path, FileMode.Open))

@@ -1111,6 +1111,9 @@ namespace FreeDriverScout.ViewModels
             RunInitialScan();
         }
 
+        private ManualResetEvent cancelEvtArgs;
+        private Boolean scanCancelled = false;
+
         private void StartScan(object sender, DoWorkEventArgs e)
         {
             bScanningIsGoingOn = true;
@@ -1127,13 +1130,35 @@ namespace FreeDriverScout.ViewModels
                 }
             }
 
-            DUSDKHandler.DUSDK_scanDeviceDriversForUpdates(
-                progressCallback,
-                szProductKey,
-                szAppDataLoc,
-                szTempLoc,
-                szRegistryLoc,
-                dwScanFlag);
+
+            // this call has to be in another Thread (not the UI)
+            cancelEvtArgs = new ManualResetEvent(false);
+
+            Thread thread = new Thread(delegate()
+            {
+                DUSDKHandler.DUSDK_scanDeviceDriversForUpdates(
+                    progressCallback,
+                    szProductKey,
+                    szAppDataLoc,
+                    szTempLoc,
+                    szRegistryLoc,
+                    dwScanFlag);
+
+                if(cancelEvtArgs != null) cancelEvtArgs.Set();
+            });
+            thread.SetApartmentState(ApartmentState.MTA);
+            thread.Start();
+            cancelEvtArgs.WaitOne();
+
+            if (bIsStopped)
+            {
+                CancelOperation();
+                
+                cancelEvtArgs = null;
+                scanCancelled = true;
+                //bIsStopped = false;
+                //bScanningIsGoingOn = false;
+            }
 
             //bScanningIsGoingOn = false;
             //bIsStopped = false;
@@ -1214,6 +1239,7 @@ namespace FreeDriverScout.ViewModels
                             Status = ScanStatus.ScanStarted;
 
                             ScanStatusText = string.Empty;
+
                         }));
                     }
 
@@ -1232,6 +1258,10 @@ namespace FreeDriverScout.ViewModels
             catch { }
         }
 
+
+
+
+
         void ScanCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             bool isCancelled = bIsStopped;
@@ -1243,11 +1273,14 @@ namespace FreeDriverScout.ViewModels
             {
                 CurrentDispatcher.Invoke((MethodInvoker)delegate
                 {
-                    if (isCancelled)
+                    if (isCancelled || scanCancelled)
                     {
+                        scanCancelled = false;
                         ShowScan();
                         return;
                     }
+                    scanCancelled = false;
+
 
                     ScanStatusTitle = WPFLocalizeExtensionHelpers.GetUIString("ScanCompleted");
                     ScanStatusText = string.Empty;
@@ -1545,12 +1578,15 @@ namespace FreeDriverScout.ViewModels
             return true;
         }
 
+
         void RunCancelScan()
         {
             bIsStopped = true;
             if (bgScan.IsBusy)
                 bgScan.CancelAsync();
-            CancelOperation();
+
+            cancelEvtArgs.Set();
+//            CancelOperation();
         }
 
         void RunShowScan()

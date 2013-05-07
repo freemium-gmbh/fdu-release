@@ -195,12 +195,13 @@ namespace FreeDriverScout.Utils
 
             // Find inf file
             var deviceBackupDirPath = backupDir + deviceName;
-            var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
-            var infFile = deviceBackupDir.GetFiles("*.inf")[0];
-            bool driverNeedsReboot;
 
             try
             {
+                var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
+                var infFile = deviceBackupDir.GetFiles("*.inf")[0];
+                bool driverNeedsReboot;
+                
                 //SetDifxLogCallback(new DIFLOGCALLBACK(DIFLogCallbackFunc), IntPtr.Zero);
                 Int32 err = DriverPackageInstall(infFile.FullName, DRIVER_PACKAGE_FORCE, IntPtr.Zero, out driverNeedsReboot);
 

@@ -204,18 +204,18 @@ namespace FreeDriverScout.Utils
             deviceName = deviceName.Trim().Replace('/', ' ').Replace('\\', ' ');
             backupDir = !backupDir.EndsWith("\\") ? backupDir + "\\" : backupDir;
 
-            // Find inf file
-            var deviceBackupDirPath = backupDir + deviceName;
-            var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
-            var infFile = deviceBackupDir.GetFiles("*.inf")[0];
-            bool driverNeedsReboot;
-
-            // http://msdn.microsoft.com/en-us/library/windows/hardware/ff544813%28v=vs.85%29.aspx
-            Int32 flags = DRIVER_PACKAGE_FORCE | DRIVER_PACKAGE_ONLY_IF_DEVICE_PRESENT;
-            if (Environment.OSVersion.Version.Major < 6) flags |= DRIVER_PACKAGE_LEGACY_MODE;
-
             try
             {
+                // Find inf file
+                var deviceBackupDirPath = backupDir + deviceName;
+                var deviceBackupDir = new DirectoryInfo(deviceBackupDirPath);
+                var infFile = deviceBackupDir.GetFiles("*.inf")[0];
+                bool driverNeedsReboot;
+
+                // http://msdn.microsoft.com/en-us/library/windows/hardware/ff544813%28v=vs.85%29.aspx
+                Int32 flags = DRIVER_PACKAGE_FORCE | DRIVER_PACKAGE_ONLY_IF_DEVICE_PRESENT;
+                if (Environment.OSVersion.Version.Major < 6) flags |= DRIVER_PACKAGE_LEGACY_MODE;
+
                 //SetDifxLogCallback(new DIFLOGCALLBACK(DIFLogCallbackFunc), IntPtr.Zero);
                 Int32 err = DriverPackageInstall(infFile.FullName, flags, IntPtr.Zero, out driverNeedsReboot);
 

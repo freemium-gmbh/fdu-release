@@ -2,30 +2,30 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 using System.Xml.Serialization;
+using DUSDK_for.NET;
 using FreeDriverScout.Infrastructure;
 using FreeDriverScout.Models;
 using FreeDriverScout.Routine;
 using FreeDriverScout.Utils;
+using FreemiumUtil;
+using FreemiumUtilites;
 using MessageBoxUtils;
 using Microsoft.Win32;
-using System.Runtime.InteropServices;
-using DUSDK_for.NET;
-using System.Text;
-using FreemiumUtilites;
-using System.Windows.Media.Animation;
-using FreemiumUtil;
 using WPFLocalizeExtension.Engine;
-using System.Globalization;
 
 namespace FreeDriverScout.ViewModels
 {
@@ -360,6 +360,7 @@ namespace FreeDriverScout.ViewModels
         }
         void BackupSelectedDrivers()
         {
+            
             var devicesToBackup = new ObservableCollection<DevicesGroup>();
             int i = 0;
             foreach (DevicesGroup group in GroupedDevices)
@@ -774,28 +775,78 @@ namespace FreeDriverScout.ViewModels
             }
         }
 
+
+        private Boolean _CreatingBackup;
+        /// <summary>
+        /// Gets a value indicating if a backup operation is pending.
+        /// </summary>
+        public Boolean CreatingBackup
+        {
+            get
+            {
+                return _CreatingBackup;
+            }
+            private set
+            {
+                _CreatingBackup = value;
+                OnPropertyChanged("CreatingBackup");
+                OnPropertyChanged("CanBackup");
+            }
+        }
+
+        public Boolean CanBackup
+        {
+            get
+            {
+                return !CreatingBackup;
+            }
+        }
+
+
+
         private Boolean _RestoringBackup;
+        /// <summary>
+        /// Gets a value indicating if a restore operation is pending.
+        /// </summary>
         public Boolean RestoringBackup
         {
             get
             {
                 return _RestoringBackup;
             }
-            set
+            private set
             {
                 _RestoringBackup = value;
                 OnPropertyChanged("RestoringBackup");
+                OnPropertyChanged("CanRestore");
             }
         }
 
+        /// <summary>
+        /// Gets a vlaue indicating is a restore operation can be launched.
+        /// </summary>
+        public Boolean CanRestore
+        {
+            get
+            {
+                return !RestoringBackup;
+            }
+        }
+
+
+
+
         BackupStatus backupStatus = BackupStatus.NotStarted;
+        /// <summary>
+        /// Gets the backup status.
+        /// </summary>
         public BackupStatus BackupStatus
         {
             get
             {
                 return backupStatus;
             }
-            set
+            private set
             {
                 backupStatus = value;
                 OnPropertyChanged("BackupStatus");
@@ -1755,9 +1806,10 @@ namespace FreeDriverScout.ViewModels
                 }
 
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                //MessageBox.Show(ex.ToString());
+                //TODO: Add SmartAssembly bug tracking here!
             }
             finally
             {
@@ -1873,6 +1925,8 @@ namespace FreeDriverScout.ViewModels
 
         void RunBackup(ObservableCollection<DevicesGroup> driversToBackup, BackupType backupType)
         {
+            CreatingBackup = true;
+
             string backupDir = Uri.UnescapeDataString(CfgFile.Get("BackupsFolder"));
             if (!String.IsNullOrEmpty(backupDir) && new DirectoryInfo(backupDir).Exists)
             {
@@ -1905,6 +1959,7 @@ namespace FreeDriverScout.ViewModels
 
                         BackupFinishTitle = String.Format(WPFLocalizeExtensionHelpers.GetUIString("DriversBackupedSuccesfully"), driversCount);
                         BackupStatus = BackupStatus.BackupFinished;
+                        CreatingBackup = false;
                     }));
                 }
             }
@@ -1913,6 +1968,7 @@ namespace FreeDriverScout.ViewModels
                 if (CurrentDispatcher.Thread != null)
                 {
                     CurrentDispatcher.BeginInvoke((Action)(() => WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("CheckBackupsFolder"), WPFLocalizeExtensionHelpers.GetUIString("CheckPreferences"), MessageBoxButton.OK, MessageBoxImage.Error)));
+                    CreatingBackup = false;
                 }
             }
         }

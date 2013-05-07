@@ -139,7 +139,7 @@
                 <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="2"
 						Command="{Binding RestoreDriversCommand}"
-                        IsEnabled="True"
+                        IsEnabled="{Binding CanRestore, UpdateSourceTrigger=PropertyChanged}"
 						Content="{lex:LocText FreeDriverScout:Resources:RestoreDrivers}" Width = "210"></Button>
 			</Grid>
 		</Border>

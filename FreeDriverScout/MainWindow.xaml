@@ -98,18 +98,14 @@
                                 <ComboBoxItem Content="{lex:LocText FreeDriverScout:Resources:Preferences}"></ComboBoxItem>
                                 <ComboBoxItem Content="{lex:LocText FreeDriverScout:Resources:FeedbackReport}"></ComboBoxItem>
                             </ComboBox>
-                            <Button Style="{StaticResource MinimizeButton}"
-									Click="MinimizeApp">
+                            <Button Style="{StaticResource MinimizeButton}" Click="MinimizeApp">
                                 <Button.ToolTip>
-                                    <ToolTip Style="{x:Null}"
-											 Content="{lex:LocText FreeDriverScout:Resources:Minimize}" />
+                                    <ToolTip Style="{x:Null}" Content="{lex:LocText FreeDriverScout:Resources:Minimize}" />
                                 </Button.ToolTip>
                             </Button>
-                            <Button Style="{StaticResource CloseButton}"
-									Click="CloseApp">
+                            <Button Style="{StaticResource CloseButton}" Click="CloseApp">
                                 <Button.ToolTip>
-                                    <ToolTip Style="{x:Null}"
-											 Content="{lex:LocText FreeDriverScout:Resources:Close}" />
+                                    <ToolTip Style="{x:Null}" Content="{lex:LocText FreeDriverScout:Resources:Close}" />
                                 </Button.ToolTip>
                             </Button>
                         </DockPanel>

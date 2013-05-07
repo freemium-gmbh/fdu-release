@@ -59,7 +59,14 @@
 					  Offset="1" />
 	</LinearGradientBrush>
 
-	<LinearGradientBrush x:Key="ButtonBorder"
+    <LinearGradientBrush x:Key="ButtonDisabled"
+						 EndPoint="0.5,1"
+						 StartPoint="0.5,0">
+        <GradientStop Color="#FFe0e0e0" Offset="0" />
+        <GradientStop Color="#FFa0a0a0" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="ButtonBorder"
 						 EndPoint="0.5,1"
 						 StartPoint="0.5,0">
 		<GradientStop Color="#FF0099B7"
@@ -68,7 +75,15 @@
 					  Offset="1" />
 	</LinearGradientBrush>
 
-	<LinearGradientBrush x:Key="ButtonInnerBorder"
+
+    <LinearGradientBrush x:Key="ButtonBorderDisabled"
+						 EndPoint="0.5,1"
+						 StartPoint="0.5,0">
+        <GradientStop Color="#FFA0A0A0" Offset="0" />
+        <GradientStop Color="#FF404040" Offset="1" />
+    </LinearGradientBrush>
+    
+    <LinearGradientBrush x:Key="ButtonInnerBorder"
 						 EndPoint="0.5,1"
 						 StartPoint="0.5,0">
 		<GradientStop Color="#26D7EC"
@@ -435,42 +450,24 @@
 		</Setter>
 	</Style>
 
-	<Style x:Key="BlueRoundedButton"
-		   TargetType="{x:Type Button}">
-		<Setter Property="Width"
-				Value="182" />
-		<Setter Property="Height"
-				Value="43" />
-		<Setter Property="Control.HorizontalAlignment"
-				Value="Left" />
-		<Setter Property="Control.VerticalAlignment"
-				Value="Top" />
-		<Setter Property="Control.HorizontalContentAlignment"
-				Value="Center" />
-		<Setter Property="Control.VerticalContentAlignment"
-				Value="Top" />
-		<Setter Property="Panel.Background"
-				Value="{StaticResource ButtonBackground}" />
-		<Setter Property="TextElement.FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
-		<Setter Property="TextElement.FontSize"
-				Value="17" />
-		<Setter Property="TextElement.FontWeight"
-				Value="Bold" />
-		<Setter Property="Border.BorderBrush"
-				Value="{StaticResource ButtonBorder}" />
-		<Setter Property="Border.BorderThickness"
-				Value="1" />
-		<Setter Property="TextElement.Foreground"
-				Value="#FFFFFF" />
-		<Setter Property="Control.Padding"
-				Value="0,6,0,0" />
-		<Setter Property="SnapsToDevicePixels"
-				Value="True" />
-		<Setter Property="FrameworkElement.Margin"
-				Value="0,4,0,0" />
-		<Setter Property="FocusVisualStyle"
-				Value="{x:Null}" />
+	<Style x:Key="BlueRoundedButton" TargetType="{x:Type Button}">
+		<Setter Property="Width" Value="182" />
+		<Setter Property="Height" Value="43" />
+		<Setter Property="Control.HorizontalAlignment" Value="Left" />
+		<Setter Property="Control.VerticalAlignment" Value="Top" />
+		<Setter Property="Control.HorizontalContentAlignment" Value="Center" />
+		<Setter Property="Control.VerticalContentAlignment" Value="Top" />
+		<Setter Property="Panel.Background" Value="{StaticResource ButtonBackground}" />
+		<Setter Property="TextElement.FontFamily" Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+		<Setter Property="TextElement.FontSize" Value="17" />
+		<Setter Property="TextElement.FontWeight" Value="Bold" />
+		<Setter Property="Border.BorderBrush" Value="{StaticResource ButtonBorder}" />
+		<Setter Property="Border.BorderThickness" Value="1" />
+		<Setter Property="TextElement.Foreground" Value="#FFFFFF" />
+		<Setter Property="Control.Padding" Value="0,6,0,0" />
+		<Setter Property="SnapsToDevicePixels" Value="True" />
+		<Setter Property="FrameworkElement.Margin" Value="0,4,0,0" />
+		<Setter Property="FocusVisualStyle" Value="{x:Null}" />
 		<Setter Property="Effect">
 			<Setter.Value>
 				<DropShadowEffect Direction="-90"
@@ -487,7 +484,8 @@
 							Background="{TemplateBinding Panel.Background}"
 							BorderBrush="{TemplateBinding Border.BorderBrush}"
 							BorderThickness="{TemplateBinding Border.BorderThickness}"
-							CornerRadius="20">
+							CornerRadius="20"
+                            Name="Outer">
 						<Border CornerRadius="20"
 								BorderThickness="0,1,0,0"
 								BorderBrush="{StaticResource ButtonInnerBorder}"
@@ -508,13 +506,18 @@
 					</Border>
 
 					<ControlTemplate.Triggers>
-						<Trigger Property="UIElement.IsMouseOver"
-								 Value="True">
+						<Trigger Property="UIElement.IsMouseOver" Value="True">
 							<Setter TargetName="Inner"
 									Property="Panel.Background"
 									Value="{StaticResource ButtonMouseOver}" />
 						</Trigger>
-					</ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Foreground" Value="#F0F0F0" />
+                            <Setter TargetName="Inner" Property="Background" Value="{StaticResource ButtonDisabled}" />
+                            <Setter TargetName="Inner" Property="BorderBrush" Value="#AAA0A0A0" />
+                            <Setter TargetName="Outer" Property="BorderBrush" Value="{StaticResource ButtonBorderDisabled}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
 
 				</ControlTemplate>
 			</Setter.Value>

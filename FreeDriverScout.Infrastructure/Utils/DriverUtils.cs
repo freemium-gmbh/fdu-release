@@ -119,12 +119,7 @@ namespace FreeDriverScout.Utils
 
                 // Check if driver exists
                 String windir = Environment.GetEnvironmentVariable("windir") + "\\";
-
                 String driverStorePath = windir + "System32\\DriverStore\\FileRepository";
-
-                RegistryKey currentVersion = Registry.LocalMachine.OpenSubKey(@"SOFTWARE").OpenSubKey("Microsoft").OpenSubKey("Windows").OpenSubKey("CurrentVersion");
-                String[] devicePaths = currentVersion.GetValue("DevicePath").ToString().Split(';');
-                String devicePath = devicePaths[0];
 
                 if (Directory.Exists(driverStorePath))
                 {
@@ -140,6 +135,9 @@ namespace FreeDriverScout.Utils
                 {
                     // DevicePath (Windows Server 2003, Windows XP, and Windows 2000)
 
+                    RegistryKey currentVersion = Registry.LocalMachine.OpenSubKey(@"SOFTWARE").OpenSubKey("Microsoft").OpenSubKey("Windows").OpenSubKey("CurrentVersion");
+                    String[] devicePaths = currentVersion.GetValue("DevicePath").ToString().Split(';');
+                    String devicePath = devicePaths[0];
 
                     // Backup inf file
                     String infFilePath = Path.Combine(devicePath, infFileName);

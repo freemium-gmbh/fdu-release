@@ -339,6 +339,13 @@ namespace FreeDriverScout.ViewModels
                 switch (backupType)
                 {
                     case BackupType.ManualFull:
+
+                        if (GroupedDevices.Count == 0)
+                        {
+                            WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("DriverListLoadingText"), WPFLocalizeExtensionHelpers.GetUIString("DriverListLoading"), MessageBoxButton.OK, MessageBoxImage.Warning);
+                            break;
+                        }
+
                         ThreadPool.QueueUserWorkItem(x => RunBackup(GroupedDevices, BackupType.ManualFull));
                         break;
 

@@ -394,6 +394,24 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Driver list is still loading ähnelt.
+        /// </summary>
+        internal static string DriverListLoading {
+            get {
+                return ResourceManager.GetString("DriverListLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The driver list is still being loaded in the background. Please wait a moment and then try the backup again. ähnelt.
+        /// </summary>
+        internal static string DriverListLoadingText {
+            get {
+                return ResourceManager.GetString("DriverListLoadingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Backup of {0} drivers is completed. ähnelt.
         /// </summary>
         internal static string DriversBackupedSuccesfully {

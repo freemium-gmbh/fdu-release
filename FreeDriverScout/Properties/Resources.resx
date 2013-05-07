@@ -596,4 +596,10 @@ Select the folder for driver downloads</value>
   <data name="RestoreFailedText" xml:space="preserve">
     <value>Unfortunately the restore of the selected drivers failed.</value>
   </data>
+  <data name="DriverListLoading" xml:space="preserve">
+    <value>Driver list is still loading</value>
+  </data>
+  <data name="DriverListLoadingText" xml:space="preserve">
+    <value>The driver list is still being loaded in the background. Please wait a moment and then try the backup again.</value>
+  </data>
 </root>

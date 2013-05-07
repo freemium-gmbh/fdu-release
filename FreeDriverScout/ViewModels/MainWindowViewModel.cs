@@ -1150,13 +1150,19 @@ namespace FreeDriverScout.ViewModels
 
             Thread thread = new Thread(delegate()
             {
-                DUSDKHandler.DUSDK_scanDeviceDriversForUpdates(
-                    progressCallback,
-                    szProductKey,
-                    szAppDataLoc,
-                    szTempLoc,
-                    szRegistryLoc,
-                    dwScanFlag);
+                try
+                {
+                    DUSDKHandler.DUSDK_scanDeviceDriversForUpdates(
+                        progressCallback,
+                        szProductKey,
+                        szAppDataLoc,
+                        szTempLoc,
+                        szRegistryLoc,
+                        dwScanFlag);
+                }
+                catch (Exception)
+                {
+                }
 
                 if(cancelEvtArgs != null) cancelEvtArgs.Set();
             });
@@ -1999,7 +2005,13 @@ namespace FreeDriverScout.ViewModels
                     CancelFn = DUSDKHandler.DefineConstants.CANCEL_INSTALL;
                 }
 
-                retval = DUSDKHandler.DUSDK_cancelOperation(CancelFn);
+                try
+                {
+                    retval = DUSDKHandler.DUSDK_cancelOperation(CancelFn);
+                }
+                catch (Exception)
+                {
+                }
                 //this.UIThread(() => btnCancel.Enabled = true);
                 //});
                 //th.Start();

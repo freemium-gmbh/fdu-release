@@ -343,7 +343,7 @@
     <value>SELECT DRIVERS FOR BACKUP</value>
   </data>
   <data name="SelectDriversForBackupFooter" xml:space="preserve">
-    <value>Why should i create Backups?</value>
+    <value>Why should I create Backups?</value>
   </data>
   <data name="SelectDriversForBackupFooterText" xml:space="preserve">
     <value>Remove the exclusions you created in the Driver Scan</value>
@@ -379,7 +379,7 @@
     <value>Wednesday</value>
   </data>
   <data name="WhyCreateBackups" xml:space="preserve">
-    <value>Why should i create Backups?</value>
+    <value>Why should I create Backups?</value>
   </data>
   <data name="WhyCreateBackupsText" xml:space="preserve">
     <value>Remove the exclusions you created in the Driver Scan</value>

@@ -1195,7 +1195,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Why should i create Backups? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Why should I create Backups? ähnelt.
         /// </summary>
         internal static string SelectDriversForBackupFooter {
             get {
@@ -1467,7 +1467,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Why should i create Backups? ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Why should I create Backups? ähnelt.
         /// </summary>
         internal static string WhyCreateBackups {
             get {

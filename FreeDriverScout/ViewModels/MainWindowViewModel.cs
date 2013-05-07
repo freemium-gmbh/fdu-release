@@ -340,7 +340,7 @@ namespace FreeDriverScout.ViewModels
                 {
                     case BackupType.ManualFull:
 
-                        if (GroupedDevices.Count == 0)
+                        if (!deviceListReadyForBackup)
                         {
                             WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("DriverListLoadingText"), WPFLocalizeExtensionHelpers.GetUIString("DriverListLoading"), MessageBoxButton.OK, MessageBoxImage.Warning);
                             break;
@@ -705,6 +705,8 @@ namespace FreeDriverScout.ViewModels
         DriverData[] driverData = null;
         int nTotalDrivers = 0;
         bool silentUpdate = false;
+
+        bool deviceListReadyForBackup = false;
 
         BackgroundWorker bgScan;
         BackgroundWorker bgUpdate;
@@ -2109,6 +2111,8 @@ namespace FreeDriverScout.ViewModels
             OrderedDeviceGroups.SortDescriptions.Clear();
             OrderedDeviceGroups.SortDescriptions.Add(new SortDescription("Order", ListSortDirection.Ascending));
             OrderedDeviceGroups.Refresh();
+
+            deviceListReadyForBackup = true;
         }
 
         void SaveExcludedDevicesToXML()

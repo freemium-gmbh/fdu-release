@@ -304,7 +304,7 @@
     <value>Restore</value>
   </data>
   <data name="RestoreText" xml:space="preserve">
-    <value>Restore system drivers to one of the backups that you created earlier.</value>
+    <value>Restore system drivers of one of the backups that you created earlier.</value>
   </data>
   <data name="Saturday" xml:space="preserve">
     <value>Saturday</value>
@@ -346,7 +346,7 @@
     <value>Why should I create Backups?</value>
   </data>
   <data name="SelectDriversForBackupFooterText" xml:space="preserve">
-    <value>Remove the exclusions you created in the Driver Scan</value>
+    <value>You can restore these driver later if needed</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status:</value>
@@ -507,7 +507,7 @@ Select the folder for driver downloads</value>
     <value>OS Migration Tool</value>
   </data>
   <data name="RootUrl" xml:space="preserve">
-    <value>http://www.freemium.com/fdu</value>
+    <value>http://freemium.com/free-driver-scout/</value>
   </data>
   <data name="About" xml:space="preserve">
     <value>About</value>

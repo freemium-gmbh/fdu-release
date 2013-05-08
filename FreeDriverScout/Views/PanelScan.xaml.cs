@@ -45,6 +45,7 @@ namespace FreeDriverScout.Views
                 DaysFromLastScan.Text = WPFLocalizeExtensionHelpers.GetUIString("Today");
                 DaysAgoText.Visibility = System.Windows.Visibility.Hidden;
                 Gradient.Visibility = Visibility.Collapsed;
+                MoreThan.Visibility = Visibility.Collapsed;
                 return;
             }
 

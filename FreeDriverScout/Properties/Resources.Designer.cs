@@ -997,7 +997,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Restore system drivers to one of the backups that you created earlier. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Restore system drivers of one of the backups that you created earlier. ähnelt.
         /// </summary>
         internal static string RestoreText {
             get {
@@ -1006,7 +1006,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die http://www.freemium.com/fdu ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die http://freemium.com/free-driver-scout/ ähnelt.
         /// </summary>
         internal static string RootUrl {
             get {
@@ -1204,7 +1204,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Remove the exclusions you created in the Driver Scan ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can restore these driver later if needed ähnelt.
         /// </summary>
         internal static string SelectDriversForBackupFooterText {
             get {

@@ -29,7 +29,11 @@ namespace FreeDriverScout.Views
         public PanelPreferences()
         {
             InitializeComponent();
-            LanguagesList.SelectedIndex = langIndex[CfgFile.Get("Lang")];
+
+            var lang = CfgFile.Get("Lang");
+            if (!langIndex.ContainsKey(lang)) lang = "en-US";
+
+            LanguagesList.SelectedIndex = langIndex[lang];
             MinToTray.IsChecked = CfgFile.Get("MinimizeToTray") == "1";
             object regValue = null;
             try

@@ -181,7 +181,7 @@
     <value>Tag:</value>
   </data>
   <data name="DaysAgo" xml:space="preserve">
-    <value>Tage alt</value>
+    <value>Tage her</value>
   </data>
   <data name="DownloadComplete" xml:space="preserve">
     <value>Download abgeschlossen</value>
@@ -211,7 +211,7 @@
     <value>Treiber Scan</value>
   </data>
   <data name="DriverScanResults" xml:space="preserve">
-    <value>Ergebnisse der  Treibersuche</value>
+    <value>Ergebnisse der Treibersuche</value>
   </data>
   <data name="DriversDownloaded" xml:space="preserve">
     <value>Treiber heruntergeladen</value>
@@ -474,7 +474,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Warum sollte ich Backups erstellen?</value>
   </data>
   <data name="WhyCreateBackupsText" xml:space="preserve">
-    <value>Entfernen Sie Ausschlüsse in der Treiber Suche</value>
+    <value>Sie können diese Treiber später, falls nötig, wiederherstellen</value>
   </data>
   <data name="WindowsStartup" xml:space="preserve">
     <value>Windows Startverhalten:</value>

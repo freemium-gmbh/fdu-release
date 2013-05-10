@@ -42,8 +42,7 @@ namespace FreeDriverScout
             this.Resources.MergedDictionaries.Add(Application.LoadComponent(new Uri("/FreeDriverScout.Infrastructure;component/CommonStyles/SocialButtonStyles.xaml", UriKind.Relative)) as ResourceDictionary);
             this.Resources.MergedDictionaries.Add(Application.LoadComponent(new Uri("/FreeDriverScout.Infrastructure;component/WPFMessageBox/Themes/Generic.xaml", UriKind.Relative)) as ResourceDictionary);
 
-            this.DispatcherUnhandledException += new System.Windows.Threading.DispatcherUnhandledExceptionEventHandler(Application_DispatcherUnhandledException);
-
+     
             startMinimized = false;
             Click1 = false;
 
@@ -87,10 +86,6 @@ namespace FreeDriverScout
             }
         }
 
-        private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            e.Handled = true;
-            Process.GetCurrentProcess().Kill();
-        }
+        
     }
 }

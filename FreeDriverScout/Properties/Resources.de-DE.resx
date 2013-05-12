@@ -133,7 +133,7 @@
     <value>Backup fertig</value>
   </data>
   <data name="BackupFinishedText" xml:space="preserve">
-    <value>Sie können bei Bedarf die Treiber wiederherstellen.</value>
+    <value>Sie können diese Treiber bei Bedarf wiederherstellen.</value>
   </data>
   <data name="BackupRadioBtnTitle" xml:space="preserve">
     <value>Backup</value>
@@ -409,7 +409,7 @@
     <value>Warum sollte ich Backups erstellen?</value>
   </data>
   <data name="SelectDriversForBackupFooterText" xml:space="preserve">
-    <value>Sie können diese Treiber später, falls nötig, wiederherstellen</value>
+    <value>Sie können diese Treiber bei Bedarf wiederherstellen.</value>
   </data>
   <data name="SelectDriversForRestore" xml:space="preserve">
     <value>Treiber für die Wiederherstellung auswählen</value>
@@ -462,7 +462,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Aktualisieren</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>version</value>
+    <value>Version</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Mittwoch</value>

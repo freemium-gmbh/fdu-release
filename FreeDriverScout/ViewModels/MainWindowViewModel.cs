@@ -521,7 +521,7 @@ namespace FreeDriverScout.ViewModels
             DeviceInfo device = AllDevices.FirstOrDefault(d => d.Id == (string)id);
             if (device != null)
             {
-                MessageBoxResult result = WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format(WPFLocalizeExtensionHelpers.GetUIString("Exclude") + " {0} " + WPFLocalizeExtensionHelpers.GetUIString("FromScans"), device.DeviceName), WPFLocalizeExtensionHelpers.GetUIString("ExcludeDevice"), MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, String.Format(WPFLocalizeExtensionHelpers.GetUIString("ExcludeFromScansQuestion"), device.DeviceName), WPFLocalizeExtensionHelpers.GetUIString("ExcludeDevice"), MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     var item = DevicesForScanning.FirstOrDefault(d => d.Id == device.Id);

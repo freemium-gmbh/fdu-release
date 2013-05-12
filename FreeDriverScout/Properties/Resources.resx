@@ -181,7 +181,7 @@
     <value>Driver Info</value>
   </data>
   <data name="DriversBackupedSuccesfully" xml:space="preserve">
-    <value>Backup of {0} drivers is completed.</value>
+    <value>Backup of {0} driver(s) is completed.</value>
   </data>
   <data name="DriverScan" xml:space="preserve">
     <value>Driver Scan</value>
@@ -283,7 +283,7 @@
     <value>Manage application settings</value>
   </data>
   <data name="PreferencesFooterText" xml:space="preserve">
-    <value>You can edit applications preferences and settings from this panel</value>
+    <value>You can edit applications preferences and settings from this panel.</value>
   </data>
   <data name="RebootLater" xml:space="preserve">
     <value>Reboot later</value>
@@ -408,14 +408,11 @@
   <data name="CheckPreferences" xml:space="preserve">
     <value>Check Preferences</value>
   </data>
-  <data name="Exclude" xml:space="preserve">
-    <value>Exclude</value>
+  <data name="ExcludeFromScansQuestion" xml:space="preserve">
+    <value>Exclude "{0}" from scans?</value>
   </data>
   <data name="ExcludeDevice" xml:space="preserve">
     <value>Exclude device</value>
-  </data>
-  <data name="FromScans" xml:space="preserve">
-    <value>from scans?</value>
   </data>
   <data name="ContactingServer" xml:space="preserve">
     <value>Contacting Server to check updates</value>
@@ -486,7 +483,7 @@ Select the folder for driver downloads</value>
     <value>Installing driver for:</value>
   </data>
   <data name="OutdatedDriversUpdated" xml:space="preserve">
-    <value>Outdated drivers updated!</value>
+    <value>outdated driver(s) updated!</value>
   </data>
   <data name="InitialLoading" xml:space="preserve">
     <value>Loading...</value>
@@ -531,7 +528,7 @@ Select the folder for driver downloads</value>
     <value>Starting to update driver</value>
   </data>
   <data name="DriverDetailInfoPopupTitle" xml:space="preserve">
-    <value>Driver Information Details</value>
+    <value>Driver Details</value>
   </data>
   <data name="DetailCurrentDriverDate" xml:space="preserve">
     <value>Date of current version:</value>
@@ -588,7 +585,7 @@ Select the folder for driver downloads</value>
     <value>Yes</value>
   </data>
   <data name="DriverExcluded" xml:space="preserve">
-    <value>{0} excluded from scans</value>
+    <value>"{0}" excluded from scans</value>
   </data>
   <data name="RestoreFailedCaption" xml:space="preserve">
     <value>Restore failed</value>

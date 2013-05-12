@@ -138,9 +138,11 @@ namespace FreeDriverScout
 
         void MinimizeApp(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
-            if (CfgFile.Get("MinimizeToTray") == "1")
-                Hide();
+            // We only want to minimize app to try in case of close button.
+
+            //WindowState = WindowState.Minimized;
+            //if (CfgFile.Get("MinimizeToTray") == "1")
+            //    Hide();
         }
 
         #endregion

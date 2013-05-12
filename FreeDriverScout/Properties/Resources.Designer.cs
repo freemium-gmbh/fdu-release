@@ -349,7 +349,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Driver Information Details ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Driver Details ähnelt.
         /// </summary>
         internal static string DriverDetailInfoPopupTitle {
             get {
@@ -376,7 +376,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die {0} excluded from scans ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die &quot;{0}&quot; excluded from scans ähnelt.
         /// </summary>
         internal static string DriverExcluded {
             get {
@@ -412,7 +412,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Backup of {0} drivers is completed. ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Backup of {0} driver(s) is completed. ähnelt.
         /// </summary>
         internal static string DriversBackupedSuccesfully {
             get {
@@ -493,15 +493,6 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Exclude ähnelt.
-        /// </summary>
-        internal static string Exclude {
-            get {
-                return ResourceManager.GetString("Exclude", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Exclude device ähnelt.
         /// </summary>
         internal static string ExcludeDevice {
@@ -516,6 +507,15 @@ namespace FreeDriverScout.Properties {
         internal static string ExcludeFromScans {
             get {
                 return ResourceManager.GetString("ExcludeFromScans", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Exclude &quot;{0}&quot; from scans? ähnelt.
+        /// </summary>
+        internal static string ExcludeFromScansQuestion {
+            get {
+                return ResourceManager.GetString("ExcludeFromScansQuestion", resourceCulture);
             }
         }
         
@@ -579,15 +579,6 @@ namespace FreeDriverScout.Properties {
         internal static string Friday {
             get {
                 return ResourceManager.GetString("Friday", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die from scans? ähnelt.
-        /// </summary>
-        internal static string FromScans {
-            get {
-                return ResourceManager.GetString("FromScans", resourceCulture);
             }
         }
         
@@ -871,7 +862,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Outdated drivers updated! ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die outdated driver(s) updated! ähnelt.
         /// </summary>
         internal static string OutdatedDriversUpdated {
             get {
@@ -907,7 +898,7 @@ namespace FreeDriverScout.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die You can edit applications preferences and settings from this panel ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die You can edit applications preferences and settings from this panel. ähnelt.
         /// </summary>
         internal static string PreferencesFooterText {
             get {

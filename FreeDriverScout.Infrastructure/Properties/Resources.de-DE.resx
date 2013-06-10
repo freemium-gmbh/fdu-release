@@ -120,6 +120,9 @@
   <data name="Cancel" xml:space="preserve">
     <value>Abbrechen</value>
   </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Fortfahren</value>
+  </data>
   <data name="No" xml:space="preserve">
     <value>Nein</value>
   </data>

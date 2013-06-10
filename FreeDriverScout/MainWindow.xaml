@@ -96,6 +96,7 @@
                             <ComboBox Style="{StaticResource ComboboxStyle}"
 									  SelectionChanged="OptionChanged">
                                 <ComboBoxItem Content="{lex:LocText FreeDriverScout:Resources:Preferences}"></ComboBoxItem>
+                                <ComboBoxItem Content="{lex:LocText FreeDriverScout:Resources:RunOSMigrationTool}"></ComboBoxItem>
                                 <ComboBoxItem Content="{lex:LocText FreeDriverScout:Resources:FeedbackReport}"></ComboBoxItem>
                             </ComboBox>
                             <Button Style="{StaticResource MinimizeButton}" Click="MinimizeApp">
@@ -285,9 +286,9 @@
 						  Visibility="Hidden">
 
                         <views:PanelBackupAndRestore HorizontalAlignment="Left"
-													 VerticalAlignment="Top"
-													 Visibility="{Binding Path=BackupStatus, Converter={StaticResource BackupStatusEqualsToVisibilityConverter}, ConverterParameter={x:Static models:BackupStatus.NotStarted}}" 
-                                                     IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}" />
+													 VerticalAlignment="Top"													 
+                                                     IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}" 
+                                                     Visibility="{Binding Path=BackupStatus, Converter={StaticResource BackupStatusEqualsToVisibilityConverter}, ConverterParameter={x:Static models:BackupStatus.NotStarted}}"/>
 
                         <views:PanelBackupTargetsSelection HorizontalAlignment="Left"
 														   VerticalAlignment="Top"

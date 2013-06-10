@@ -133,7 +133,7 @@
     <value>Backup fertig</value>
   </data>
   <data name="BackupFinishedText" xml:space="preserve">
-    <value>Sie können diese Treiber bei Bedarf wiederherstellen.</value>
+    <value>Entfernen Sie die Ausschlussliste in der Treibersuche</value>
   </data>
   <data name="BackupRadioBtnTitle" xml:space="preserve">
     <value>Backup</value>
@@ -205,7 +205,7 @@
     <value>Treiberinformationen</value>
   </data>
   <data name="DriversBackupedSuccesfully" xml:space="preserve">
-    <value>Backup von {0} Treiber(n) abgeschlossen.</value>
+    <value>Backup von {0} Treibern abgeschlossen.</value>
   </data>
   <data name="DriverScan" xml:space="preserve">
     <value>Treiber Scan</value>
@@ -231,8 +231,8 @@
   <data name="EveryWeek" xml:space="preserve">
     <value>Wöchentlich</value>
   </data>
-  <data name="ExcludeFromScansQuestion" xml:space="preserve">
-    <value>"{0}" von Suche ausschließen?</value>
+  <data name="Exclude" xml:space="preserve">
+    <value>Ausschließen</value>
   </data>
   <data name="ExcludeDevice" xml:space="preserve">
     <value>Laufwerk ausschließen</value>
@@ -251,6 +251,9 @@
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Freitag</value>
+  </data>
+  <data name="FromScans" xml:space="preserve">
+    <value>von Scans?</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Hilfe</value>
@@ -310,7 +313,7 @@
     <value>Optionen</value>
   </data>
   <data name="OutdatedDriversFound" xml:space="preserve">
-    <value>veraltete(r) Treiber gefunden</value>
+    <value>veraltete Treiber gefunden</value>
   </data>
   <data name="PostOn" xml:space="preserve">
     <value>Sende dies an:</value>
@@ -319,10 +322,10 @@
     <value>Einstellungen</value>
   </data>
   <data name="PreferencesFooter" xml:space="preserve">
-    <value>Anwendungseinstellungen bearbeiten</value>
+    <value>Verwalten von Anwendungseinstellungen</value>
   </data>
   <data name="PreferencesFooterText" xml:space="preserve">
-    <value>In diesem Bereich können Sie die Anwendungseinstellungen bearbeiten.</value>
+    <value>Sie können Anwendungen und Einstellungen aus diesem Bereich bearbeiten</value>
   </data>
   <data name="RebootLater" xml:space="preserve">
     <value>Später neu starten  </value>
@@ -409,7 +412,7 @@
     <value>Warum sollte ich Backups erstellen?</value>
   </data>
   <data name="SelectDriversForBackupFooterText" xml:space="preserve">
-    <value>Sie können diese Treiber bei Bedarf wiederherstellen.</value>
+    <value>Sie können diese Treiber später, falls nötig, wiederherstellen</value>
   </data>
   <data name="SelectDriversForRestore" xml:space="preserve">
     <value>Treiber für die Wiederherstellung auswählen</value>
@@ -459,10 +462,10 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Dienstag</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Aktualisieren</value>
+    <value>Update</value>
   </data>
   <data name="Version" xml:space="preserve">
-    <value>Version</value>
+    <value>version</value>
   </data>
   <data name="Wednesday" xml:space="preserve">
     <value>Mittwoch</value>
@@ -483,7 +486,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Installation von Treiber für:</value>
   </data>
   <data name="OutdatedDriversUpdated" xml:space="preserve">
-    <value>veraltete(r) Treiber wurde(n) aktualisiert!</value>
+    <value>veraltete Treiber wurden aktualisiert!</value>
   </data>
   <data name="InitialLoading" xml:space="preserve">
     <value>Loading...</value>
@@ -525,7 +528,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Starting to update driver</value>
   </data>
   <data name="DriverDetailInfoPopupTitle" xml:space="preserve">
-    <value>Treiberdetails</value>
+    <value>Driver Information Einzelheiten</value>
   </data>
   <data name="DetailName" xml:space="preserve">
     <value>Name:</value>
@@ -558,7 +561,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Link kann nicht automatisch geöffnet werden</value>
   </data>
   <data name="DownloadStatus" xml:space="preserve">
-    <value>{0} von {1} wurden heruntergeladen</value>
+    <value>Heruntergeladene {0} von {1}</value>
   </data>
   <data name="GoogleMargin" xml:space="preserve">
     <value>-67</value>
@@ -567,7 +570,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>-40</value>
   </data>
   <data name="UpdateFailed" xml:space="preserve">
-    <value>Treiber-Update fehlgeschlagen für Treiber:</value>
+    <value>Treiber-Update fehlgeschlagen für Fahrer:</value>
   </data>
   <data name="SelectDriversToBackup" xml:space="preserve">
     <value>Bitte wählen Sie mindestens einen Treiber zum Sichern aus.</value>
@@ -585,7 +588,7 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
     <value>Ja</value>
   </data>
   <data name="DriverExcluded" xml:space="preserve">
-    <value>"{0}" für zukünftige Scans ausgeschlossen</value>
+    <value>{0} von Scans ausgeschlossen</value>
   </data>
   <data name="RestoreFailedCaption" xml:space="preserve">
     <value>Wiederherstellung fehlgeschlagen</value>
@@ -598,5 +601,12 @@ Wählen Sie einen Ordner für heruntergeladene Treiber</value>
   </data>
   <data name="DriverListLoadingText" xml:space="preserve">
     <value>Die Treiber-Liste wird noch im Hintergrund geladen. Bitte warten Sie einen Moment und versuchen Sie das Backup dann erneut.</value>
+  </data>
+  <data name="BeforeDriverUpdateMessage" xml:space="preserve">
+    <value>Bitte schließen Sie alle offenen Programme bevor Sie mit dem Treiber-Update fortfahren.
+Es ist möglich, dass der Bildschirm während des Updates kurzzeitig schwarz wird.</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Fortfahren</value>
   </data>
 </root>

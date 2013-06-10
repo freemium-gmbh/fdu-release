@@ -121,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="Engine\MarshalHelper.cs" />
     <Compile Include="Models\BackupType.cs" />
     <Compile Include="Models\BackupItem.cs" />
     <Compile Include="Models\BackupStatus.cs" />
@@ -164,7 +163,6 @@
     <Compile Include="Routine\UIUtils.cs" />
     <Compile Include="Routine\VisibilityAnimation.cs" />
     <Compile Include="Routine\WPFLocalizeExtensionHelpers.cs" />
-    <Compile Include="Engine\DUSDKHandler.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\AboutBox.xaml.cs">
       <DependentUpon>AboutBox.xaml</DependentUpon>
@@ -214,9 +212,6 @@
     <Compile Include="Views\RoundedProgressBar\Shapes\PiePiece.cs" />
     <Compile Include="Views\RoundedProgressBar\Util\Utils.cs" />
     <Compile Include="WindowsFormsApp.cs" />
-    <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -336,39 +331,6 @@
     <Resource Include="Images\bg-logo-flame.png" />
     <Resource Include="Images\bg-logo.png" />
     <Resource Include="Images\loading.gif" />
-    <Content Include="stduhelper32.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="stduhelper64.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="unrar.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="updater\amd64Helper\difxapi.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="updater\amd64Helper\DriverUpdateHelper64.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="updater\extract\7z.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="updater\extract\7z.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Resource Include="updater\extract\copying.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="updater\extract\History.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="updater\extract\license.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="updater\extract\readme.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\bg-circular-gradient.jpg" />
     <Resource Include="Images\bg-logo-small.png" />
     <Resource Include="Images\bg-noise.png" />
@@ -472,7 +434,6 @@
     <ProjectReference Include="..\FreeDriverScout.Infrastructure\FreeDriverScout.Infrastructure.csproj">
       <Project>{0F189452-C6DC-4F4B-8F61-97965DF89F6C}</Project>
       <Name>FreeDriverScout.Infrastructure</Name>
-      <Private>False</Private>
     </ProjectReference>
     <ProjectReference Include="..\FreemiumUtil\FreemiumUtil.csproj">
       <Project>{627DA6B0-C19A-47FB-8173-DBDBBD445938}</Project>
@@ -483,13 +444,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (
-  if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
-    copy "$(SolutionDir)FreeDriverScout\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
-  ) else (
-    copy "$(SolutionDir)FreeDriverScout\stduhelper32.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
-  )
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- <Import Project="$(MSBuildExtensionsPath)\Microsoft\Expression\Blend\.NETFramework\v4.0\Microsoft.Expression.Blend.WPF.targets" />
   To modify your build process, add your task inside one of the targets below and uncomment it. 

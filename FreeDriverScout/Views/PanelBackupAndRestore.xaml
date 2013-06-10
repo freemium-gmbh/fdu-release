@@ -5,6 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:lex="clr-namespace:WPFLocalizeExtension.Extensions;assembly=WPFLocalizeExtension"
 			 xmlns:routine="clr-namespace:FreeDriverScout.Routine"
+             xmlns:models="clr-namespace:FreeDriverScout.Models"
 			 mc:Ignorable="d"
 			 d:DesignHeight="293"
 			 d:DesignWidth="655"
@@ -13,6 +14,8 @@
 	<UserControl.Resources>
 		<routine:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         <routine:ScanStatusToVisibilityConverter x:Key="ScanStatusToVisibilityConverter" />
+        <routine:FullBackupProgressPercentageConverter x:Key="FullBackupProgressPercentageConverter" />
+        <routine:BackupStatusEqualsToVisibilityConverter x:Key="BackupStatusEqualsToVisibilityConverter" />
     </UserControl.Resources>
     <Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.ColumnDefinitions>
@@ -120,14 +123,43 @@
 					<ColumnDefinition Width="194" />
 				</Grid.ColumnDefinitions>
 				<Image Style="{StaticResource FunctionalButtonImage}"
+                       Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"
 					   Margin="10,6,0,0"
 					   Source="../Images/icon-lamp.png" />
 				<Grid Grid.Column="1"
 					  VerticalAlignment="Top">
-					<TextBlock Style="{StaticResource BottomPanelTitle}"
-							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackups}"></TextBlock>
+                    <Border Style="{StaticResource ProgressBarOuther}" Width="380" HorizontalAlignment="Left" 
+                        Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}}" >
+                        <Border Style="{StaticResource ProgressBarWrap}">
+                            <Border Style="{StaticResource ProgressBarContainer}">
+
+                                <!--  Green animated ProgressBar  -->
+                                <Border 
+										Width="{Binding Path=Progress, Converter={StaticResource FullBackupProgressPercentageConverter}}"
+										Style="{StaticResource ProgressBarGreen}">
+                                    <!-- Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">
+									needed to activate Visibility changed trigger to start animation -->
+                                    <Border x:Name="GreenProgressBar" Style="{StaticResource ProgressBarInnerAnimated}"
+											Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">
+                                        <Border BorderThickness="0,1,0,0"
+												BorderBrush="#CADF84">
+                                        </Border>
+                                        <Border.RenderTransform>
+                                            <TranslateTransform X="0"
+																Y="0" />
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Border>
+                            </Border>
+                        </Border>
+                    </Border>
+                    
+                    <TextBlock Style="{StaticResource BottomPanelTitle}"
+							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackups}"
+                               Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"></TextBlock>
 					<TextBlock Style="{StaticResource BottomPanelText}"
-							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackupsText}"></TextBlock>
+							   Text="{lex:LocText FreeDriverScout:Resources:WhyCreateBackupsText}"
+                               Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter=False}"></TextBlock>
                 </Grid>                
 				<Grid Grid.Column="2">
 					<Button Name="BackupButton"

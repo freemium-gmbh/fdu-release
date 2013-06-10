@@ -8,6 +8,7 @@ namespace FreeDriverScout.Models
 	public enum BackupStatus
 	{
 		NotStarted,
+        Started,
 		BackupTargetsSelection,
 		BackupFinished,
 		RestoreTargetsSelection,

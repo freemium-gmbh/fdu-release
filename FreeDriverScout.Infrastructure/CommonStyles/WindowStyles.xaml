@@ -457,7 +457,7 @@
 	<Style x:Key="PanelTitleText"
 		   TargetType="{x:Type TextBlock}">
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="FontSize"
 				Value="21" />
 		<Setter Property="VerticalAlignment"
@@ -519,7 +519,7 @@
 	<Style x:Key="PanelSwitcherText"
 		   TargetType="{x:Type TextBlock}">
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="Foreground"
 				Value="#527686" />
 		<Setter Property="FontSize"
@@ -565,7 +565,7 @@
 		<Setter Property="DockPanel.Dock"
 				Value="Right" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="Foreground"
 				Value="#FFFFFF" />
 		<Setter Property="Opacity"

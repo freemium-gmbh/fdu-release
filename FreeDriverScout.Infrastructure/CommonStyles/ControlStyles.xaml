@@ -301,7 +301,7 @@
 		<Setter Property="Panel.Background"
 				Value="{StaticResource ScanForIssueBackground}" />
 		<Setter Property="TextElement.FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="TextElement.FontSize"
 				Value="18.5" />
 		<Setter Property="TextElement.FontWeight"
@@ -458,7 +458,7 @@
 		<Setter Property="Control.HorizontalContentAlignment" Value="Center" />
 		<Setter Property="Control.VerticalContentAlignment" Value="Top" />
 		<Setter Property="Panel.Background" Value="{StaticResource ButtonBackground}" />
-		<Setter Property="TextElement.FontFamily" Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+        <Setter Property="TextElement.FontFamily" Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="TextElement.FontSize" Value="17" />
 		<Setter Property="TextElement.FontWeight" Value="Bold" />
 		<Setter Property="Border.BorderBrush" Value="{StaticResource ButtonBorder}" />
@@ -1060,7 +1060,7 @@
 		<Setter Property="HorizontalAlignment"
 				Value="Left" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="FontSize"
 				Value="15" />
 		<Setter Property="Foreground"
@@ -1088,7 +1088,7 @@
 		<Setter Property="HorizontalAlignment"
 				Value="Left" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="FontSize"
 				Value="11.75" />
 		<Setter Property="LineHeight"
@@ -1172,7 +1172,7 @@
 		<Setter Property="TextElement.Foreground"
 				Value="#808080" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="TextElement.FontSize"
 				Value="11.74" />
 		<Setter Property="FocusVisualStyle"
@@ -1253,7 +1253,7 @@
 		<Setter Property="TextElement.Foreground"
 				Value="#3F6577" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="TextElement.FontSize"
 				Value="17" />
 	</Style>
@@ -1690,7 +1690,7 @@
 		<Setter Property="HorizontalAlignment"
 				Value="Left" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="FontSize"
 				Value="15" />
 		<Setter Property="Foreground"
@@ -1708,7 +1708,7 @@
 		<Setter Property="HorizontalAlignment"
 				Value="Left" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="FontSize"
 				Value="11.75" />
 		<Setter Property="LineHeight"
@@ -1730,7 +1730,7 @@
 		<Setter Property="Padding"
 				Value="6,3,0,0" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="Foreground"
 				Value="#808080" />
 		<Setter Property="FontWeight"
@@ -1756,7 +1756,7 @@
 		<Setter Property="Foreground"
 				Value="#FF3F6577" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="Margin"
 				Value="2,20,0,0" />
 		<Setter Property="Effect">
@@ -1786,7 +1786,7 @@
 		<Setter Property="Foreground"
 				Value="{StaticResource ElementColor}" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="Height"
 				Value="29" />
 		<Setter Property="Margin"
@@ -1920,7 +1920,7 @@
 		<Setter Property="HorizontalAlignment"
 				Value="Left" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="Foreground"
 				Value="{StaticResource ElementColor}" />
 		<Setter Property="FocusVisualStyle"
@@ -2057,7 +2057,7 @@
 		<Setter Property="Foreground"
 				Value="#4e4e4e" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="FontWeight"
 				Value="Normal" />
 		<Setter Property="FontSize"
@@ -2083,7 +2083,7 @@
 		<Setter Property="FontSize"
 				Value="12.5" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="VerticalAlignment"
 				Value="Top" />
 		<Setter Property="Effect">
@@ -2107,7 +2107,7 @@
 		<Setter Property="FontWeight"
 				Value="Medium" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 65" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 65" />
 		<Setter Property="VerticalAlignment"
 				Value="Top" />
 		<Setter Property="TextWrapping"
@@ -2342,7 +2342,7 @@
 		<Setter Property="Foreground"
 				Value="#FF3F6577" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="Margin"
 				Value="1,10,0,0" />
 	</Style>

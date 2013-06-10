@@ -36,7 +36,7 @@ namespace MessageBoxUtils
             CultureInfo culture,
             string messageBoxText,
             string caption,
-            MessageBoxButton button,
+            WPFMessageBoxButton button,
             MessageBoxImage icon,
             MessageBoxResult defaultResult,
             MessageBoxOptions options)
@@ -122,7 +122,7 @@ namespace MessageBoxUtils
             // disable close button if needed and remove resize menu items from the window system menu
             var systemMenuHelper = new SystemMenuHelper(this);
 
-            if (_viewModel.ButtonOption == MessageBoxButton.YesNo)
+            if (_viewModel.ButtonOption == WPFMessageBoxButton.YesNo)
             {
                 systemMenuHelper.DisableCloseButton = true;
             }

@@ -159,7 +159,7 @@
 		<Setter Property="Padding"
 				Value="6,3,0,0" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 75" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 75" />
 		<Setter Property="Foreground"
 				Value="#4E4E4E" />
 		<Setter Property="FontWeight"
@@ -177,7 +177,7 @@
 		<Setter Property="Padding"
 				Value="4,4,0,0" />
 		<Setter Property="FontFamily"
-				Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+				Value="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55" />
 		<Setter Property="Foreground"
 				Value="#4E4E4E" />
 		<Setter Property="FontWeight"

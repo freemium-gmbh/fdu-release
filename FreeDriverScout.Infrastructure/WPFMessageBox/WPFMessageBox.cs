@@ -80,7 +80,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button)
+        public static MessageBoxResult Show(string messageBoxText, string caption, WPFMessageBoxButton button)
         {
             return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button);
         }
@@ -130,7 +130,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+        public static MessageBoxResult Show(string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon)
         {
             return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon);
         }
@@ -158,7 +158,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, WPFMessageBoxButton button)
         {
             return ShowCore(owner, culture, messageBoxText, caption, button);
         }
@@ -189,7 +189,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
+        public static MessageBoxResult Show(string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
         {
             return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon, defaultResult);
         }
@@ -220,7 +220,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon)
         {
             return ShowCore(owner, culture, messageBoxText, caption, button, icon);
         }
@@ -255,7 +255,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
+        public static MessageBoxResult Show(string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
         {
             return ShowCore(null, new CultureInfo("en-US"), messageBoxText, caption, button, icon, defaultResult, options);
         }
@@ -290,7 +290,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult)
         {
             return ShowCore(owner, culture, messageBoxText, caption, button, icon, defaultResult);
         }
@@ -328,7 +328,7 @@ namespace MessageBoxUtils
         // Returns:
         //     A System.Windows.MessageBoxResult value that specifies which message box
         //     button is clicked by the user.
-        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, MessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
+        public static MessageBoxResult Show(Window owner, CultureInfo culture, string messageBoxText, string caption, WPFMessageBoxButton button, MessageBoxImage icon, MessageBoxResult defaultResult, MessageBoxOptions options)
         {
             return ShowCore(owner, culture, messageBoxText, caption, button, icon, defaultResult, options);
         }
@@ -338,7 +338,7 @@ namespace MessageBoxUtils
             CultureInfo culture,
             string messageBoxText,
             string caption = "",
-            MessageBoxButton button = MessageBoxButton.OK,
+            WPFMessageBoxButton button = WPFMessageBoxButton.OK,
             MessageBoxImage icon = MessageBoxImage.None,
             MessageBoxResult defaultResult = MessageBoxResult.None,
             MessageBoxOptions options = MessageBoxOptions.None)

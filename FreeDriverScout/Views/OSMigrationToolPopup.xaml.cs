@@ -240,13 +240,13 @@ namespace FreemiumUtilites
             {
                 var psi = new ProcessStartInfo(String.Format(@"{0}\OSMigrationTool\Restore\FreeDriverScout.OSMigrationTool.Restore.exe", appDir))
                 {
-                    Arguments = restoreZipPath.Text
+                    Arguments = "\"" + restoreZipPath.Text + "\""
                 };
                 Process.Start(psi);
             }
             else
             {
-                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectMigrationDriversZip"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversZip"), MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectMigrationDriversZip"), WPFLocalizeExtensionHelpers.GetUIString("SelectDriversZip"), WPFMessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
 

@@ -138,11 +138,9 @@ namespace FreeDriverScout
 
         void MinimizeApp(object sender, RoutedEventArgs e)
         {
-            // We only want to minimize app to try in case of close button.
-
-            //WindowState = WindowState.Minimized;
-            //if (CfgFile.Get("MinimizeToTray") == "1")
-            //    Hide();
+            WindowState = WindowState.Minimized;
+            if (CfgFile.Get("MinimizeToTray") == "1")
+                Hide();
         }
 
         #endregion
@@ -266,12 +264,10 @@ namespace FreeDriverScout
             }
             if (context.SelectedIndex == 1)
             {
-                /*temporarly commented by Alexandra
                 OpenOSMigrationToolPopup();
             }
             if (context.SelectedIndex == 2)
             {
-                 */
                 Process.Start(new ProcessStartInfo(WPFLocalizeExtensionHelpers.GetUIString("FeedbackUrl")));
             }
             // This needed to save state unchecked

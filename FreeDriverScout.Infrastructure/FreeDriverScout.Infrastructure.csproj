@@ -23,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
@@ -52,6 +53,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonMethods.cs" />
+    <Compile Include="DUSDK\ControlExtentions.cs" />
+    <Compile Include="DUSDK\MarshalHelper.cs" />
     <Compile Include="Models\DestinationOSDevices.cs" />
     <Compile Include="Models\DestinationOSDeviceInfo.cs" />
     <Compile Include="Models\MigrationDevicesGroup.cs" />
@@ -73,6 +77,7 @@
     </Compile>
     <Compile Include="SimpleCommand.cs" />
     <Compile Include="Utils\DriverUtils.cs" />
+    <Compile Include="DUSDK\DUSDKHandler.cs" />
     <Compile Include="Utils\IniFileUtils.cs" />
     <Compile Include="WPFMessageBox\DelegateCommand.cs" />
     <Compile Include="WPFMessageBox\IconUtilities.cs" />
@@ -88,6 +93,17 @@
     <Compile Include="WPFPopupWindow\ModalDialogPopup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="stduhelper32.dll" />
+    <Content Include="stduhelper64.dll" />
+    <Content Include="unrar.dll" />
+    <Content Include="updater\amd64Helper\difxapi.dll" />
+    <Content Include="updater\amd64Helper\DriverUpdateHelper64.exe" />
+    <Content Include="updater\extract\7z.dll" />
+    <Content Include="updater\extract\7z.exe" />
+    <Content Include="updater\extract\copying.txt" />
+    <Content Include="updater\extract\History.txt" />
+    <Content Include="updater\extract\license.txt" />
+    <Content Include="updater\extract\readme.txt" />
     <Page Include="WPFMessageBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -204,9 +220,26 @@
       <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
+if "$(ConfigurationName)" == "Debug" (
+  if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
+  ) else (
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
+    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
+  )
+)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -12,6 +12,7 @@
 			 Width="645">
 	<UserControl.Resources>
 		<routine:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <routine:BackupTargetsProgressPercentageConverter x:Key="BackupTargetsProgressPercentageConverter" />
 	</UserControl.Resources>
 	<Grid Background="{StaticResource MainAreaBackGround}">
 		<Grid.RowDefinitions>
@@ -119,19 +120,32 @@
 					<ColumnDefinition Width="194" />
 					<ColumnDefinition Width="194" />
 				</Grid.ColumnDefinitions>
+                <Grid VerticalAlignment="Top" Width="230">
+                    <Border Style="{StaticResource ProgressBarOuther}" Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}}" Width="230">
+                        <Border Style="{StaticResource ProgressBarWrap}" Width="230">
+                            <Border Style="{StaticResource ProgressBarContainer}" Width="230">
 
-                <Border Width="189" Height="20" Style="{StaticResource ProgressBarGreen}" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"
-                        Visibility="{Binding Path=CreatingBackup, Converter={StaticResource BoolToVisibilityConverter}}" >
-                    <Border x:Name="GreenProgressBar" Style="{StaticResource ProgressBarInnerAnimated}" Height="20"
-											Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}}}">
-
-                        <Border BorderThickness="0,1,0,0" BorderBrush="#CADF84"></Border>
-                        <Border.RenderTransform>
-                            <TranslateTransform X="0" Y="0" />
-                        </Border.RenderTransform>
+                                <!--  Green animated ProgressBar  -->
+                                <Border 
+										Width="{Binding Path=Progress, Converter={StaticResource BackupTargetsProgressPercentageConverter}}"
+										Style="{StaticResource ProgressBarGreen}">
+                                    <!-- Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">
+									needed to activate Visibility changed trigger to start animation -->
+                                    <Border x:Name="GreenProgressBar" Style="{StaticResource ProgressBarInnerAnimated}"
+											Visibility="{Binding Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">
+                                        <Border BorderThickness="0,1,0,0"
+												BorderBrush="#CADF84">
+                                        </Border>
+                                        <Border.RenderTransform>
+                                            <TranslateTransform X="0"
+																Y="0" />
+                                        </Border.RenderTransform>
+                                    </Border>
+                                </Border>
+                            </Border>
+                        </Border>
                     </Border>
-                </Border>
-
+                </Grid>
                 <Button Style="{StaticResource BlueRoundedButton}"
 						Grid.Column="1"
 						Command="{Binding BackupActionFinishedCommand}"

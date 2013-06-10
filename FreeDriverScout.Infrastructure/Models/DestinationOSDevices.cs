@@ -13,7 +13,7 @@ namespace FreeDriverScout.Models
 
 		}
 
-		public string OS { get; set; }
+		public int OS { get; set; }
 
 		public List<DestinationOSDeviceInfo> DownloadedDestinationOSDrivers { get; set; }
 	};

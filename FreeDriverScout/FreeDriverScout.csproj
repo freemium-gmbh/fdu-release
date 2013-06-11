@@ -212,6 +212,9 @@
     <Compile Include="Views\RoundedProgressBar\Shapes\PiePiece.cs" />
     <Compile Include="Views\RoundedProgressBar\Util\Utils.cs" />
     <Compile Include="WindowsFormsApp.cs" />
+    <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -327,6 +330,30 @@
     <Content Include="stduhelper64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="updater\amd64Helper\difxapi.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\amd64Helper\DriverUpdateHelper64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\7z.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="updater\extract\copying.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="updater\extract\History.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="updater\extract\license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="updater\extract\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\facebook.png" />
     <Resource Include="Images\google.png" />
     <Resource Include="Images\tw.png" />

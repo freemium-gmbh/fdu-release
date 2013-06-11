@@ -321,6 +321,12 @@
     <Content Include="difxapi.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="stduhelper32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="stduhelper64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Images\facebook.png" />
     <Resource Include="Images\google.png" />
     <Resource Include="Images\tw.png" />

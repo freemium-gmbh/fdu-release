@@ -330,6 +330,9 @@
     <Content Include="stduhelper64.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="unrar.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="updater\amd64Helper\difxapi.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

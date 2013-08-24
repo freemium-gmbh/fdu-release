@@ -97,14 +97,30 @@
     <Content Include="stduhelper32.dll" />
     <Content Include="stduhelper64.dll" />
     <Content Include="unrar.dll" />
-    <Content Include="updater\amd64Helper\difxapi.dll" />
-    <Content Include="updater\amd64Helper\DriverUpdateHelper64.exe" />
-    <Content Include="updater\extract\7z.dll" />
-    <Content Include="updater\extract\7z.exe" />
-    <Content Include="updater\extract\copying.txt" />
-    <Content Include="updater\extract\History.txt" />
-    <Content Include="updater\extract\license.txt" />
-    <Content Include="updater\extract\readme.txt" />
+    <Content Include="updater\amd64Helper\difxapi.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\amd64Helper\DriverUpdateHelper64.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\7z.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\7z.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\copying.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\History.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\license.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="updater\extract\readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Page Include="WPFMessageBox\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -215,31 +231,33 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.de-DE.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest" />
+    <None Include="updater\amd64Helper\DriverUpdateHelper64.manifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
-if "$(ConfigurationName)" == "Debug" (
-  if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
-  ) else (
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
-    copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
-  )
+if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
+) else (
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)stduhelper.dll"
+  copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper32.dll" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Restore\$(OutDir)stduhelper.dll"
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -312,7 +312,7 @@ namespace MessageBoxUtils
                 if (_continueCommand == null)
                     _continueCommand = new DelegateCommand(() =>
                     {
-                        Result = MessageBoxResult.Yes;
+                        Result = MessageBoxResult.OK;
                         _view.Close();
                     });
                 return _continueCommand;
@@ -503,19 +503,19 @@ namespace MessageBoxUtils
             switch (buttonOption)
             {
                 case WPFMessageBoxButton.YesNo:
-                    OkVisibility = CancelVisibility = Visibility.Collapsed;
+                    OkVisibility = ContinueVisibility = CancelVisibility = Visibility.Collapsed;
                     break;
 
                 case WPFMessageBoxButton.YesNoCancel:
-                    OkVisibility = Visibility.Collapsed;
+                    OkVisibility = ContinueVisibility = Visibility.Collapsed;
                     break;
 
                 case WPFMessageBoxButton.OK:
-                    YesNoVisibility = CancelVisibility = Visibility.Collapsed;
+                    YesNoVisibility = ContinueVisibility = CancelVisibility = Visibility.Collapsed;
                     break;
 
                 case WPFMessageBoxButton.OKCancel:
-                    YesNoVisibility = Visibility.Collapsed;         
+                    YesNoVisibility = ContinueVisibility = Visibility.Collapsed;
                     break;
 
                 case WPFMessageBoxButton.ContinueCancel:

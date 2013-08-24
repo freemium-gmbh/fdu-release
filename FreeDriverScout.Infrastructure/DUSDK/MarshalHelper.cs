@@ -5,6 +5,8 @@ namespace DUSDK_for.NET
 {
     public static class MarshalHelper
     {
+
+
         /// <summary>
         /// Copies structure array to IntPtr
         /// </summary>

@@ -1119,7 +1119,7 @@ namespace FreeDriverScout.ViewModels
 
         #region Global Variables
 
-        StringBuilder szProductKey = new StringBuilder().Append("18546-16122-13463");
+        StringBuilder szProductKey = new StringBuilder().Append("46288-11183-23588");
         StringBuilder szAppDataLoc;
         StringBuilder szTempLoc;
         StringBuilder szRegistryLoc = new StringBuilder().Append("Software\\DriverUtilities");

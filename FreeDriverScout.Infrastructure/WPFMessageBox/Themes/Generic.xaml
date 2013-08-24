@@ -75,7 +75,7 @@
                                     Width="120"
 									Style="{StaticResource BlueRoundedButton}"
 									Visibility="{Binding ContinueVisibility}"
-									Command="{Binding CotinueCommand}"
+									Command="{Binding ContinueCommand}"
 									IsDefault="{Binding IsContinueDefault}"
 									Margin="3"/>
                             <Button Content="{lex:LocText Key=Cancel, Dict=Resources, Assembly=FreeDriverScout.Infrastructure}"

@@ -880,6 +880,7 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
                                 CurrentDispatcher.BeginInvoke((Action)(() =>
                                 {
                                     ScanStatusTitle = WPFLocalizeExtensionHelpers.GetUIString("DownloadingDriver");
+                                    ScanStatusText = driverName;
                                     //string driverDownloadingDirectory = "";
                                     //string clearedDeviceName = DevicesForDestinationOS[driverIndex].DeviceName.Replace(" ", "").Replace(@"/", "");
 

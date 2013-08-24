@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
@@ -7,11 +9,12 @@ namespace DUSDK_for.NET
 {
     public class DUSDKHandler
     {
+
         /// <summary>
         /// To receive the progress while scan and driver update process
         /// PUT IT ANYWHERE IN CLASS WHERE YOU WANT TO RECEIVES THE PROGRESS
         /// </summary>
-        /// <param name="progressType">Value of progress enum - PROGRESS_TYPE</param>
+        /// <param name="progressType">Value of progress enum - PROGRESS_TYPE</param>-
         /// <param name="data"></param>
         /// <param name="currentItemPos"></param>
         /// <param name="structSize"></param>
@@ -60,8 +63,8 @@ namespace DUSDK_for.NET
             );
 
 
-        
-        
+
+
 
         [DllImport(@"stduhelper.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern bool cancelOperation(int operation);
@@ -72,13 +75,13 @@ namespace DUSDK_for.NET
             [In] StringBuilder szProductKey,
             [In] StringBuilder szAppDataLoc,
             [In] StringBuilder szTempLoc,
-			[In] StringBuilder szRegistryLoc,
-			[In] downloadProgressCallback pDownloadCallbackFunc,
-			[In, Out] IntPtr Scandata,
-			[In, Out] IntPtr DevicesToUpdates,
-			[In] int driversSize,					
-			[In] StringBuilder szRestorePointName
-			);
+            [In] StringBuilder szRegistryLoc,
+            [In] downloadProgressCallback pDownloadCallbackFunc,
+            [In, Out] IntPtr Scandata,
+            [In, Out] IntPtr DevicesToUpdates,
+            [In] int driversSize,
+            [In] StringBuilder szRestorePointName
+            );
 
 
 
@@ -120,7 +123,7 @@ namespace DUSDK_for.NET
             );
 
 
-        
+
         [DllImport(@"stduhelper.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern int TestParamPassed([In] IntPtr pUserDrivers, [In] IntPtr pDriversToUpdate);
 
@@ -153,8 +156,8 @@ namespace DUSDK_for.NET
         //
         public enum SCAN_FLAGS
         {
-	        SCAN_DEVICES_PRESENT, /* if supplied to scan function, only connected devices are checked for updates available */
-	        SCAN_DEVICES_ALL /* if supplied to scan function, all connected and unplugged devices are checked for updates available */
+            SCAN_DEVICES_PRESENT, /* if supplied to scan function, only connected devices are checked for updates available */
+            SCAN_DEVICES_ALL /* if supplied to scan function, all connected and unplugged devices are checked for updates available */
         }
 
         /// <summary>
@@ -224,7 +227,7 @@ namespace DUSDK_for.NET
         /// <summary>
         /// Defines the progress type while various process of DUSDK
         /// </summary>
-        public  enum PROGRESS_TYPE
+        public enum PROGRESS_TYPE
         {
 
             PROGRESS_SCANNING = 0x100,
@@ -302,7 +305,15 @@ namespace DUSDK_for.NET
 
             PROGRESS_FILTERED_UPDATES,
             PROGRESS_RETRIEVED_UPDATES_DATA,
+            PROGRESS_OSMT_RST_LIST_STARTED,                 /* Retrieval of list of drivers of operating system migration archive started */
+            PROGRESS_OSMT_RST_LIST_ITEM,                    /* list of driver are passed to callback, one by one */
+            PROGRESS_OSMT_RST_LIST_ITEM_UPDATE,             /* information of driver updates are passed to callback, one by one */
+            PROGRESS_OSMT_RST_LIST_COMPLETED,               /* Retrieval of list of drivers of operating system migration archive completed */
+            PROGRESS_OSMT_RST_LIST_FAILED                   /* Retrieval of list of drivers of operating system migration archive failed */
         }
+
+
+
 
         public enum UPDATE_FLAGS
         {
@@ -312,14 +323,22 @@ namespace DUSDK_for.NET
             UPDATE_FLAG_CREATE_RESTOREPOINT_ONLY = 8,
             UPDATE_FLAG_UPDATE_DRIVERS_ONLY = 16,
             UPDATE_FLAG_RESTORE_ARCHIVE_ONLY = 32,
-            UPDATE_FLAG_ALL = 64
-        };      
+            UPDATE_FLAG_ALL = 64,
+            UPDATE_FLAG_LIST_ARCHIVE_ONLY = 128,                /* pass this to get the list of drivers of archive */
+            UPDATE_FLAG_RESTORE_SELECTED_ARCHIVE_ONLY = 256,    /* pass this to restore few drivers from archive */
+        };
+
+
+
+
+
+
 
         #endregion
 
 
     }
-    
+
 
     /// <summary>
     /// Reference: http://msdn.microsoft.com/en-us/library/ac7ay120%28v=VS.90%29.aspx
@@ -329,109 +348,109 @@ namespace DUSDK_for.NET
     {
 
 
-        
+
 
 
         /// <summary>
         /// Installed driver name shown in device manager
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string driverName;
 
         /// <summary>
         /// Inf Path of currently installed system driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string location;
 
         /// <summary>
         /// current driver version
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string version;
 
         /// <summary>
         /// category of driver like Display Adapter, Sound...
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string category;
 
         /// <summary>
         /// any further description if have
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string description;
 
         /// <summary>
         /// provider name
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string publisher;
 
         /// <summary>
         /// manufacturer name
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string manufacturer;
 
         /// <summary>
         /// hardware id of driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string hardwareId; // 
 
         /// <summary>
         /// driver node guid path
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string guidPath;
 
         /// <summary>
         /// date of installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string date;
 
         /// <summary>
         /// service name of installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string serviceName;
 
         /// <summary>
         /// Is installed driver is signed or not
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string m_bIsSigned; //
 
         /// <summary>
         /// Inf path of update driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string installInf;
 
         /// <summary>
         /// Used while driver update process
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string md5;
 
         /// <summary>
         /// Not used
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string HardwareCode;
 
         /// <summary>
         /// Matching Hardware Id of current installed system driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string matchingId;
 
         /// <summary>
         /// Not used
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string libURL;
 
         /// <summary>
@@ -499,7 +518,7 @@ namespace DUSDK_for.NET
         /// <summary>
         /// Matching Hardware Id
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string MatchingDeviceID;
 
         /// <summary>
@@ -544,7 +563,7 @@ namespace DUSDK_for.NET
         /// <summary>
         /// FeatureScore of current installed driver
         /// </summary>
-        [MarshalAs(UnmanagedType.LPTStr)] 
+        [MarshalAs(UnmanagedType.LPTStr)]
         public string FeatureScore;
 
         /// <summary>
@@ -587,10 +606,13 @@ namespace DUSDK_for.NET
         public string SetupLaunchParam;
 
         [MarshalAs(UnmanagedType.LPTStr)]
-        public string enumLoc;        
+        public string enumLoc;
 
-        public IntPtr UpdateDriver;      
-    }
+        public IntPtr UpdateDriver;
+
+
+    }  
+
 
     public enum DU_SUPPORTED_OS_NAMES
     {

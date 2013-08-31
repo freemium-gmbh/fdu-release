@@ -24,7 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PostBuildEvent>xcopy "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Debug\$(ProjectName).dll" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
+    <PostBuildEvent>xcopy "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Debug\FreeDriverScout.Infrastructure.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
 if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
   copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Debug\stduhelper.dll"
   copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\bin\Debug\stduhelper.dll"
@@ -46,7 +46,7 @@ if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
     <WarningLevel>4</WarningLevel>
     <DebugSymbols>true</DebugSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <PostBuildEvent>xcopy "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Release\$(ProjectName).dll" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
+    <PostBuildEvent>xcopy "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Release\FreeDriverScout.Infrastructure.dll" "$(SolutionDir)FreeDriverScout\$(OutDir)Libraries\" /Y
 if "$(PROCESSOR_ARCHITEW6432)" == "AMD64" (
   copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout.Infrastructure\bin\Release\stduhelper.dll"
   copy "$(SolutionDir)FreeDriverScout.Infrastructure\stduhelper64.dll" "$(SolutionDir)FreeDriverScout\bin\Release\stduhelper.dll"

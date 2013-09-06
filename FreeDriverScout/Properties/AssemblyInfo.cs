@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("Free Driver Scout")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("FreeDriverScout")]
-[assembly: AssemblyCopyright("Copyright ©  2013")]
+[assembly: AssemblyCompany("Covus Freemium GmbH")]
+[assembly: AssemblyProduct("Free Driver Scout")]
+[assembly: AssemblyCopyright("Copyright © Covus Freemium GmbH 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

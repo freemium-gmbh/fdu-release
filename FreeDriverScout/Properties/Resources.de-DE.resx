@@ -361,7 +361,7 @@
     <value>Samstag</value>
   </data>
   <data name="SaveBackupsTo" xml:space="preserve">
-    <value>Backup in diesen Ordner sichern:</value>
+    <value>Backup in diesem Ordner sichern:</value>
   </data>
   <data name="SaveDownloadedTo" xml:space="preserve">
     <value>Heruntergeladene Treiber in diesen Ordner speichern:</value>

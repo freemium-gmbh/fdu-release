@@ -361,7 +361,7 @@
     <value>Samstag</value>
   </data>
   <data name="SaveBackupsTo" xml:space="preserve">
-    <value>Backup in diesem Ordner sichern:</value>
+    <value>Backup in diesen Ordner sichern:</value>
   </data>
   <data name="SaveDownloadedTo" xml:space="preserve">
     <value>Heruntergeladene Treiber in diesen Ordner speichern:</value>
@@ -385,7 +385,7 @@
     <value>Treiber-Scan</value>
   </data>
   <data name="ScanningDevice" xml:space="preserve">
-    <value>Laufwerk scannen -</value>
+    <value>Gerät scannen -</value>
   </data>
   <data name="ScanProgress" xml:space="preserve">
     <value>SCAN-FORTSCHRITT</value>

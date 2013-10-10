@@ -75,14 +75,19 @@
       <HintPath>Libraries\Ionic.Zip.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="WPFLocalizeExtension, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="WPFLocalizeExtension, Version=2.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <Private>False</Private>
+      <HintPath>Libraries\WPFLocalizeExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="XAMLMarkupExtensions, Version=1.1.6.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\XAMLMarkupExtensions.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,9 @@
     <Compile Include="Routine\Converters\PropertyEqualsToVisibilityConverter.cs" />
     <Compile Include="Routine\WPFLocalizeExtensionHelpers.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\AboutBox.xaml.cs">
+      <DependentUpon>AboutBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PanelInstalling.xaml.cs">
       <DependentUpon>PanelInstalling.xaml</DependentUpon>
     </Compile>
@@ -119,6 +127,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AboutBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\PanelInstalling.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -186,6 +198,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Libraries\XAMLMarkupExtensions.dll" />
     <Resource Include="Images\bg-logo.png" />
     <Resource Include="Images\bg-logo-small.png" />
     <Resource Include="Images\icon-lamp.png" />
@@ -196,18 +209,9 @@
     <Resource Include="Images\google.png" />
     <Resource Include="Images\tw.png" />
     <Resource Include="Images\tw_bg.png" />
-    <Content Include="Libraries\FreeDriverScout.Infrastructure.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libraries\Ionic.Zip.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libraries\System.Tuples.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libraries\WPFLocalizeExtension.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Resource Include="driver.ico" />
+    <Content Include="Libraries\Ionic.Zip.dll" />
+    <Content Include="Libraries\WPFLocalizeExtension.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FreeDriverScout.Infrastructure\FreeDriverScout.Infrastructure.csproj">
@@ -221,7 +225,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*" "$(SolutionDir)FreeDriverScout.OSMigrationTool.Backup\$(OutDir)Restore\" /Y /S</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*" "$(SolutionDir)FreeDriverScout\$(OutDir)"  /Y /S /I /R</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

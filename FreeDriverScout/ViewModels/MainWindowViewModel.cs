@@ -452,6 +452,10 @@ namespace FreeDriverScout.ViewModels
             {
                 RunSelectDriversToRestore((BackupItem)backupItem);
             }
+            else
+            {
+                WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectBackupTypeText"), WPFLocalizeExtensionHelpers.GetUIString("SelectDrivers"), WPFMessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
 
         readonly ICommand checkDriverRestoreGroupCommand;

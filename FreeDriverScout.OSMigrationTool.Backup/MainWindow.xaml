@@ -10,7 +10,7 @@
 		Width="716"
 		Height="576"
 		Title="OS Migration Tool Backup"
-		SizeToContent="WidthAndHeight">
+		SizeToContent="WidthAndHeight" Icon="/FreeDriverScout.OSMigrationTool.Backup;component/driver.ico">
 	<Window.Resources>
 		<routine:PropertyEqualsToVisibilityConverter x:Key="PropertyEqualsToVisibilityConverter" />
 		<routine:AnyPropertyEqualsToVisibilityConverter x:Key="AnyPropertyEqualsToVisibilityConverter" />
@@ -65,6 +65,7 @@
 								   HorizontalAlignment="Right"
 								   DockPanel.Dock="Right">
 							<Button Style="{StaticResource HelpButton}"
+                                    Click="OpenAboutBox"
 									FontFamily="/FreeDriverScout.Infrastructure;component/Fonts/#Helvetica Neue CE 55">
 								<TextBlock Text="i"
 										   FontFamily="Segoe UI"
@@ -72,7 +73,7 @@
 										   FontWeight="Bold" />
 								<Button.ToolTip>
 									<ToolTip Style="{x:Null}"
-											 Content="{lex:LocText FreeDriverScout.OSMigrationTool.Backup:Resources:Help}" />
+											 Content="{lex:LocText FreeDriverScout.OSMigrationTool.Backup:Resources:About}" />
 								</Button.ToolTip>
 							</Button>
 							<Button Style="{StaticResource MinimizeButton}"

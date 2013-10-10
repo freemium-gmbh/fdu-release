@@ -231,14 +231,14 @@ namespace FreemiumUtilites
 
         void RunOSMigrationTool(object sender, RoutedEventArgs e)
         {
-            AppStarter(appDir + @"\OSMigrationTool\FreeDriverScout.OSMigrationTool.Backup.exe");
+            AppStarter(appDir + @"\FreeDriverScout.OSMigrationTool.Backup.exe");
         }
 
         void RunOSMigrationRestoreTool(object sender, RoutedEventArgs e)
         {
             if (File.Exists(restoreZipPath.Text))
             {
-                var psi = new ProcessStartInfo(String.Format(@"{0}\OSMigrationTool\Restore\FreeDriverScout.OSMigrationTool.Restore.exe", appDir))
+                var psi = new ProcessStartInfo(String.Format(@"{0}\FreeDriverScout.OSMigrationTool.Restore.exe", appDir))
                 {
                     Arguments = "\"" + restoreZipPath.Text + "\""
                 };

@@ -3,10 +3,9 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media.Animation;
-using FreeDriverScout;
 using System.Reflection;
 
-namespace FreeDriverScout
+namespace FreeDriverScout.OSMigrationTool.Restore
 {
 	/// <summary>
 	/// Interaction logic for AboutBox.xaml

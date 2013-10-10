@@ -2894,4 +2894,70 @@
 		</Setter>
 	</Style>
 
+    <Style x:Key="TransparentButton"
+			   TargetType="{x:Type Button}">
+        <Setter Property="Margin"
+					Value="17,10,0,0" />
+        <Setter Property="FontFamily"
+					Value="/FreeDriverScout;component/Fonts/#Helvetica Neue CE 55" />
+        <Setter Property="FontSize"
+					Value="11.75" />
+        <Setter Property="Foreground"
+					Value="#009BB8" />
+        <Setter Property="FocusVisualStyle"
+					Value="{x:Null}" />
+        <Setter Property="VerticalAlignment"
+					Value="Top" />
+        <Setter Property="FocusVisualStyle"
+					Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <StackPanel x:Name="panel"
+									Width="{TemplateBinding Width}"
+									Height="{TemplateBinding Width}">
+                        <ContentPresenter Width="{TemplateBinding Width}"
+											  Height="{TemplateBinding Width}" />
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver"
+									 Value="True">
+                            <Setter TargetName="panel"
+										Property="Panel.Effect"
+										Value="{DynamicResource ButtonMouseOverEffect}" />
+                        </Trigger>
+                        <Trigger Property="UIElement.IsMouseOver"
+									 Value="False">
+                            <Setter TargetName="panel"
+										Property="Panel.Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect BlurRadius="9"
+														  Direction="0"
+														  ShadowDepth="0"
+														  Color="Transparent" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+									 Value="true">
+                            <Setter TargetName="panel"
+										Property="Background"
+										Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver"
+									 Value="true">
+                            <Setter Property="Background"
+										Value="Transparent" />
+                        </Trigger>
+                        <Trigger Property="IsPressed"
+									 Value="True">
+                            <Setter Property="RenderTransform"
+										Value="{x:Null}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

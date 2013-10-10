@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Free Driver Scout: Backup")]
+[assembly: AssemblyTitle("FreeDriverScout.OSMigrationTool.Backup")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Covus Freemium GmbH")]
-[assembly: AssemblyProduct("Free Driver Scout: Backup")]
-[assembly: AssemblyCopyright("Copyright © Covus Freemium GmbH 2013")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("FreeDriverScout.OSMigrationTool.Backup")]
+[assembly: AssemblyCopyright("Copyright © Microsoft 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

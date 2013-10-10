@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -23,6 +22,7 @@ using FreemiumUtil;
 using Ionic.Zip;
 using MessageBoxUtils;
 using Microsoft.Win32;
+using WPFLocalizeExtension.Engine;
 
 namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
 {
@@ -116,6 +116,12 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
             {
                 if (Status == ScanStatus.NotStarted)
                 {
+                    if (GetOsIdFromComboBox() == -1)
+                    {
+                        WPFMessageBox.Show(Application.Current.MainWindow, LocalizeDictionary.Instance.Culture, WPFLocalizeExtensionHelpers.GetUIString("SelectOSToScan"), WPFLocalizeExtensionHelpers.GetUIString("SelectOS"), WPFMessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+
                     // Update device collections in the UI thread
                     if (CurrentDispatcher.Thread != null)
                     {
@@ -276,8 +282,6 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
         private ManualResetEvent cancelEvtArgs;
         private Boolean scanCancelled = false;
 
-        readonly RegistryKey deviceClasses = Registry.LocalMachine.OpenSubKey(@"SYSTEM\CurrentControlSet\Control\Class\", true);
-
         BackgroundWorker DownloadingBackgroundWorker = new BackgroundWorker();
         BackgroundWorker ComposingBackgroundWorker = new BackgroundWorker();
 
@@ -292,6 +296,8 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
         {
             get
             {
+                if (string.IsNullOrEmpty(destinationDirectory))
+                    destinationDirectory = @"C:\";
                 return destinationDirectory;
             }
             set
@@ -654,9 +660,15 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
         /// <returns></returns>
         int GetOsIdFromComboBox()
         {
-            return Convert.ToInt32(((KeyValuePair<object, object>)DestinationOS).Value);
+            if (DestinationOS.Key == null && DestinationOS.Value == null)
+            {
+                return -1;
+            }
+            else
+            {
+                return Convert.ToInt32(((KeyValuePair<object, object>)DestinationOS).Value);
+            }
         }
-
 
         void RunCancelScan()
         {
@@ -665,7 +677,7 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
                 bgScan.CancelAsync();
 
             cancelEvtArgs.Set();
-            
+
             PanelScanHeader = WPFLocalizeExtensionHelpers.GetUIString("ScanDrivers");
             Status = ScanStatus.NotStarted;
             ScanStatusTitle = string.Empty;
@@ -956,7 +968,10 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
         {
             foreach (MigrationDeviceInfo device in AllDevices)
             {
-                MigrationDevicesGroup migrationDevicesGroup = GroupedDevices.Where(g => g.DeviceClass == device.DeviceClass).FirstOrDefault();
+                if (!device.IsDestOSDriverAvailable)
+                    continue;
+
+                MigrationDevicesGroup migrationDevicesGroup = GroupedDevices.Where(g => g.DeviceClassName == device.DeviceClassName).FirstOrDefault();
                 if (migrationDevicesGroup == null)
                 {
                     GroupedDevices.Add(new MigrationDevicesGroup(device.DeviceClass, device.DeviceClassName, device.DeviceClassImageSmall, new List<MigrationDeviceInfo> { device }));
@@ -969,15 +984,8 @@ namespace FreeDriverScout.OSMigrationTool.Backup.ViewModels
 
             foreach (var deviceGroup in GroupedDevices)
             {
-                if (deviceGroup.Devices.Where(d => !d.IsDestOSDriverAvailable).Count() == deviceGroup.Devices.Count)
-                {
-                    deviceGroup.IsDestOSDriversAvailable = false;
-                }
-                else
-                {
-                    deviceGroup.GroupChecked = true;
-                    deviceGroup.IsDestOSDriversAvailable = true;
-                }
+                deviceGroup.GroupChecked = true;
+                deviceGroup.IsDestOSDriversAvailable = true;
             }
 
             OrderedDeviceGroups = CollectionViewSource.GetDefaultView(GroupedDevices);

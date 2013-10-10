@@ -170,8 +170,8 @@
     <value>Download</value>
   </data>
   <data name="DownloadFinishedPressCompose" xml:space="preserve">
-    <value>Drivers downloaded.
-Now press the Compose button below to create a drivers installation utility for the destination OS, which will be saved in a place that you've choosed.</value>
+    <value>Drivers downloaded:
+now press the Compose button below to create a drivers installation utility for the destination OS, which will be saved in a place that you've choosed.</value>
   </data>
   <data name="DownloadingDriver" xml:space="preserve">
     <value>Downloading driver for: </value>
@@ -210,7 +210,7 @@ Now press the Compose button below to create a drivers installation utility for 
     <value>Post this on:</value>
   </data>
   <data name="SaveDriversTo" xml:space="preserve">
-    <value>Save drivers to</value>
+    <value>Compose drivers to:</value>
   </data>
   <data name="ScanDrivers" xml:space="preserve">
     <value>Scan drivers</value>
@@ -286,5 +286,23 @@ Now press the Compose button below to create a drivers installation utility for 
   </data>
   <data name="UrlCannotBeOpenedTitle" xml:space="preserve">
     <value>Link cannot be opened automatically</value>
+  </data>
+  <data name="ToolDescription" xml:space="preserve">
+    <value>This tool scans for drivers and downloads the matching drivers from our database. But not for your current operating system, instead they will be downloaded for the system you want to migrate to.</value>
+  </data>
+  <data name="ScanSystem" xml:space="preserve">
+    <value>Scan your system</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="RootUrl" xml:space="preserve">
+    <value>http://freemium.com/free-driver-scout/</value>
+  </data>
+  <data name="SelectOSToScan" xml:space="preserve">
+    <value>Please, select at least one operation system.</value>
+  </data>
+  <data name="AllRightsReserved" xml:space="preserve">
+    <value>All rights reserved.</value>
   </data>
 </root>

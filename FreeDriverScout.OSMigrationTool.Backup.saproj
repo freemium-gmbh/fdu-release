@@ -1,0 +1,57 @@
+<SmartAssemblyProject ProjectId="{a02cc1af-d805-4370-a594-7600383dced8}" Version="2.0">
+    <MainAssemblyFileName>.\FreeDriverScout.OSMigrationTool.Backup.exe</MainAssemblyFileName>
+    <Configuration Name="Release">
+        <Options>
+            <ExceptionReporting />
+            <FeatureUsageReporting />
+            <StringsEncoding />
+            <StrongNameSigning />
+            <OtherOptimizations />
+            <Obfuscation FieldsNameMangling="2" NameMangling="3" />
+            <OtherProtections />
+            <Debugging />
+        </Options>
+        <ApplicationName />
+        <Destination DestinationFileName="" />
+        <Assemblies>
+            <Assembly AssemblyName="FreeDriverScout.OSMigrationTool.Backup, Culture=neutral, PublicKeyToken=null">
+                <Embedding />
+                <Merging>
+                    <ResourcesCompression />
+                    <MemberRefsProxy />
+                    <Pruning />
+                    <Obfuscation />
+                    <ControlFlow />
+                </Merging>
+            </Assembly>
+            <Assembly AssemblyName="FreeDriverScout.Infrastructure, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="System.Tuples, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="WPFLocalizeExtension, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="XAMLMarkupExtensions, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="FreemiumUtil, Culture=neutral, PublicKeyToken=null">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="Ionic.Zip, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c">
+                <Merging />
+                <Embedding />
+            </Assembly>
+            <Assembly AssemblyName="Ookii.Dialogs.Wpf, Culture=neutral, PublicKeyToken=0c15020868fd6249">
+                <Merging />
+                <Embedding />
+            </Assembly>
+        </Assemblies>
+    </Configuration>
+</SmartAssemblyProject>

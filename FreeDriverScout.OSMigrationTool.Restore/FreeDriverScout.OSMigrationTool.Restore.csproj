@@ -97,6 +97,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\DestinationOSDevicesGroup.cs" />
     <Compile Include="Models\InstallStatus.cs" />
+    <Compile Include="Properties\Resources.fr-FR.Designer.cs" />
     <Compile Include="Routine\Converters\AnyPropertyEqualsToVisibilityConverter.cs" />
     <Compile Include="Routine\Converters\MarginConverter.cs" />
     <Compile Include="Routine\Converters\ProgressPercentageConverter.cs" />
@@ -191,6 +192,7 @@
       <LastGenOutput>Resources.de-DE.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

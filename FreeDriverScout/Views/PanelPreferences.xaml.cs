@@ -24,7 +24,7 @@ namespace FreeDriverScout.Views
         const string registryAppName = "FreeDriverScout";
         readonly string appPath = Assembly.GetExecutingAssembly().Location;
         readonly string appDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().GetName().CodeBase);
-        readonly Dictionary<string, int> langIndex = new Dictionary<string, int> { { "en-US", 0 }, { "de-DE", 1 } };
+        readonly Dictionary<string, int> langIndex = new Dictionary<string, int> { { "en-US", 0 }, { "de-DE", 1 }, { "fr-FR", 2 } };
 
         public PanelPreferences()
         {
@@ -129,6 +129,11 @@ namespace FreeDriverScout.Views
             {
                 LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("de-DE");
                 CfgFile.Set("Lang", "de-DE");
+            }
+            if (LanguagesList.SelectedIndex == 2)
+            {
+                LocalizeDictionary.Instance.Culture = CultureInfo.GetCultureInfo("fr-FR");
+                CfgFile.Set("Lang", "fr-FR");
             }
 
             var mainViewModel = (MainWindowViewModel)Application.Current.MainWindow.DataContext;

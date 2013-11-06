@@ -141,6 +141,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\Resources.fr-FR.Designer.cs" />
     <Compile Include="Routine\Converters\AnyPropertyEqualsToVisibilityConverter.cs" />
     <Compile Include="Routine\Converters\BackupStatusEqualsToVisibilityConverter.cs" />
     <Compile Include="Routine\Converters\BoolToVisibilityConverter.cs" />
@@ -368,6 +369,7 @@
     <Resource Include="Images\icon-question.png" />
     <Resource Include="Images\icon-app.png" />
     <Content Include="Libraries\Ookii.Dialogs.Wpf.dll" />
+    <EmbeddedResource Include="Properties\Resources.fr-FR.resx" />
     <EmbeddedResource Include="Routine\messagePipe.resx">
       <DependentUpon>messagePipe.cs</DependentUpon>
       <SubType>Designer</SubType>

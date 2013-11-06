@@ -40,7 +40,8 @@
 				  Name="LanguagesList"  IsEnabled="{Binding Path=Status, Converter={StaticResource ScanStatusEqualsToEnablingConverter}}">
             <ComboBoxItem Content="English"></ComboBoxItem>
 			<ComboBoxItem Content="German"></ComboBoxItem>
-		</ComboBox>
+            <ComboBoxItem Content="French"></ComboBoxItem>
+        </ComboBox>
 		<TextBlock Text="{lex:LocText FreeDriverScout:Resources:WindowsStartup}"
 				   Style="{StaticResource ElementCaption}"
 				   Grid.Column="1" />

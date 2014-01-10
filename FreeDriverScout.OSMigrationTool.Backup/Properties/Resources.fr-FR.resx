@@ -288,7 +288,7 @@ maintenant appuyer sur le bouton de collecte ci-dessous pour créer un utilitair
     <value>Téléchargement de pilotes</value>
   </data>
   <data name="ToolDescription" xml:space="preserve">
-    <value>Cet outil analyse les pilotes et les téléchargements des pilotes correspondants de notre base de données, et non pas pour votre système d'exploitation actuel, au lieu de cela ils seront téléchargées pour le système d'exploitation que vous souhaitez avoir.</value>
+    <value>Cet outil analyse les pilotes et les téléchargements des pilotes correspondants de notre base de données, non pas pour votre système d'exploitation actuel, mais pour le système d'exploitation que vous souhaitez avoir.</value>
   </data>
   <data name="TweetMargin" xml:space="preserve">
     <value>-40</value>

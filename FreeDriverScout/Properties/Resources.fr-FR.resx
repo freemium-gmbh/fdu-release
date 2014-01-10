@@ -145,14 +145,14 @@
     <value>Sauvegarde</value>
   </data>
   <data name="BackupText" xml:space="preserve">
-    <value>Tout Sauvegarder ou spécifier les pilotes de périphériques de votre système, afin de créer des copies de ces pilotes ou vous pourez revenir à plus tard.</value>
+    <value>Tout Sauvegarder ou spécifier les pilotes de votre système, afin de créer des copies de ces pilotes.</value>
   </data>
   <data name="BackupType" xml:space="preserve">
     <value>Type de Sauvegarde</value>
   </data>
   <data name="BeforeDriverUpdateMessage" xml:space="preserve">
-    <value>S'il vous plaît fermez toutes les applications avant de poursuivre avec la mise à jour du pilote.
-Il est possible que l'écran peut devenir noir pendant cette mise à jour pour une courte période de temps.</value>
+    <value>S'il vous plaît, veuillez fermer toutes les applications avant de poursuivre avec la mise à jour des pilotes.
+Il est possible que l'écran devienne noir pour un bref instant lors de la mise à jour.</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>Annuler</value>
@@ -260,13 +260,13 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Mise à jour des pilotes</value>
   </data>
   <data name="EveryDay" xml:space="preserve">
-    <value>Quotidiennement</value>
+    <value>Quotidienne</value>
   </data>
   <data name="EveryMonth" xml:space="preserve">
-    <value>Chaque mois</value>
+    <value>Mensuelle</value>
   </data>
   <data name="EveryWeek" xml:space="preserve">
-    <value>Chaque semaine</value>
+    <value>Hebdomadaire</value>
   </data>
   <data name="Exclude" xml:space="preserve">
     <value>Exclure</value>
@@ -293,7 +293,7 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Finir</value>
   </data>
   <data name="FooterText" xml:space="preserve">
-    <value>Plus de logiciel FREEMIUM</value>
+    <value>PLUS DE LOGICIEL GRATUIT</value>
   </data>
   <data name="Friday" xml:space="preserve">
     <value>Vendredi</value>
@@ -335,7 +335,7 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Gérez vos exclusions</value>
   </data>
   <data name="ManageScanExclusionsText" xml:space="preserve">
-    <value>Retirez les exclusions que vous avez créés dans le Driver Scan</value>
+    <value>Retirez les exclusions que vous avez créés dans l'analyse</value>
   </data>
   <data name="ManualBackupFull" xml:space="preserve">
     <value>Sauvegarde manuelle (complète)</value>
@@ -392,13 +392,13 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Outil de migration de l'OS</value>
   </data>
   <data name="OutdatedDriversFound" xml:space="preserve">
-    <value>Pilotes obsolètes trouvés</value>
+    <value>pilotes obsolètes trouvés</value>
   </data>
   <data name="OutdatedDriversUpdated" xml:space="preserve">
-    <value>Les pilotes obsolètes mis à jour!</value>
+    <value>pilotes obsolètes mis à jour!</value>
   </data>
   <data name="PostOn" xml:space="preserve">
-    <value>Pilotes obsolètes mis à jour!</value>
+    <value>Poster cela sur:</value>
   </data>
   <data name="Preferences" xml:space="preserve">
     <value>Réglages</value>
@@ -407,7 +407,7 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Gérer les paramètres de l'application</value>
   </data>
   <data name="PreferencesFooterText" xml:space="preserve">
-    <value>Vous pouvez modifier les préférences et les réglages des applications à partir de ce panneau</value>
+    <value>Vous pouvez modifier les préférences et les réglages des applications ici</value>
   </data>
   <data name="RebootLater" xml:space="preserve">
     <value>Redémarrer plus tard</value>
@@ -461,7 +461,7 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Analyse:</value>
   </data>
   <data name="ScanAndUpdateDrivers" xml:space="preserve">
-    <value>Analyse &amp; mis-à-jour des pilotes</value>
+    <value>Analyse &amp; mise à jour des pilotes</value>
   </data>
   <data name="ScanCompleted" xml:space="preserve">
     <value>Analyse terminée</value>
@@ -473,10 +473,10 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Analyser régulièrement votre système</value>
   </data>
   <data name="ScanFooterText" xml:space="preserve">
-    <value>Un entretien régulier permettra d'améliorer les performances du système</value>
+    <value>Un entretien régulier améliore les performances du système</value>
   </data>
   <data name="ScanForIssues" xml:space="preserve">
-    <value>Rechercher des problèmes</value>
+    <value>Analyser les pilotes</value>
   </data>
   <data name="ScanningDevice" xml:space="preserve">
     <value>Dispositif d'Analyse -</value>
@@ -494,7 +494,7 @@ Il est possible que l'écran peut devenir noir pendant cette mise à jour pour u
     <value>Sélectionnez appareils</value>
   </data>
   <data name="SelectDevicesToRemoveFromExclude" xml:space="preserve">
-    <value>S'il vous plaît, sélectionner des périphériques que vous ne souhaitez plus exclure de l'analyse.</value>
+    <value>S'il vous plaît, sélectionner les périphériques que vous souhaitez exclure de l'analyse.</value>
   </data>
   <data name="SelectDrivers" xml:space="preserve">
     <value>Sélectionnez les pilotes</value>

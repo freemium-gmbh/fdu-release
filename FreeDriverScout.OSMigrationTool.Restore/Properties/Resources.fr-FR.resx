@@ -184,7 +184,7 @@
     <value>Vous essayez d'installer les pilotes {0} sur {1}. S'il vous plaît, générer le package de migration des pilotes pour la bonne version du système d'exploitation.</value>
   </data>
   <data name="PostOn" xml:space="preserve">
-    <value>Poster cela sur:</value>
+    <value>Poster sur:</value>
   </data>
   <data name="RootUrl" xml:space="preserve">
     <value>http://fr.freemium.com/free-driver-scout/</value>
